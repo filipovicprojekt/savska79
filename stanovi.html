@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Savska 79 Residence – Stanovi</title>
+
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#121826;
+      --muted:#5b6476;
+      --border:#e6e8ef;
+      --shadow: 0 14px 40px rgba(16,24,40,.10);
+      --overlay: rgba(0,0,0,.20);
+      --overlayHover: rgba(0,0,0,.34);
+      --pill: rgba(255,255,255,.86);
+      --pillText:#101828;
+
+      --soldOverlay: rgba(140,0,0,.28);
+      --soldOverlayHover: rgba(140,0,0,.40);
+      --danger:#b42318;
+      --danger2:#d92d20;
+
+      --radius:18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page{
+      width:min(1200px, 100%);
+      margin: 0 auto;
+      padding: 22px 16px 42px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(20px, 2.2vw, 28px);
+      letter-spacing: -0.02em;
+    }
+    .sub{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .legend{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      display:inline-block;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(0,0,0,.08);
+      margin-right:6px;
+      transform: translateY(1px);
+    }
+    .dot.sold{ background: rgba(140,0,0,.38); border-color: rgba(140,0,0,.20); }
+    .chip{
+      display:inline-flex; align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      background: rgba(255,255,255,.7);
+      border:1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(16,24,40,.06);
+      backdrop-filter: blur(6px);
+    }
+
+    /* HERO building */
+    .heroCard{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .building{
+      position:relative;
+      width:100%;
+      aspect-ratio: 2048 / 1365; /* omjer naslovne.png */
+      background: url("naslovna.png") center/cover no-repeat;
+    }
+
+    .unit{
+      position:absolute;
+      background: var(--overlay);
+      transition: background .2s ease, transform .2s ease;
+      cursor:pointer;
+      border: 0;
+      display:block;
+      text-decoration:none;
+      outline: none;
+    }
+    .unit:hover{ background: var(--overlayHover); }
+    .unit:focus-visible{
+      box-shadow: 0 0 0 3px rgba(16,24,40,.28) inset;
+    }
+
+    /* Nenametljiva oznaka */
+    .tag{
+      position:absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 6px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      background: var(--pill);
+      color: var(--pillText);
+      border: 1px solid rgba(16,24,40,.10);
+      border-radius: 999px;
+      box-shadow: 0 10px 22px rgba(16,24,40,.10);
+      user-select:none;
+      pointer-events:none;
+    }
+
+    /* SOLD state */
+    .unit.sold{
+      background: var(--soldOverlay);
+      cursor: not-allowed;
+    }
+    .unit.sold:hover{ background: var(--soldOverlayHover); }
+
+    .ribbon{
+      position:absolute;
+      top: 14px;
+      right: -48px;
+      background: linear-gradient(135deg, var(--danger2), var(--danger));
+      color:#fff;
+      font-weight:800;
+      font-size: 12px;
+      letter-spacing: .06em;
+      padding: 10px 58px;
+      transform: rotate(35deg);
+      box-shadow: 0 10px 24px rgba(180,35,24,.25);
+      border: 1px solid rgba(255,255,255,.25);
+      user-select:none;
+      pointer-events:none;
+    }
+
+    /* Layout below hero */
+    .below{
+      padding: 14px 14px 16px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      border-top:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(246,247,251,.0), rgba(246,247,251,.55));
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .btnRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 10px 22px rgba(16,24,40,.06);
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 30px rgba(16,24,40,.10); }
+
+    /* --- Positioning of 6 apartments (percentages) --- */
+    /* Zgrada na slici je otprilike od 25.6% do 78.9% visine; podjela na 3 kata */
+    .k1s3{ left: 0%;  top: 25.64%; width: 50%; height: 17.75%; }
+    .k1s2{ left: 0%;  top: 43.39%; width: 50%; height: 17.75%; }
+    .k1s1{ left: 0%;  top: 61.15%; width: 50%; height: 17.75%; }
+
+    .k2s3{ left: 50%; top: 25.64%; width: 50%; height: 17.75%; }
+    .k2s2{ left: 50%; top: 43.39%; width: 50%; height: 17.75%; }
+    .k2s1{ left: 50%; top: 61.15%; width: 50%; height: 17.75%; }
+
+    /* Modal */
+    .backdrop{
+      position:fixed;
+      inset:0;
+      background: rgba(16,24,40,.42);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index: 50;
+    }
+    .backdrop.open{ display:flex; }
+
+    .modal{
+      width:min(980px, 100%);
+      max-height: min(86vh, 860px);
+      overflow:auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 30px 90px rgba(16,24,40,.25);
+    }
+
+    .modalHeader{
+      position: sticky;
+      top:0;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      z-index: 2;
+    }
+    .modalTitle{
+      margin:0;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -.01em;
+    }
+    .modalMeta{
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .close{
+      border: 1px solid var(--border);
+      background:#fff;
+      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      cursor:pointer;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      box-shadow: 0 10px 22px rgba(16,24,40,.06);
+    }
+
+    .modalBody{
+      padding: 14px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+    }
+
+    @media (max-width: 860px){
+      .modalBody{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 26px rgba(16,24,40,.06);
+      overflow:hidden;
+    }
+
+    .cardHead{
+      padding: 12px 12px 10px;
+      border-bottom: 1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .cardHead h3{
+      margin:0;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: -.01em;
+    }
+    .badge{
+      font-size: 12px;
+      font-weight: 900;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(246,247,251,.7);
+      color: var(--muted);
+    }
+    .badge.sold{
+      color: #fff;
+      border-color: rgba(255,255,255,.25);
+      background: linear-gradient(135deg, var(--danger2), var(--danger));
+    }
+
+    .cardBody{ padding: 12px; }
+    .cardBody p{ margin:0 0 10px; color: var(--text); }
+    .muted{ color: var(--muted); }
+
+    ul.features{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+    }
+    ul.features li{ margin: 6px 0; }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td{
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align:left;
+    }
+    th{
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      background: rgba(246,247,251,.65);
+    }
+
+    .noteBox{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(246,247,251,.65);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Floorplan thumb + viewer */
+    .thumb{
+      width:100%;
+      display:block;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: #fff;
+      cursor: zoom-in;
+      box-shadow: 0 10px 26px rgba(16,24,40,.06);
+    }
+
+    .viewerBack{
+      position:fixed;
+      inset:0;
+      background: rgba(16,24,40,.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      z-index: 60;
+    }
+    .viewerBack.open{ display:flex; }
+
+    .viewer{
+      width:min(1100px, 100%);
+      height:min(86vh, 900px);
+      background:#0b1220;
+      border-radius: 16px;
+      overflow:hidden;
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+      display:flex;
+      flex-direction:column;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .viewerTop{
+      padding:10px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:space-between;
+      background: rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      color:#fff;
+      font-weight:800;
+      font-size: 13px;
+    }
+    .viewerBtns{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .vbtn{
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      color:#fff;
+      padding:8px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 900;
+      font-size: 12px;
+    }
+    .vbtn:hover{ background: rgba(255,255,255,.12); }
+
+    .stage{
+      position:relative;
+      flex:1;
+      overflow:hidden;
+      touch-action: none; /* omogućuje drag na mobitelu */
+    }
+    .stage img{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      transform-origin: center center;
+      user-select:none;
+      -webkit-user-drag:none;
+      max-width:none; /* bitno za zoom */
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      transform: translateX(-50%);
+      background: rgba(16,24,40,.92);
+      color:#fff;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13px;
+      box-shadow: 0 18px 46px rgba(0,0,0,.30);
+      display:none;
+      z-index: 80;
+    }
+    .toast.show{ display:block; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div>
+        <h1>Savska 79 Residence – pregled stanova</h1>
+        <p class="sub">Klikni stan za detalje. Prodani stan je zaključan.</p>
+      </div>
+
+      <div class="legend">
+        <span class="chip"><span class="dot"></span> Dostupno</span>
+        <span class="chip"><span class="dot sold"></span> Prodano</span>
+      </div>
+    </header>
+
+    <div class="heroCard">
+      <div class="building" aria-label="Interaktivna slika zgrade s 6 stanova">
+        <!-- K1 -->
+        <a class="unit k1s3" href="#" data-unit="K1S3" aria-label="K1S3"><span class="tag">K1S3</span></a>
+        <a class="unit k1s2" href="#" data-unit="K1S2" aria-label="K1S2"><span class="tag">K1S2</span></a>
+        <a class="unit k1s1" href="#" data-unit="K1S1" aria-label="K1S1"><span class="tag">K1S1</span></a>
+
+        <!-- K2 -->
+        <a class="unit k2s3" href="#" data-unit="K2S3" aria-label="K2S3"><span class="tag">K2S3</span></a>
+        <a class="unit k2s2" href="#" data-unit="K2S2" aria-label="K2S2"><span class="tag">K2S2</span></a>
+
+        <!-- K2S1 sold + ribbon -->
+        <a class="unit k2s1 sold" href="#" data-unit="K2S1" aria-label="K2S1 (prodano)">
+          <span class="tag">K2S1</span>
+          <span class="ribbon">PRODANO!</span>
+        </a>
+      </div>
+
+      <div class="below">
+        <div class="hint">
+          Tip: status prodano možeš kasnije mijenjati u kodu u objektu <b>availability</b>.
+        </div>
+        <div class="btnRow">
+          <button class="btn" id="demoToggle">Demo: Toggle PRODANO (K2S1)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILS MODAL -->
+  <div class="backdrop" id="detailBack" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal">
+      <div class="modalHeader">
+        <div>
+          <h2 class="modalTitle" id="detailTitle">Stan</h2>
+          <div class="modalMeta" id="detailMeta"></div>
+        </div>
+        <button class="close" id="detailClose" aria-label="Zatvori">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <div class="card">
+          <div class="cardHead">
+            <h3>Opis</h3>
+            <span class="badge" id="statusBadge">Dostupno</span>
+          </div>
+          <div class="cardBody" id="detailText"></div>
+        </div>
+
+        <div class="card">
+          <div class="cardHead">
+            <h3>Cijene</h3>
+            <span class="badge" id="areaBadge">—</span>
+          </div>
+          <div class="cardBody">
+            <div id="priceTableWrap"></div>
+            <div class="noteBox" id="priceNote" style="margin-top:10px;"></div>
+          </div>
+        </div>
+
+        <div class="card" style="grid-column: 1 / -1;">
+          <div class="cardHead">
+            <h3>Tlocrt</h3>
+            <span class="badge muted">Klikni za uvećanje</span>
+          </div>
+          <div class="cardBody" id="floorplanWrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOORPLAN VIEWER -->
+  <div class="viewerBack" id="viewerBack" role="dialog" aria-modal="true">
+    <div class="viewer">
+      <div class="viewerTop">
+        <div id="viewerTitle">Tlocrt</div>
+        <div class="viewerBtns">
+          <button class="vbtn" id="zoomIn">+</button>
+          <button class="vbtn" id="zoomOut">−</button>
+          <button class="vbtn" id="zoomReset">Reset</button>
+          <button class="vbtn" id="viewerClose">Zatvori</button>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <img id="stageImg" alt="Tlocrt" />
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    /* =========================
+       1) OVDJE KASNIJE MIJENJAŠ STATUS
+       ========================= */
+    const availability = {
+      K1S1: "available",
+      K1S2: "available",
+      K1S3: "available",
+      K2S1: "sold",      // <-- PRODANO
+      K2S2: "available",
+      K2S3: "available",
+    };
+
+    /* =========================
+       2) PODACI O STANOVIMA
+       - K2S1 je prodan: ne prikazujemo detalje, samo zaključano
+       ========================= */
+    const units = {
+      K1S1: {
+        title: "K1S1 – Stan prizemlje",
+        area: "73 m²",
+        orientation: "Sjever – Jug – Zapad",
+        floorplan: "k1s1.png",
+        descriptionHTML: `
+          <p><b>Trosoban stan</b> neto površine <b>73 m²</b> u prizemlju zgrade.</p>
+          <p class="muted">
+            Stan se sastoji od dnevnog boravka s kuhinjom i blagovaonicom, dvije spavaće sobe, dvije kupaonice s WC-om, izbe, dva hodnika, terase i vrta.
+            Uz stan dolazi i pripadajući vrt od <b>29,7 m²</b>.
+          </p>
+          <ul class="features">
+            <li>Dnevni boravak + kuhinja + blagovaonica</li>
+            <li>2 spavaće sobe</li>
+            <li>2 kupaonice s WC-om</li>
+            <li>Izba, 2 hodnika, terasa i vrt</li>
+            <li>Obavezna kupnja parkirnog mjesta (priprema za EV punjač)</li>
+          </ul>
+        `,
+        prices: {
+          cash: 205000,
+          credit: 216000,
+          parking: 8000,
+          totalCash: 213000,
+          totalCredit: 224000
+        },
+        priceNote: "Cijena m² vrta iznosi 10% od cijene m² stambenog prostora. CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
+      },
+
+      K1S2: {
+        title: "K1S2 – Stan 1. kat",
+        area: "95 m²",
+        orientation: "Sjever – Jug – Zapad",
+        floorplan: "k1s2.png",
+        descriptionHTML: `
+          <p><b>Četverosoban stan</b> neto površine <b>95 m²</b> na prvom katu zgrade.</p>
+          <p class="muted">
+            Stan se sastoji od dnevnog boravka s kuhinjom i blagovaonicom, tri spavaće sobe, dvije kupaonice s WC-om, izbe, dva hodnika, terase i lođe.
+          </p>
+          <ul class="features">
+            <li>Dnevni boravak + kuhinja + blagovaonica</li>
+            <li>3 spavaće sobe</li>
+            <li>2 kupaonice s WC-om</li>
+            <li>Izba, 2 hodnika, terasa i lođa</li>
+            <li>Obavezna kupnja parkirnog mjesta (priprema za EV punjač)</li>
+          </ul>
+        `,
+        prices: {
+          cash: 266000,
+          credit: 280000,
+          parking: 8000,
+          totalCash: 274000,
+          totalCredit: 288000
+        },
+        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
+      },
+
+      K1S3: {
+        title: "K1S3 – Penthouse",
+        area: "70 m²",
+        orientation: "Sjever – Jug – Zapad",
+        floorplan: "k1s3.png",
+        descriptionHTML: `
+          <p><b>Trosoban stan</b> neto površine <b>70 m²</b> na drugom katu zgrade.</p>
+          <p class="muted">
+            Stan se sastoji od dnevnog boravka s kuhinjom i blagovaonicom, dvije spavaće sobe, dvije kupaonice s WC-om, dva hodnika i krovne terase.
+          </p>
+          <ul class="features">
+            <li>Dnevni boravak + kuhinja + blagovaonica</li>
+            <li>2 spavaće sobe</li>
+            <li>2 kupaonice s WC-om</li>
+            <li>2 hodnika + krovna terasa</li>
+            <li>Obavezna kupnja parkirnog mjesta (priprema za EV punjač)</li>
+          </ul>
+        `,
+        prices: {
+          cash: 197000,
+          credit: 208000,
+          parking: 8000,
+          totalCash: 205000,
+          totalCredit: 216000
+        },
+        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
+      },
+
+      K2S1: {
+        title: "K2S1 – Prodano",
+        area: "—",
+        orientation: "—",
+        floorplan: null,
+        descriptionHTML: `
+          <p><b>Ovaj stan je prodan.</b></p>
+          <p class="muted">Stan je zaključan i detalji nisu dostupni.</p>
+        `,
+        prices: null,
+        priceNote: ""
+      },
+
+      K2S2: {
+        title: "K2S2 – Stan 1. kat",
+        area: "95 m²",
+        orientation: "Sjever – Jug – Istok",
+        floorplan: "k2s2.png",
+        descriptionHTML: `
+          <p><b>Četverosoban stan</b> neto površine <b>95 m²</b> na prvom katu zgrade.</p>
+          <p class="muted">
+            Stan se sastoji od dnevnog boravka s kuhinjom i blagovaonicom, tri spavaće sobe, dvije kupaonice s WC-om, izbe, dva hodnika, terase i lođe.
+          </p>
+          <ul class="features">
+            <li>Dnevni boravak + kuhinja + blagovaonica</li>
+            <li>3 spavaće sobe</li>
+            <li>2 kupaonice s WC-om</li>
+            <li>Izba, 2 hodnika, terasa i lođa</li>
+            <li>Obavezna kupnja parkirnog mjesta (priprema za EV punjač)</li>
+          </ul>
+        `,
+        prices: {
+          cash: 266000,
+          credit: 280000,
+          parking: 8000,
+          totalCash: 274000,
+          totalCredit: 288000
+        },
+        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
+      },
+
+      K2S3: {
+        title: "K2S3 – Penthouse",
+        area: "70 m²",
+        orientation: "Sjever – Jug – Istok",
+        floorplan: "k2s3.png",
+        descriptionHTML: `
+          <p><b>Trosoban stan</b> neto površine <b>70 m²</b> na drugom katu zgrade.</p>
+          <p class="muted">
+            Stan se sastoji od dnevnog boravka s kuhinjom i blagovaonicom, dvije spavaće sobe, dvije kupaonice s WC-om, dva hodnika i krovne terase.
+          </p>
+          <ul class="features">
+            <li>Dnevni boravak + kuhinja + blagovaonica</li>
+            <li>2 spavaće sobe</li>
+            <li>2 kupaonice s WC-om</li>
+            <li>2 hodnika + krovna terasa</li>
+            <li>Obavezna kupnja parkirnog mjesta (priprema za EV punjač)</li>
+          </ul>
+        `,
+        prices: {
+          cash: 197000,
+          credit: 208000,
+          parking: 8000,
+          totalCash: 205000,
+          totalCredit: 216000
+        },
+        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
+      }
+    };
+
+    /* =========================
+       UI references
+       ========================= */
+    const detailBack = document.getElementById('detailBack');
+    const detailClose = document.getElementById('detailClose');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailMeta = document.getElementById('detailMeta');
+    const detailText = document.getElementById('detailText');
+    const statusBadge = document.getElementById('statusBadge');
+    const areaBadge = document.getElementById('areaBadge');
+    const priceTableWrap = document.getElementById('priceTableWrap');
+    const priceNote = document.getElementById('priceNote');
+    const floorplanWrap = document.getElementById('floorplanWrap');
+    const toast = document.getElementById('toast');
+
+    /* Viewer */
+    const viewerBack = document.getElementById('viewerBack');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const stage = document.getElementById('stage');
+    const stageImg = document.getElementById('stageImg');
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const zoomResetBtn = document.getElementById('zoomReset');
+    const viewerCloseBtn = document.getElementById('viewerClose');
+
+    /* =========================
+       Helpers
+       ========================= */
+    const eur = (n) => new Intl.NumberFormat('hr-HR', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=>toast.classList.remove('show'), 2200);
+    }
+
+    function applyAvailabilityToOverlay(){
+      document.querySelectorAll('.unit').forEach(el=>{
+        const id = el.dataset.unit;
+        const st = availability[id] || "available";
+        if(st === "sold") el.classList.add('sold');
+        else el.classList.remove('sold');
+
+        // Ribbon samo za K2S1 (po želji proširi)
+        if(id === "K2S1"){
+          const rib = el.querySelector('.ribbon');
+          if(st === "sold"){
+            if(!rib){
+              const r = document.createElement('span');
+              r.className = 'ribbon';
+              r.textContent = 'PRODANO!';
+              el.appendChild(r);
+            }
+          } else {
+            if(rib) rib.remove();
+          }
+        }
+      });
+    }
+
+    function buildPriceTable(prices){
+      return `
+        <table>
+          <thead>
+            <tr>
+              <th>Stavka</th>
+              <th>Iznos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cijena stana (gotovina)</td><td><b>${eur(prices.cash)}</b></td></tr>
+            <tr><td>Cijena stana (kredit)</td><td><b>${eur(prices.credit)}</b></td></tr>
+            <tr><td>Cijena parkinga</td><td>${eur(prices.parking)}</td></tr>
+            <tr><td><b>Ukupno (gotovina)</b></td><td><b>${eur(prices.totalCash)}</b></td></tr>
+            <tr><td><b>Ukupno (kredit)</b></td><td><b>${eur(prices.totalCredit)}</b></td></tr>
+          </tbody>
+        </table>
+      `;
+    }
+
+    function openDetails(unitId){
+      const st = availability[unitId] || "available";
+      if(st === "sold"){
+        showToast(`${unitId} je PRODANO i zaključano.`);
+        return;
+      }
+
+      const data = units[unitId];
+      if(!data){
+        showToast("Nema podataka za ovaj stan.");
+        return;
+      }
+
+      detailTitle.textContent = data.title;
+      detailMeta.textContent = `${data.area ? data.area : ""}${data.orientation && data.orientation !== "—" ? " • Orijentacija: " + data.orientation : ""}`;
+
+      statusBadge.textContent = "Dostupno";
+      statusBadge.classList.remove('sold');
+
+      areaBadge.textContent = data.area || "—";
+
+      detailText.innerHTML = data.descriptionHTML || "";
+
+      if(data.prices){
+        priceTableWrap.innerHTML = buildPriceTable(data.prices);
+        priceNote.textContent = data.priceNote || "";
+      } else {
+        priceTableWrap.innerHTML = `<p class="muted">Cijene nisu dostupne.</p>`;
+        priceNote.textContent = "";
+      }
+
+      if(data.floorplan){
+        floorplanWrap.innerHTML = `
+          <img class="thumb" src="${data.floorplan}" alt="Tlocrt ${unitId}" data-floorplan="${data.floorplan}" data-title="Tlocrt – ${unitId}">
+          <div class="noteBox" style="margin-top:10px;">
+            Zoom: tipke + / − ili kotačić miša. Pomicanje: povuci prstom/mišem po slici.
+          </div>
+        `;
+        floorplanWrap.querySelector('.thumb').addEventListener('click', (e)=>{
+          openViewer(e.currentTarget.dataset.floorplan, e.currentTarget.dataset.title);
+        });
+      } else {
+        floorplanWrap.innerHTML = `<p class="muted">Tlocrt nije dostupan.</p>`;
+      }
+
+      detailBack.classList.add('open');
+    }
+
+    function closeDetails(){
+      detailBack.classList.remove('open');
+    }
+
+    /* =========================
+       Floorplan Viewer (zoom + drag)
+       ========================= */
+    let v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
+    function applyTransform(){
+      stageImg.style.transform = `translate(calc(-50% + ${v.x}px), calc(-50% + ${v.y}px)) scale(${v.scale})`;
+    }
+    function openViewer(src, title){
+      viewerTitle.textContent = title || "Tlocrt";
+      stageImg.src = src;
+      v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
+      applyTransform();
+      viewerBack.classList.add('open');
+    }
+    function closeViewer(){
+      viewerBack.classList.remove('open');
+      stageImg.src = "";
+    }
+    function zoom(delta){
+      const next = Math.min(6, Math.max(0.6, v.scale + delta));
+      v.scale = next;
+      applyTransform();
+    }
+    zoomInBtn.addEventListener('click', ()=>zoom(0.2));
+    zoomOutBtn.addEventListener('click', ()=>zoom(-0.2));
+    zoomResetBtn.addEventListener('click', ()=>{
+      v.scale = 1; v.x = 0; v.y = 0;
+      applyTransform();
+    });
+    viewerCloseBtn.addEventListener('click', closeViewer);
+
+    // Drag (mouse + touch)
+    function startDrag(clientX, clientY){
+      v.dragging = true;
+      v.px = clientX;
+      v.py = clientY;
+    }
+    function moveDrag(clientX, clientY){
+      if(!v.dragging) return;
+      const dx = clientX - v.px;
+      const dy = clientY - v.py;
+      v.px = clientX; v.py = clientY;
+      v.x += dx;
+      v.y += dy;
+      applyTransform();
+    }
+    function endDrag(){ v.dragging = false; }
+
+    stage.addEventListener('mousedown', (e)=> startDrag(e.clientX, e.clientY));
+    window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
+    window.addEventListener('mouseup', endDrag);
+
+    stage.addEventListener('touchstart', (e)=>{
+      if(e.touches.length === 1){
+        const t = e.touches[0];
+        startDrag(t.clientX, t.clientY);
+      }
+    }, {passive:true});
+    stage.addEventListener('touchmove', (e)=>{
+      if(e.touches.length === 1){
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+      }
+    }, {passive:true});
+    stage.addEventListener('touchend', endDrag);
+
+    // Wheel zoom (desktop)
+    stage.addEventListener('wheel', (e)=>{
+      e.preventDefault();
+      zoom(e.deltaY < 0 ? 0.12 : -0.12);
+    }, {passive:false});
+
+    // Close overlays by clicking backdrop / ESC
+    detailClose.addEventListener('click', closeDetails);
+    detailBack.addEventListener('click', (e)=>{ if(e.target === detailBack) closeDetails(); });
+
+    viewerBack.addEventListener('click', (e)=>{ if(e.target === viewerBack) closeViewer(); });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === "Escape"){
+        closeDetails();
+        closeViewer();
+      }
+    });
+
+    /* =========================
+       Click handlers for units
+       ========================= */
+    document.querySelectorAll('.unit').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const unitId = el.dataset.unit;
+        openDetails(unitId);
+      });
+    });
+
+    /* =========================
+       DEMO button to toggle K2S1 sold
+       (makni ga ako ne treba)
+       ========================= */
+    document.getElementById('demoToggle').addEventListener('click', ()=>{
+      availability.K2S1 = (availability.K2S1 === "sold") ? "available" : "sold";
+      applyAvailabilityToOverlay();
+      showToast(`K2S1 status: ${availability.K2S1.toUpperCase()}`);
+    });
+
+    /* init */
+    applyAvailabilityToOverlay();
+
+    /* NOVI DIO*/
+    
+    <div class="cookieBanner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="Kolačići">
+    <div class="cookieInner">
+        <div class="cookieText">
+        <b>Koristimo kolačiće</b>
+        <p>
+            Koristimo nužne kolačiće za rad stranice, a uz vašu privolu i analitičke kolačiće (Google Analytics)
+            kako bismo poboljšali sadržaj i iskustvo. Analitika se aktivira tek nakon prihvaćanja.
+        </p>
+        <div class="cookieLinks">
+            <a href="cookies.html">Cookies</a> • <a href="privacy.html">Privatnost</a>
+        </div>
+        </div>
+
+        <div class="cookieActions">
+        <button class="cookieBtn" id="cookieReject">Odbij</button>
+        <button class="cookieBtn primary" id="cookieAccept">Prihvati</button>
+        </div>
+    </div>
+    </div>
+
+    // =========================
+    // GDPR COOKIE CONSENT + GA4 loader
+    // =========================
+    const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // <-- ovdje upiši svoj GA4 ID
+
+    const CONSENT_KEY = "fp_cookie_consent_v1"; // "accepted" | "rejected"
+
+    const cookieBanner = document.getElementById("cookieBanner");
+    const cookieAccept = document.getElementById("cookieAccept");
+    const cookieReject = document.getElementById("cookieReject");
+    const openCookieSettings = document.getElementById("openCookieSettings");
+
+    function getConsent(){
+        return localStorage.getItem(CONSENT_KEY);
+    }
+    function setConsent(val){
+        localStorage.setItem(CONSENT_KEY, val);
+    }
+
+    function showBanner(){
+        if(cookieBanner) cookieBanner.classList.add("open");
+    }
+    function hideBanner(){
+        if(cookieBanner) cookieBanner.classList.remove("open");
+    }
+
+    // učitaj GA samo ako imamo privolu
+    function loadGA(){
+        if(!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-0PYTBSP8WY") return;
+
+        // spriječi dvostruko učitavanje
+        if(window.__gaLoaded) return;
+        window.__gaLoaded = true;
+
+        // inject gtag script
+        const s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
+        document.head.appendChild(s);
+
+        // init gtag
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+
+        gtag("js", new Date());
+
+        // GDPR-friendly config: IP anonymization + no ad personalization by default
+        gtag("config", GA_MEASUREMENT_ID, {
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+        });
+    }
+
+    function initConsent(){
+        const consent = getConsent();
+        if(consent === "accepted"){
+        hideBanner();
+        loadGA();
+        return;
+        }
+        if(consent === "rejected"){
+        hideBanner();
+        return;
+        }
+        // nema odluke -> pokaži banner
+        showBanner();
+    }
+
+    cookieAccept?.addEventListener("click", ()=>{
+        setConsent("accepted");
+        hideBanner();
+        loadGA();
+    });
+
+    cookieReject?.addEventListener("click", ()=>{
+        setConsent("rejected");
+        hideBanner();
+    });
+
+    // Otvori banner opet (postavke)
+    openCookieSettings?.addEventListener("click", (e)=>{
+        e.preventDefault();
+        showBanner();
+    });
+
+    // init on load
+    initConsent();
+
+
+  </script>
+</body>
+</html>
