@@ -1495,47 +1495,29 @@
     function openViewer(src, title){
       viewerTitle.textContent = title || "Tlocrt";
 
-      // Open first so stage has a real size on mobile
-      viewerBack.classList.add('open');
-
-      // Reset transform
+      // Reset before load
       v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
       applyTransform();
 
-      const fitToScreen = ()=>{
-        // Wait for layout
-        requestAnimationFrame(()=>{
-          requestAnimationFrame(()=>{
-            const sw = stage.clientWidth || 1;
-            const sh = stage.clientHeight || 1;
-            const iw = stageImg.naturalWidth || 1;
-            const ih = stageImg.naturalHeight || 1;
+      // Fit-to-screen when image is ready (important for mobile)
+      stageImg.onload = ()=>{
+        const sw = stage.clientWidth || 1;
+        const sh = stage.clientHeight || 1;
+        const iw = stageImg.naturalWidth || 1;
+        const ih = stageImg.naturalHeight || 1;
 
-            // Fit (contain) with a small margin so whole plan is visible
-            const fit = Math.min(sw / iw, sh / ih) * 0.98;
+        // scale to fully fit (contain) with a small margin
+        const fit = Math.min(sw / iw, sh / ih) * 0.98;
 
-            v.scale = Math.min(6, Math.max(0.2, fit));
-            v.x = 0;
-            v.y = 0;
-            applyTransform();
-          });
-        });
+        v.scale = Math.min(6, Math.max(0.2, fit));
+        v.x = 0;
+        v.y = 0;
+        applyTransform();
       };
 
-      // Ensure we fit once the image is ready (also works for cached images)
-      stageImg.onload = fitToScreen;
-
       stageImg.src = src;
-
-      // If cached and already complete, onload may not fire reliably on some mobiles
-      if(stageImg.complete){
-        fitToScreen();
-      }
-
-      // Safety: fit again shortly after open (some devices report sizes late)
-      setTimeout(fitToScreen, 120);
+      viewerBack.classList.add('open');
     }
-
     function closeViewer(){ viewerBack.classList.remove('open'); stageImg.src = ""; }
     function zoom(delta){ v.scale = Math.min(6, Math.max(0.2, v.scale + delta)); applyTransform(); }
 
