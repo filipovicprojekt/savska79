@@ -2,36 +2,20 @@
 <html lang="hr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
   <title>SAVSKA 79 RESIDENCE – Filipović Projekt</title>
-  <meta name="description" content="Kvalitetna moderna novogradnja u Jelkovcu (Sesvete). Interaktivni pregled stanova, galerija i upit." />
+  <meta name="description" content="Kvalitetna moderna novogradnja u Jelkovcu (Sesvete). Pregled stanova, galerija i upit." />
   <meta name="robots" content="index,follow" />
-
-  <!-- Canonical (zamijeni domenom) -->
-  <link rel="canonical" href="https://ivanfilipovic.from.hr/" />
+  <link rel="canonical" href="https://example.com/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SAVSKA 79 RESIDENCE – Filipović Projekt" />
-  <meta property="og:description" content="Kvalitetna moderna novogradnja u Jelkovcu (Sesvete). Interaktivni pregled stanova, galerija i upit." />
+  <meta property="og:description" content="Kvalitetna moderna novogradnja u Jelkovcu (Sesvete). Pregled stanova, galerija i upit." />
   <meta property="og:image" content="naslovna.png" />
   <meta property="og:locale" content="hr_HR" />
-
   <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Google Analytics (GA4) – zamijeni G-XXXXXXXXXX -->
-  <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PYTBSP8WY"></script>*
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0PYTBSP8WY');!-->
-
-  
-
-  </script>
-
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -54,26 +38,25 @@
       --text:#121826;
       --muted:#5b6476;
       --border:#e6e8ef;
-      --shadow: 0 14px 40px rgba(16,24,40,.10);
-
-      --overlay: rgba(0,0,0,.18);
-      --overlayHover: rgba(0,0,0,.30);
-
-      --soldOverlay: rgba(140,0,0,.26);
-      --soldOverlayHover: rgba(140,0,0,.38);
-      --reserveOverlay: rgba(140,0,0,.18);
-      --reserveOverlayHover: rgba(140,0,0,.28);
-
-      --pill: rgba(255,255,255,.88);
-      --pillText:#101828;
-
-      --danger:#b42318;
-      --danger2:#d92d20;
 
       --accent:#8b6b4c;
       --accent2:#6f533a;
 
-      --radius:18px;
+      --danger:#b42318;
+      --danger2:#d92d20;
+
+      --shadow: 0 14px 40px rgba(16,24,40,.10);
+      --radius:16px;
+
+      --overlay: rgba(0,0,0,.16);
+      --overlayHover: rgba(0,0,0,.26);
+      --soldOverlay: rgba(140,0,0,.26);
+      --soldOverlayHover: rgba(140,0,0,.38);
+      --reserveOverlay: rgba(140,0,0,.18);
+      --reserveOverlayHover: rgba(140,0,0,.26);
+
+      --pill: rgba(255,255,255,.88);
+      --pillText:#101828;
     }
 
     *{ box-sizing:border-box; }
@@ -84,37 +67,36 @@
       color: var(--text);
       line-height: 1.6;
 
-      /* naslovna.png kao pozadina cijele stranice */
       background: var(--bg);
       background-image: url("naslovna.png");
       background-size: cover;
       background-position: center top;
-      background-attachment: fixed;
+      background-attachment: scroll; /* bolje na mobitelu */
     }
 
-    /* “opacity” preko pozadine da sve ostane čitljivo */
+    /* overlay da se pozadina vidi ali da sadržaj ostane čitljiv */
     body::before{
       content:"";
       position: fixed;
       inset:0;
-      background: rgba(246,247,251,.86); /* smanjeno: slika se bolje vidi */
+      background: rgba(246,247,251,.82); /* manji opacity => slika se više vidi */
       pointer-events:none;
       z-index:-1;
     }
 
     a{ color: inherit; }
     .container{
-      width:min(1200px, 100%);
+      width:min(1100px, 100%);
       margin: 0 auto;
-      padding: 0 16px;
+      padding: 0 14px;
     }
 
-    /* Topbar */
+    /* TOPBAR */
     .topbar{
       position: sticky;
       top:0;
-      z-index: 40;
-      background: rgba(246,247,251,.88);
+      z-index: 50;
+      background: rgba(246,247,251,.86);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
@@ -122,14 +104,15 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:12px;
       padding: 10px 0;
     }
+
     .brand{
       display:flex;
       align-items:center;
-      gap:12px;
-      min-width: 240px;
+      gap:10px;
+      min-width: 0;
     }
     .logo{
       width: 44px;
@@ -140,92 +123,131 @@
       border: 1px solid var(--border);
       box-shadow: 0 10px 22px rgba(16,24,40,.06);
       padding: 6px;
+      flex: 0 0 auto;
     }
     .brandText{
+      min-width:0;
       display:flex;
       flex-direction:column;
       gap:2px;
     }
     .brandText b{
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing:-.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .brandText span{
       font-size: 12px;
       color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .nav{
+    /* Mobile menu */
+    .menuBtn{
+      width:44px;height:44px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background:#fff;
+      box-shadow: 0 10px 22px rgba(16,24,40,.06);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .drawerBack{
+      position: fixed;
+      inset:0;
+      background: rgba(16,24,40,.42);
+      display:none;
+      z-index: 80;
+    }
+    .drawerBack.open{ display:block; }
+    .drawer{
+      position: fixed;
+      top:0; right:0;
+      width: min(92vw, 360px);
+      height: 100vh;
+      background: rgba(255,255,255,.98);
+      border-left: 1px solid var(--border);
+      box-shadow: -20px 0 60px rgba(0,0,0,.18);
+      padding: 14px;
+      transform: translateX(110%);
+      transition: transform .2s ease;
+    }
+    .drawerBack.open .drawer{ transform: translateX(0); }
+    .drawerTop{
       display:flex;
-      gap: 8px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
     }
-    .nav a{
-      font-size: 12px;
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 999px;
+    .drawerTop b{ font-size: 14px; }
+    .drawer a{
+      display:block;
+      padding: 12px 10px;
+      border-radius: 12px;
       text-decoration:none;
-    }
-    .nav a:hover{
-      background: rgba(0,0,0,.04);
       color: var(--text);
+      font-weight: 900;
+      border: 1px solid rgba(0,0,0,.06);
+      background: rgba(246,247,251,.7);
+      margin: 8px 0;
     }
-    @media (max-width: 860px){
-      .nav{ display:none; }
-    }
+    .drawer a:hover{ background: rgba(0,0,0,.04); }
 
     /* Sections */
-    section{ padding: 56px 0; }
+    section{ padding: 44px 0; }
     .sectionTitle{
       margin:0 0 10px;
-      font-size: clamp(20px, 2.2vw, 28px);
+      font-size: 22px;
       letter-spacing: -0.02em;
       text-align:center;
     }
     .sectionSub{
-      margin: 0 auto 22px;
+      margin: 0 auto 18px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       text-align:center;
       max-width: 900px;
     }
 
-    /* Intro header */
+    /* Hero intro */
     .intro{
-      padding: 28px 0 10px;
+      padding: 18px 0 6px;
     }
     .introCard{
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.88);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 18px;
-      overflow:hidden;
+      padding: 14px;
     }
     .introTitle{
       margin:0;
-      font-size: clamp(24px, 3vw, 36px);
+      font-size: 22px;
       letter-spacing: -0.03em;
       text-transform: uppercase;
+      text-align:left;
     }
     .introSubtitle{
       margin: 8px 0 0;
       color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 800;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-    }
     .card{
       background: rgba(255,255,255,.92);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: var(--radius);
       box-shadow: 0 10px 26px rgba(16,24,40,.06);
       overflow:hidden;
     }
@@ -245,34 +267,57 @@
     }
     .cardBody{ padding: 14px; }
 
-    .muted{ color: var(--muted); }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
 
-    /* Jelkovec block */
-    .leadBox{
-      background: rgba(255,255,255,.86);
+    /* Jelkovec preview + more */
+    .jelText p{ margin: 0 0 10px; }
+    .btnRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btnPrimary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 14px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 14px 26px rgba(139,107,76,.22);
+      font-weight: 950;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .btnPrimary:hover{ background: var(--accent2); }
+    .btnGhost{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.9);
+      color: var(--text);
+      border-radius: 12px;
       border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 10px 26px rgba(16,24,40,.06);
-      padding: 18px;
-      max-width: 980px;
-      margin: 0 auto;
+      box-shadow: 0 10px 22px rgba(16,24,40,.06);
+      font-weight: 950;
+      cursor:pointer;
+      text-decoration:none;
     }
-    .leadBox p{ margin: 0 0 12px; }
-    .bullets{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    .bullets li{ margin: 6px 0; }
 
-    /* Project list */
-    .featureList{
+    ul.list{
       margin: 0;
       padding-left: 18px;
       color: var(--muted);
       font-size: 14px;
     }
-    .featureList li{ margin: 7px 0; }
+    ul.list li{ margin: 7px 0; }
 
     .noteDanger{
       padding: 10px 12px;
@@ -280,73 +325,40 @@
       border: 1px solid rgba(217,45,32,.22);
       background: rgba(217,45,32,.06);
       color:#7a1b14;
-      font-weight: 900;
+      font-weight: 950;
     }
 
-    /* Gallery */
+    /* Gallery (mobile-first) */
+    .galleryGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
     .galleryItem{
-      grid-column: span 4;
-      cursor: zoom-in;
-      border-radius: 16px;
+      border-radius: var(--radius);
       overflow:hidden;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       background:#fff;
+      cursor: pointer;
     }
     .galleryItem img{
       width:100%;
-      height: 260px;
+      height: 240px;
       object-fit: cover;
       display:block;
-      transition: transform .25s ease;
-    }
-    .galleryItem:hover img{ transform: scale(1.02); }
-    @media (max-width: 980px){
-      .galleryItem{ grid-column: span 6; }
-    }
-    @media (max-width: 640px){
-      .galleryItem{ grid-column: span 12; }
     }
 
-    /* Apartments interactive image section */
-    .heroHeader{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:14px;
-      flex-wrap:wrap;
-    }
-    .heroHeader h2{
-      margin:0;
-      font-size: clamp(18px, 2.1vw, 26px);
-      letter-spacing: -0.02em;
-    }
-    .heroHeader p{
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 760px;
-    }
+    /* Apartments selection */
     .legend{
       display:flex;
-      gap:10px;
+      gap:8px;
+      justify-content:center;
       flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
+      margin-bottom: 10px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
-    .dot{
-      width:10px;height:10px;border-radius:50%;
-      display:inline-block;
-      background: rgba(0,0,0,.22);
-      border:1px solid rgba(0,0,0,.08);
-      margin-right:6px;
-      transform: translateY(1px);
-    }
-    .dot.sold{ background: rgba(140,0,0,.38); border-color: rgba(140,0,0,.20); }
-    .dot.reserved{ background: rgba(140,0,0,.22); border-color: rgba(140,0,0,.16); }
     .chip{
       display:inline-flex; align-items:center;
       gap:8px;
@@ -357,6 +369,14 @@
       box-shadow: 0 8px 20px rgba(16,24,40,.06);
       backdrop-filter: blur(6px);
     }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      display:inline-block;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(0,0,0,.08);
+    }
+    .dot.sold{ background: rgba(140,0,0,.38); border-color: rgba(140,0,0,.20); }
+    .dot.reserved{ background: rgba(140,0,0,.22); border-color: rgba(140,0,0,.16); }
 
     .heroCard{
       background: rgba(255,255,255,.92);
@@ -377,50 +397,46 @@
       background: var(--overlay);
       transition: background .2s ease;
       cursor:pointer;
-      border: 0;
       display:block;
       text-decoration:none;
-      outline: none;
+      outline:none;
     }
     .unit:hover{ background: var(--overlayHover); }
-    .unit:focus-visible{ box-shadow: 0 0 0 3px rgba(16,24,40,.28) inset; }
-
-    .tag{
-      position:absolute;
-      left: 10px;
-      bottom: 10px;
-      padding: 6px 9px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .02em;
-      background: var(--pill);
-      color: var(--pillText);
-      border: 1px solid rgba(16,24,40,.10);
-      border-radius: 999px;
-      box-shadow: 0 10px 22px rgba(16,24,40,.10);
-      user-select:none;
-      pointer-events:none;
-    }
-
     .unit.sold{
       background: var(--soldOverlay);
       cursor: not-allowed;
     }
     .unit.sold:hover{ background: var(--soldOverlayHover); }
-
     .unit.reserved{ background: var(--reserveOverlay); }
     .unit.reserved:hover{ background: var(--reserveOverlayHover); }
 
+    /* MOBILE: oznake male i u kutu da NE smetaju */
+    .tag{
+      position:absolute;
+      left: 8px;
+      top: 8px;
+      padding: 4px 7px;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .02em;
+      background: rgba(255,255,255,.84);
+      color: var(--pillText);
+      border: 1px solid rgba(16,24,40,.10);
+      border-radius: 999px;
+      user-select:none;
+      pointer-events:none;
+    }
+
     .ribbon{
       position:absolute;
-      top: 14px;
+      top: 10px;
       right: -48px;
       background: linear-gradient(135deg, var(--danger2), var(--danger));
       color:#fff;
       font-weight:950;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: .06em;
-      padding: 10px 58px;
+      padding: 9px 56px;
       transform: rotate(35deg);
       box-shadow: 0 10px 24px rgba(180,35,24,.25);
       border: 1px solid rgba(255,255,255,.25);
@@ -429,203 +445,64 @@
       text-transform: uppercase;
     }
 
-    /* Zone positions */
+    /* zones */
     .k1s3{ left: 0%;  top: 25.64%; width: 50%; height: 17.75%; }
     .k1s2{ left: 0%;  top: 43.39%; width: 50%; height: 17.75%; }
     .k1s1{ left: 0%;  top: 61.15%; width: 50%; height: 17.75%; }
-
     .k2s3{ left: 50%; top: 25.64%; width: 50%; height: 17.75%; }
     .k2s2{ left: 50%; top: 43.39%; width: 50%; height: 17.75%; }
     .k2s1{ left: 50%; top: 61.15%; width: 50%; height: 17.75%; }
-
-    /* Buttons */
-    .btnPrimary{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 14px 26px rgba(139,107,76,.22);
-      font-weight: 950;
-      cursor:pointer;
-      text-decoration:none;
-    }
-    .btnPrimary:hover{ background: var(--accent2); }
-
-    /* Form */
-    form{
-      max-width: 860px;
-      margin: 0 auto;
-      background: rgba(255,255,255,.92);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      padding: 18px;
-    }
-    .formGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 760px){
-      .formGrid{ grid-template-columns: 1fr; }
-      body{ background-attachment: scroll; }
-    }
-    label{
-      display:block;
-      font-size: 12px;
-      color: var(--muted);
-      margin: 0 0 6px 2px;
-      font-weight: 900;
-    }
-    input, select, textarea{
-      width:100%;
-      padding: 12px 12px;
-      border: 1px solid rgba(0,0,0,.15);
-      border-radius: 12px;
-      outline:none;
-      font-size: 14px;
-      background:#fff;
-    }
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(139,107,76,.55);
-      box-shadow: 0 0 0 4px rgba(139,107,76,.12);
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-    .formNote{
-      text-align:center;
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 10px;
-    }
-
-    .payRow{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 6px;
-    }
-    .payOpt{
-      flex:1;
-      min-width: 200px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-      background: rgba(246,247,251,.7);
-    }
-    .payOpt input{ width:auto; margin-top: 2px; }
-    .payOpt b{ display:block; }
-    .payOpt span{ color: var(--muted); font-size: 12px; display:block; margin-top:2px; }
-
-    /* Map */
-    .mapWrap{
-      overflow:hidden;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      background: rgba(255,255,255,.92);
-    }
-    iframe{ width:100%; height: 460px; border:0; display:block; }
-
-    /* Footer */
-    footer{
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      background: rgba(255,255,255,.92);
-    }
-    .footerGrid{
-      display:grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 16px;
-      align-items:start;
-    }
-    @media (max-width: 980px){
-      .footerGrid{ grid-template-columns: 1fr; }
-    }
-    .footerTitle{ font-weight: 950; margin-bottom: 8px; }
-    .footerMuted{ color: var(--muted); font-size: 13px; line-height:1.7; }
-    .footerLinks a{
-      display:block;
-      padding: 6px 0;
-      color: var(--muted);
-      font-size: 13px;
-      text-decoration:none;
-    }
-    .footerLinks a:hover{ color: var(--text); }
-    .footerBottom{
-      margin-top: 16px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:space-between;
-      color: var(--muted);
-      font-size: 12px;
-    }
 
     /* Modal details */
     .backdrop{
       position:fixed;
       inset:0;
-      background: rgba(16,24,40,.42);
+      background: rgba(16,24,40,.45);
       display:none;
       align-items:center;
       justify-content:center;
-      padding:16px;
-      z-index: 60;
+      padding: 14px;
+      z-index: 90;
     }
     .backdrop.open{ display:flex; }
     .modal{
-      width:min(980px, 100%);
-      max-height: min(86vh, 860px);
+      width: min(980px, 100%);
+      max-height: 86vh;
       overflow:auto;
-      background: #fff;
+      background:#fff;
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 16px;
       box-shadow: 0 30px 90px rgba(16,24,40,.25);
     }
     .modalHeader{
       position: sticky;
       top:0;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,.94);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      padding: 14px 14px 12px;
+      padding: 12px;
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap:10px;
-      z-index: 2;
     }
-    .modalTitle{ margin:0; font-size: 16px; font-weight: 950; }
-    .modalMeta{ margin: 4px 0 0; color: var(--muted); font-size: 13px; }
-    .close{
+    .modalHeader h2{ margin:0; font-size: 15px; font-weight: 950; }
+    .modalHeader .meta{ margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .closeBtn{
+      width: 40px; height: 40px;
+      border-radius: 12px;
       border: 1px solid var(--border);
       background:#fff;
-      border-radius: 12px;
-      width: 40px;
-      height: 40px;
+      box-shadow: 0 10px 22px rgba(16,24,40,.06);
       cursor:pointer;
       font-size: 18px;
       font-weight: 950;
-      color: var(--text);
-      box-shadow: 0 10px 22px rgba(16,24,40,.06);
     }
     .modalBody{
-      padding: 14px;
+      padding: 12px;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:14px;
-    }
-    @media (max-width: 860px){
-      .modalBody{ grid-template-columns: 1fr; }
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
     .badge{
       font-size: 12px;
@@ -635,7 +512,7 @@
       border: 1px solid var(--border);
       background: rgba(246,247,251,.7);
       color: var(--muted);
-      white-space:nowrap;
+      white-space: nowrap;
     }
     .badge.sold{
       color:#fff;
@@ -643,78 +520,53 @@
       background: linear-gradient(135deg, var(--danger2), var(--danger));
     }
 
-    table{
-      width:100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    th, td{
-      padding: 10px 10px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-      text-align:left;
-    }
-    th{
-      font-size: 12px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      background: rgba(246,247,251,.65);
-    }
-
-    .noteBox{
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: rgba(246,247,251,.65);
-      color: var(--muted);
-      font-size: 13px;
-    }
+    table{ width:100%; border-collapse:collapse; font-size: 13px; }
+    th,td{ padding: 10px; border-bottom: 1px solid var(--border); text-align:left; vertical-align:top; }
+    th{ color: var(--muted); text-transform:uppercase; letter-spacing:.06em; font-size: 12px; background: rgba(246,247,251,.65); }
 
     .thumb{
       width:100%;
-      display:block;
       border-radius: 14px;
-      border:1px solid var(--border);
-      background: #fff;
-      cursor: zoom-in;
+      border: 1px solid var(--border);
       box-shadow: 0 10px 26px rgba(16,24,40,.06);
+      display:block;
+      cursor: zoom-in;
+      background:#fff;
     }
 
-    /* Viewer (floorplan) */
+    /* Floorplan viewer */
     .viewerBack{
       position:fixed;
       inset:0;
-      background: rgba(16,24,40,.62);
+      background: rgba(16,24,40,.68);
       display:none;
       align-items:center;
       justify-content:center;
-      padding:14px;
-      z-index: 80;
+      padding: 12px;
+      z-index: 95;
     }
     .viewerBack.open{ display:flex; }
-
     .viewer{
-      width:min(1100px, 100%);
-      height:min(86vh, 900px);
+      width: 100%;
+      height: min(86vh, 780px);
       background:#0b1220;
       border-radius: 16px;
       overflow:hidden;
+      border: 1px solid rgba(255,255,255,.12);
       box-shadow: 0 30px 90px rgba(0,0,0,.45);
       display:flex;
       flex-direction:column;
-      border: 1px solid rgba(255,255,255,.12);
     }
     .viewerTop{
-      padding:10px;
+      padding: 10px;
       display:flex;
-      gap:8px;
       align-items:center;
       justify-content:space-between;
+      gap:8px;
+      color:#fff;
       background: rgba(255,255,255,.06);
       border-bottom: 1px solid rgba(255,255,255,.10);
-      color:#fff;
-      font-weight:950;
+      font-weight: 950;
       font-size: 13px;
     }
     .viewerBtns{ display:flex; gap:8px; flex-wrap:wrap; }
@@ -722,74 +574,159 @@
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.08);
       color:#fff;
-      padding:8px 10px;
+      padding: 8px 10px;
       border-radius: 12px;
       cursor:pointer;
       font-weight: 950;
       font-size: 12px;
     }
-    .vbtn:hover{ background: rgba(255,255,255,.12); }
-
     .stage{
       position:relative;
       flex:1;
       overflow:hidden;
-      touch-action: none;
+      touch-action:none;
     }
     .stage img{
       position:absolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      transform-origin: center center;
+      top:50%; left:50%;
+      transform: translate(-50%,-50%);
+      transform-origin:center center;
       user-select:none;
       -webkit-user-drag:none;
       max-width:none;
     }
 
-    /* Lightbox (gallery) */
+    /* Form */
+    form{
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    label{
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0 0 6px 2px;
+      font-weight: 950;
+    }
+    input,select,textarea{
+      width:100%;
+      padding: 12px;
+      border: 1px solid rgba(0,0,0,.15);
+      border-radius: 12px;
+      outline:none;
+      font-size: 14px;
+      background:#fff;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    .formGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .payRow{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top: 6px;
+    }
+    .payOpt{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(246,247,251,.7);
+    }
+    .payOpt input{ width:auto; margin-top: 3px; }
+    .payOpt b{ display:block; }
+    .payOpt span{ color: var(--muted); font-size: 12px; display:block; margin-top:2px; }
+    .formNote{
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    /* Map */
+    .mapWrap{
+      overflow:hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.92);
+    }
+    iframe{ width:100%; height: 320px; border:0; display:block; }
+
+    /* Footer */
+    footer{
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,.92);
+    }
+    .footerGrid{ display:grid; grid-template-columns: 1fr; gap: 12px; }
+    .footerTitle{ font-weight: 950; margin-bottom: 8px; }
+    .footerMuted{ color: var(--muted); font-size: 13px; line-height:1.7; }
+    .footerLinks a{
+      display:block;
+      padding: 6px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration:none;
+      font-weight: 900;
+    }
+    .footerLinks a:hover{ color: var(--text); }
+    .footerBottom{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      line-height:1.6;
+    }
+
+    /* Lightbox gallery (swipe-friendly) */
     .lightbox{
       position:fixed;
       inset:0;
-      background: rgba(0,0,0,.78);
+      background: rgba(0,0,0,.84);
       display:none;
       align-items:center;
       justify-content:center;
-      padding: 18px;
-      z-index: 90;
+      padding: 10px;
+      z-index: 99;
     }
     .lightbox.open{ display:flex; }
     .lbPanel{
-      width:min(1100px, 96vw);
-      height:min(78vh, 780px);
+      width: 100%;
+      height: 86vh;
+      max-width: 980px;
       background:#0f1115;
-      border-radius: 18px;
+      border-radius: 16px;
       overflow:hidden;
-      position:relative;
-      box-shadow: 0 22px 60px rgba(0,0,0,.45);
       border: 1px solid rgba(255,255,255,.10);
+      position:relative;
     }
     .lbTop{
-      position:absolute;
-      top:0; left:0; right:0;
+      position:absolute; top:0; left:0; right:0;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      padding: 10px 12px;
-      background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0));
-      z-index: 2;
+      padding: 10px;
+      z-index:2;
       gap:10px;
+      background: linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,0));
     }
-    .lbTitle{
-      color: rgba(255,255,255,.85);
-      font-size: 12px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .lbBtns{ display:flex; gap:8px; align-items:center; }
+    .lbTitle{ color: rgba(255,255,255,.86); font-size: 12px; font-weight: 950; }
+    .lbBtns{ display:flex; gap:8px; }
     .iconBtn{
-      width: 38px; height: 38px;
+      width: 42px; height: 42px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.08);
@@ -799,8 +736,8 @@
       align-items:center;
       justify-content:center;
       font-size: 16px;
+      font-weight: 900;
     }
-    .iconBtn:hover{ background: rgba(255,255,255,.14); }
     .lbStage{
       width:100%;
       height:100%;
@@ -808,11 +745,11 @@
       align-items:center;
       justify-content:center;
       overflow:hidden;
-      position:relative;
+      touch-action: pan-y;
     }
     .lbImg{
-      max-width: 92%;
-      max-height: 86%;
+      max-width: 94%;
+      max-height: 88%;
       transform-origin: center center;
       user-select:none;
       -webkit-user-drag:none;
@@ -820,15 +757,13 @@
     .lbHint{
       position:absolute;
       bottom: 10px;
-      left: 12px;
-      right: 12px;
+      left: 10px; right: 10px;
+      text-align:center;
       color: rgba(255,255,255,.72);
       font-size: 12px;
-      text-align:center;
       pointer-events:none;
     }
 
-    /* Toast */
     .toast{
       position:fixed;
       left:50%;
@@ -842,161 +777,25 @@
       font-size: 13px;
       box-shadow: 0 18px 46px rgba(0,0,0,.30);
       display:none;
-      z-index: 100;
+      z-index: 120;
     }
-      .toast.show{ display:block; }
-    
-    .cookieBanner{
-      position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      z-index: 9999;
-      display: none;
-      background: rgba(255,255,255,.95);
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 16px;
-      box-shadow: 0 18px 50px rgba(16,24,40,.18);
-      backdrop-filter: blur(10px);
-      overflow:hidden;
-    }
-    .cookieBanner.open{ display:block; }
+    .toast.show{ display:block; }
 
-    .cookieInner{
-      display:flex;
-      gap: 14px;
-      align-items:flex-start;
-      justify-content:space-between;
-      padding: 14px;
+    /* Desktop enhancements */
+    @media (min-width: 960px){
+      body{ background-attachment: fixed; }
+      .container{ padding: 0 16px; }
+      .introTitle{ font-size: 34px; }
+      .sectionTitle{ font-size: 28px; }
+      .grid{ grid-template-columns: 1fr 1fr; gap: 14px; }
+      .galleryGrid{ grid-template-columns: repeat(3, 1fr); }
+      .galleryItem img{ height: 260px; }
+      iframe{ height: 460px; }
+      .formGrid{ grid-template-columns: 1fr 1fr; }
+      .footerGrid{ grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+      /* desktop: oznake mogu biti malo veće i dolje */
+      .tag{ top:auto; bottom:10px; left:10px; font-size: 12px; padding: 6px 9px; }
     }
-
-    .cookieText{
-      max-width: 920px;
-    }
-    .cookieText b{
-      display:block;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-    .cookieText p{
-      margin: 0;
-      color: rgba(18,24,38,.78);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-    .cookieActions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-items:center;
-    }
-    .cookieBtn{
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-weight: 900;
-      font-size: 13px;
-      cursor:pointer;
-      border: 1px solid rgba(0,0,0,.12);
-      background: #fff;
-    }
-    .cookieBtn:hover{ box-shadow: 0 10px 24px rgba(16,24,40,.10); transform: translateY(-1px); }
-    .cookieBtn.primary{
-      background: #8b6b4c;
-      color:#fff;
-      border-color: rgba(0,0,0,.08);
-    }
-    .cookieBtn.primary:hover{ background:#6f533a; }
-
-    .cookieLinks{
-      margin-top: 6px;
-      font-size: 12px;
-      color: rgba(18,24,38,.68);
-    }
-    .cookieLinks a{ color:#8b6b4c; font-weight: 900; text-decoration:none; }
-    .cookieLinks a:hover{ text-decoration: underline; }
-
-    @media (max-width: 760px){
-      .cookieInner{ flex-direction:column; }
-      .cookieActions{ width:100%; justify-content:flex-start; }
-    }
-
-    .cookieBanner{
-      position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      z-index: 9999;
-      display: none;
-      background: rgba(255,255,255,.95);
-      border: 1px solid rgba(0,0,0,.12);
-      border-radius: 16px;
-      box-shadow: 0 18px 50px rgba(16,24,40,.18);
-      backdrop-filter: blur(10px);
-      overflow:hidden;
-    }
-    .cookieBanner.open{ display:block; }
-
-    .cookieInner{
-      display:flex;
-      gap: 14px;
-      align-items:flex-start;
-      justify-content:space-between;
-      padding: 14px;
-    }
-
-    .cookieText{
-      max-width: 920px;
-    }
-    .cookieText b{
-      display:block;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-    .cookieText p{
-      margin: 0;
-      color: rgba(18,24,38,.78);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-    .cookieActions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-items:center;
-    }
-    .cookieBtn{
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-weight: 900;
-      font-size: 13px;
-      cursor:pointer;
-      border: 1px solid rgba(0,0,0,.12);
-      background: #fff;
-    }
-    .cookieBtn:hover{ box-shadow: 0 10px 24px rgba(16,24,40,.10); transform: translateY(-1px); }
-    .cookieBtn.primary{
-      background: #8b6b4c;
-      color:#fff;
-      border-color: rgba(0,0,0,.08);
-    }
-    .cookieBtn.primary:hover{ background:#6f533a; }
-
-    .cookieLinks{
-      margin-top: 6px;
-      font-size: 12px;
-      color: rgba(18,24,38,.68);
-    }
-    .cookieLinks a{ color:#8b6b4c; font-weight: 900; text-decoration:none; }
-    .cookieLinks a:hover{ text-decoration: underline; }
-
-    @media (max-width: 760px){
-      .cookieInner{ flex-direction:column; }
-      .cookieActions{ width:100%; justify-content:flex-start; }
-    }
-
-
   </style>
 </head>
 
@@ -1011,19 +810,31 @@
           <span>Kvalitetna moderna novogradnja u Jelkovcu (Sesvete).</span>
         </div>
       </div>
-
-      <nav class="nav" aria-label="Navigacija">
-        <a href="#jelkovec">Jelkovec</a>
-        <a href="#projekt">Projekt</a>
-        <a href="#galerija">Galerija</a>
-        <a href="#stanovi">Stanovi</a>
-        <a href="#upit">Upit</a>
-        <a href="#lokacija">Lokacija</a>
-      </nav>
+      <button class="menuBtn" id="menuBtn" aria-label="Izbornik">☰</button>
     </div>
   </header>
 
-  <!-- INTRO (naslov + podnaslov) -->
+  <!-- Drawer menu -->
+  <div class="drawerBack" id="drawerBack" aria-hidden="true">
+    <nav class="drawer" aria-label="Izbornik">
+      <div class="drawerTop">
+        <b>Izbornik</b>
+        <button class="menuBtn" id="menuClose" aria-label="Zatvori">✕</button>
+      </div>
+      <a href="#jelkovec">Jelkovec</a>
+      <a href="#ustanove">Ustanove & prijevoz</a>
+      <a href="#projekt">Projekt</a>
+      <a href="#galerija">Galerija</a>
+      <a href="#stanovi">Stanovi</a>
+      <a href="#upit">Upit</a>
+      <a href="#lokacija">Lokacija</a>
+      <a href="privacy.html">Privatnost</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="terms.html">Uvjeti</a>
+    </nav>
+  </div>
+
+  <!-- INTRO -->
   <div class="container intro">
     <div class="introCard">
       <h1 class="introTitle">SAVSKA 79 RESIDENCE – Filipović Projekt</h1>
@@ -1031,51 +842,38 @@
     </div>
   </div>
 
-  <!-- JELKOVEC (cijeli tekst) -->
+  <!-- JELKOVEC -->
   <section id="jelkovec">
     <div class="container">
       <h2 class="sectionTitle">Stari Jelkovec</h2>
-      <p class="sectionSub">Kvart koji spaja mir “malog mjesta” i infrastrukturu grada.</p>
+      <p class="sectionSub">Skraćeni opis + “Pročitaj više”.</p>
 
-      <div class="leadBox">
-        <p><b>Život u Starom Jelkovcu nudi ono što je u urbanim sredinama postalo luksuz – prostor, privatnost i mir, a da pritom niste odsječeni od civilizacije.</b></p>
+      <div class="card">
+        <div class="cardHead"><h3>Opis lokacije</h3></div>
+        <div class="cardBody jelText" id="jelPreview">
+          <p><b>Život u Starom Jelkovcu nudi ono što je u urbanim sredinama postalo luksuz – prostor, privatnost i mir, a da pritom niste odsječeni od civilizacije.</b></p>
+          <p>To je kvart koji je desetljećima rastao organski, što mu daje poseban šarm “malog mjesta” unutar velikog grada.</p>
+          <p>Glavna karakteristika Starog Jelkovca je osjećaj zajednice. Ovdje susjedi još uvijek znaju jedni druge, a ulice su mirne i sigurne za dječju igru. Dominiraju obiteljske kuće i manji stambeni objekti, što znači da nema betonskog pritiska i gužve koja je česta u središtima grada.</p>
 
-        <p>To je kvart koji je desetljećima rastao organski, što mu daje poseban šarm “malog mjesta” unutar velikog grada.</p>
-
-        <p>Glavna karakteristika Starog Jelkovca je osjećaj zajednice. Ovdje susjedi još uvijek znaju jedni druge, a ulice su mirne i sigurne za dječju igru. Dominiraju obiteljske kuće i manji stambeni objekti, što znači da nema betonskog pritiska i gužve koja je česta u središtima grada.</p>
-
-        <p><b>Zelena oaza s modernim pogodnostima</b></p>
-        <p>Iako odiše mirom, Stari Jelkovec profitira od neposredne blizine Novog Jelkovca. Stanovnici tako imaju “najbolje od oba svijeta” poput:</p>
-        <ul class="bullets">
-          <li>mirnog stanovanja u tišim ulicama s puno zelenila</li>
-          <li>vrhunske infrastrukture na svega par minuta hoda (osnovna škola, dječji vrtići, ljekarna, pošta i bazenski kompleks)</li>
-          <li>blizine prirode: prostranstvo za šetnju, trčanje ili vožnju biciklom (idealno za vlasnike kućnih ljubimaca i rekreativce)</li>
-        </ul>
-
-        <p style="margin-top:12px;">
-          Pozicija Starog Jelkovca je strateški izvrsna. Nalazi se na samom čvorištu važnih prometnica, što omogućuje brz izlazak na obilaznicu ili Slavonsku aveniju.
-          Za one koji ne žele ovisiti isključivo o autu, blizina Sesveta nudi i opciju vlaka, kojim ste na Glavnom kolodvoru za svega 20-ak minuta, ali i ZET busa koji je ispred same zgrade.
-        </p>
-
-        <p><b>Stari Jelkovec je mjesto za one koji žele:</b></p>
-        <ul class="bullets">
-          <li>Privatnost bez izolacije – imati svoj mir, ali i školu i dućan u susjedstvu.</li>
-          <li>Sigurnost – kvart u kojem djeca mogu bezbrižno boraviti na otvorenom.</li>
-          <li>Dugoročnu stabilnost – naselje koje je već formirano, s uređenim prilazima i stabilnom zajednicom.</li>
-        </ul>
-
-        <p style="margin-top:12px;">
-          Život ovdje podsjeća na nekadašnja zagrebačka predgrađa gdje se cijenio prostor i miris jutarnje kave u dvorištu, ali s komforom koji pruža moderna gradska infrastruktura 21. stoljeća.
-        </p>
+          <div class="btnRow">
+            <button class="btnPrimary" id="openJelkovec">Pročitaj više</button>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div style="height:16px;"></div>
+  <!-- USTANOVE & PRIJEVOZ -->
+  <section id="ustanove">
+    <div class="container">
+      <h2 class="sectionTitle">Ustanove & prijevoz</h2>
+      <p class="sectionSub">Sve bitno u blizini.</p>
 
       <div class="grid">
-        <div class="card" style="grid-column: span 6;">
+        <div class="card">
           <div class="cardHead"><h3>Ustanove</h3></div>
           <div class="cardBody">
-            <ul class="featureList">
+            <ul class="list">
               <li>Dječji vrtić En Ten Tini</li>
               <li>OŠ Jelkovec</li>
               <li>SŠ Jelkovec</li>
@@ -1088,12 +886,12 @@
           </div>
         </div>
 
-        <div class="card" style="grid-column: span 6;">
+        <div class="card">
           <div class="cardHead"><h3>Prijevoz</h3></div>
           <div class="cardBody">
-            <ul class="featureList">
-              <li><b>ZET stanice:</b> ispred zgrade linija 284</li>
-              <li>U blizini linije: 282, 281, 279</li>
+            <ul class="list">
+              <li><b>ZET:</b> ispred zgrade linija 284</li>
+              <li>U blizini: 282, 281, 279</li>
               <li>Željeznička stanica Sesvete</li>
               <li>Autocesta Posavina A4</li>
               <li>Autocesta Varaždin A3</li>
@@ -1101,7 +899,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1109,20 +906,20 @@
   <section id="projekt">
     <div class="container">
       <h2 class="sectionTitle">O projektu</h2>
-      <p class="sectionSub">Kvaliteta gradnje, energetska učinkovitost i mogućnost personalizacije.</p>
+      <p class="sectionSub">Kvaliteta gradnje i uvjeti.</p>
 
       <div class="grid">
-        <div class="card" style="grid-column: span 7;">
+        <div class="card">
           <div class="cardHead"><h3>Tehničke karakteristike</h3></div>
           <div class="cardBody">
-            <ul class="featureList">
+            <ul class="list">
               <li>Grijanje: dizalica topline – podno</li>
               <li>Visina stropa: 2.60 m</li>
               <li>Bosch klima uređaji u svakoj sobi</li>
               <li>Električne rolete</li>
               <li>PVC troslojna stolarija s izvrsnom toplinskom i zvučnom izolacijom</li>
               <li>Pod će biti prekriven laminatom</li>
-              <li>Postoji mogućnost odabira keramike za stan</li>
+              <li>Mogućnost odabira keramike za stan</li>
               <li>Zgrada će imati ukupno dva kata</li>
               <li>Useljenje početkom 2027. godine</li>
               <li>Izdana građevinska dozvola te postoji mogućnost upisa kao investitora</li>
@@ -1130,15 +927,16 @@
           </div>
         </div>
 
-        <div class="card" style="grid-column: span 5;">
+        <div class="card">
           <div class="cardHead"><h3>Cijena</h3></div>
           <div class="cardBody">
-            <div class="noteBox" style="margin-bottom:10px;">
-              <b>Cijena za gotovinu: 2.800 € / m²</b>
-            </div>
+            <div class="noteDanger"><b>Cijena za gotovinu: 2.800 € / m²</b></div>
+            <div style="height:10px;"></div>
             <div class="noteDanger"><b>CIJENA NAKON DOVRŠETKA GRADNJE RASTE!</b></div>
-            <div style="height:12px;"></div>
-            <a class="btnPrimary" href="#upit">Pošalji upit</a>
+            <div class="btnRow" style="margin-top:12px;">
+              <a class="btnPrimary" href="#upit">Pošalji upit</a>
+              <a class="btnGhost" href="tel:+385953009954">Nazovi +385 95 300 99 54</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1149,45 +947,40 @@
   <section id="galerija">
     <div class="container">
       <h2 class="sectionTitle">Galerija</h2>
-      <p class="sectionSub">Klikni fotografiju za uvećanje i listanje.</p>
+      <p class="sectionSub">Klikni i listaj prstom.</p>
 
-      <div class="grid" role="list">
-        <figure class="galleryItem" role="listitem" data-lb="gallery" data-title="Južno pročelje" data-src="jug.jpg">
+      <div class="galleryGrid" role="list">
+        <div class="galleryItem" role="listitem" data-src="jug.jpg" data-title="Južno pročelje">
           <img src="jug.jpg" alt="Savska 79 Residence – južno pročelje" loading="lazy">
-        </figure>
-        <figure class="galleryItem" role="listitem" data-lb="gallery" data-title="Sjeverno pročelje" data-src="sjever.jpg">
+        </div>
+        <div class="galleryItem" role="listitem" data-src="sjever.jpg" data-title="Sjeverno pročelje">
           <img src="sjever.jpg" alt="Savska 79 Residence – sjeverno pročelje" loading="lazy">
-        </figure>
-        <figure class="galleryItem" role="listitem" data-lb="gallery" data-title="Bočno pročelje" data-src="bocno.jpg">
+        </div>
+        <div class="galleryItem" role="listitem" data-src="bocno.jpg" data-title="Bočno pročelje">
           <img src="bocno.jpg" alt="Savska 79 Residence – bočno pročelje" loading="lazy">
-        </figure>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- STANOVI (interaktivna slika zgrade) -->
+  <!-- STANOVI -->
   <section id="stanovi">
     <div class="container">
-      <div class="heroHeader">
-        <div>
-          <h2>Odabir stana</h2>
-          <p>Klikni stan za detalje. Prodani stanovi su zaključani i ne otvaraju se.</p>
-        </div>
-        <div class="legend" aria-label="Legenda statusa">
-          <span class="chip"><span class="dot"></span> Dostupno</span>
-          <span class="chip"><span class="dot reserved"></span> Rezervirano</span>
-          <span class="chip"><span class="dot sold"></span> Prodano</span>
-        </div>
+      <h2 class="sectionTitle">Odabir stana</h2>
+      <p class="sectionSub">Klikni stan za detalje. Prodani stanovi su zaključani.</p>
+
+      <div class="legend">
+        <span class="chip"><span class="dot"></span> Dostupno</span>
+        <span class="chip"><span class="dot reserved"></span> Rezervirano</span>
+        <span class="chip"><span class="dot sold"></span> Prodano</span>
       </div>
 
       <div class="heroCard">
         <div class="building" aria-label="Interaktivna slika zgrade s 6 stanova">
-          <!-- K1 -->
           <a class="unit k1s3" href="#" data-unit="K1S3" aria-label="K1S3"><span class="tag">K1S3</span></a>
           <a class="unit k1s2" href="#" data-unit="K1S2" aria-label="K1S2"><span class="tag">K1S2</span></a>
           <a class="unit k1s1" href="#" data-unit="K1S1" aria-label="K1S1"><span class="tag">K1S1</span></a>
 
-          <!-- K2 -->
           <a class="unit k2s3" href="#" data-unit="K2S3" aria-label="K2S3"><span class="tag">K2S3</span></a>
           <a class="unit k2s2" href="#" data-unit="K2S2" aria-label="K2S2"><span class="tag">K2S2</span></a>
           <a class="unit k2s1" href="#" data-unit="K2S1" aria-label="K2S1"><span class="tag">K2S1</span></a>
@@ -1220,12 +1013,10 @@
             <label for="email">Email</label>
             <input id="email" name="Email" type="email" required placeholder="ime@domena.com">
           </div>
-
           <div>
             <label for="telefon">Telefon (opcionalno)</label>
             <input id="telefon" name="Telefon" type="tel" placeholder="+385 ...">
           </div>
-
           <div>
             <label for="stanSelect">Odabir stana</label>
             <select id="stanSelect" name="Stan" required>
@@ -1240,30 +1031,23 @@
           </div>
         </div>
 
-        <!-- dodatna sekcija: način plaćanja -->
         <div style="margin-top:12px;">
           <label>Način plaćanja</label>
-          <div class="payRow" role="radiogroup" aria-label="Način plaćanja">
+          <div class="payRow">
             <label class="payOpt">
               <input type="radio" name="Način plaćanja" value="Gotovina" required>
-              <div>
-                <b>Gotovina</b>
-                <span>Preferirani model: 2.800 € / m² (gotovina).</span>
-              </div>
+              <div><b>Gotovina</b><span>Preferirani model: 2.800 € / m² (gotovina).</span></div>
             </label>
             <label class="payOpt">
               <input type="radio" name="Način plaćanja" value="Kredit" required>
-              <div>
-                <b>Kredit</b>
-                <span>Pošaljite upit za izračun i uvjete.</span>
-              </div>
+              <div><b>Kredit</b><span>Pošaljite upit za izračun i uvjete.</span></div>
             </label>
           </div>
         </div>
 
         <div style="margin-top:12px;">
           <label for="poruka">Poruka</label>
-          <textarea id="poruka" name="Poruka" placeholder="Napišite što vas zanima (npr. ponuda, rokovi, pitanja...)"></textarea>
+          <textarea id="poruka" name="Poruka" placeholder="Napišite što vas zanima (ponuda, rokovi, pitanja...)"></textarea>
         </div>
 
         <div style="margin-top:12px;">
@@ -1284,9 +1068,7 @@
       <p class="sectionSub">Savska 79 Residence, Sesvete</p>
 
       <div class="mapWrap">
-        <iframe
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+        <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=Savska%2079%20Residence%20Sesvete&output=embed"></iframe>
       </div>
     </div>
@@ -1321,23 +1103,62 @@
       </div>
 
       <div class="footerBottom">
-        <div>© <span id="y"></span> Savska 79 Residence. Sva prava pridržana.</div>
-        <div>Materijali (fotografije i tlocrti) zaštićeni su autorskim pravom. Vlasnik: Ivan Filipović.</div>
+        © <span id="y"></span> Savska 79 Residence. Sva prava pridržana.<br/>
+        Materijali (fotografije i tlocrti) zaštićeni su autorskim pravom. Vlasnik: Ivan Filipović.
       </div>
     </div>
   </footer>
 
-  <!-- DETAILS MODAL -->
+  <!-- Jelkovec full text modal -->
+  <div class="backdrop" id="jelBack" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modalHeader">
+        <div>
+          <h2>Stari Jelkovec – detaljnije</h2>
+          <div class="meta">Cijeli opis lokacije</div>
+        </div>
+        <button class="closeBtn" id="jelClose" aria-label="Zatvori">✕</button>
+      </div>
+      <div class="modalBody">
+        <div class="card">
+          <div class="cardHead"><h3>Cijeli tekst</h3></div>
+          <div class="cardBody" style="color:var(--muted); font-size:14px;">
+            <p><b>Zelena oaza s modernim pogodnostima</b></p>
+            <p>Iako odiše mirom, Stari Jelkovec profitira od neposredne blizine Novog Jelkovca. Stanovnici tako imaju “najbolje od oba svijeta” poput:</p>
+            <ul class="list">
+              <li>mirnog stanovanja u tišim ulicama s puno zelenila</li>
+              <li>vrhunske infrastrukture na svega par minuta hoda (osnovna škola, dječji vrtići, ljekarna, pošta i bazenski kompleks)</li>
+              <li>blizine prirode: prostranstvo za šetnju, trčanje ili vožnju biciklom (idealno za vlasnike kućnih ljubimaca i rekreativce)</li>
+            </ul>
+            <p style="margin-top:10px;">
+              Pozicija Starog Jelkovca je strateški izvrsna. Nalazi se na samom čvorištu važnih prometnica, što omogućuje brz izlazak na obilaznicu ili Slavonsku aveniju.
+              Za one koji ne žele ovisiti isključivo o autu, blizina Sesveta nudi i opciju vlaka, kojim ste na Glavnom kolodvoru za svega 20-ak minuta, ali i ZET busa koji je ispred same zgrade.
+            </p>
+            <p><b>Stari Jelkovec je mjesto za one koji žele:</b></p>
+            <ul class="list">
+              <li>Privatnost bez izolacije</li>
+              <li>Sigurnost</li>
+              <li>Dugoročnu stabilnost</li>
+            </ul>
+            <p style="margin-top:10px;">
+              Život ovdje podsjeća na nekadašnja zagrebačka predgrađa gdje se cijenio prostor i miris jutarnje kave u dvorištu, ali s komforom koji pruža moderna gradska infrastruktura 21. stoljeća.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAILS MODAL (stan) -->
   <div class="backdrop" id="detailBack" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
     <div class="modal">
       <div class="modalHeader">
         <div>
-          <h2 class="modalTitle" id="detailTitle">Stan</h2>
-          <div class="modalMeta" id="detailMeta"></div>
+          <h2 id="detailTitle">Stan</h2>
+          <div class="meta" id="detailMeta"></div>
         </div>
-        <button class="close" id="detailClose" aria-label="Zatvori">✕</button>
+        <button class="closeBtn" id="detailClose" aria-label="Zatvori">✕</button>
       </div>
-
       <div class="modalBody">
         <div class="card">
           <div class="cardHead">
@@ -1358,11 +1179,8 @@
           </div>
         </div>
 
-        <div class="card" style="grid-column: 1 / -1;">
-          <div class="cardHead">
-            <h3>Tlocrt</h3>
-            <span class="badge muted">Klikni za uvećanje</span>
-          </div>
+        <div class="card">
+          <div class="cardHead"><h3>Tlocrt</h3></div>
           <div class="cardBody" id="floorplanWrap"></div>
         </div>
       </div>
@@ -1387,30 +1205,71 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX (gallery) -->
+  <!-- Gallery lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lbPanel" role="dialog" aria-modal="true">
       <div class="lbTop">
         <div class="lbTitle" id="lbTitle">Pregled</div>
         <div class="lbBtns">
-          <button class="iconBtn" id="lbPrev" title="Prethodna (←)">←</button>
-          <button class="iconBtn" id="lbNext" title="Sljedeća (→)">→</button>
-          <button class="iconBtn" id="lbZoomOut" title="Umanji (−)">−</button>
-          <button class="iconBtn" id="lbZoomIn" title="Uvećaj (+)">+</button>
-          <button class="iconBtn" id="lbClose" title="Zatvori (Esc)">✕</button>
+          <button class="iconBtn" id="lbPrev" aria-label="Prethodna">←</button>
+          <button class="iconBtn" id="lbNext" aria-label="Sljedeća">→</button>
+          <button class="iconBtn" id="lbClose" aria-label="Zatvori">✕</button>
         </div>
       </div>
       <div class="lbStage" id="lbStage">
         <img class="lbImg" id="lbImg" src="" alt="">
-        <div class="lbHint">Tipke: ← →, +/−, Esc. Miš: scroll za zoom.</div>
+        <div class="lbHint">Swipe lijevo/desno za listanje • Esc zatvara</div>
       </div>
     </div>
   </div>
 
   <div class="toast" id="toast"></div>
 
+  <!-- COOKIE BANNER (GDPR) -->
+  <div class="cookieBanner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="Kolačići" style="display:none;"></div>
+
   <script>
-    /* 1) OVDJE TI U KODU MIJENJAŠ STATUS */
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ========== MOBILE MENU ==========
+    const drawerBack = document.getElementById('drawerBack');
+    const menuBtn = document.getElementById('menuBtn');
+    const menuClose = document.getElementById('menuClose');
+
+    function openDrawer(){
+      drawerBack.classList.add('open');
+      drawerBack.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer(){
+      drawerBack.classList.remove('open');
+      drawerBack.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+    menuBtn.addEventListener('click', openDrawer);
+    menuClose.addEventListener('click', closeDrawer);
+    drawerBack.addEventListener('click', (e)=>{ if(e.target === drawerBack) closeDrawer(); });
+    drawerBack.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', ()=>{ closeDrawer(); });
+    });
+
+    // ========== Jelkovec modal ==========
+    const jelBack = document.getElementById('jelBack');
+    document.getElementById('openJelkovec').addEventListener('click', ()=> jelBack.classList.add('open'));
+    document.getElementById('jelClose').addEventListener('click', ()=> jelBack.classList.remove('open'));
+    jelBack.addEventListener('click', (e)=>{ if(e.target === jelBack) jelBack.classList.remove('open'); });
+
+    // ========== Toast ==========
+    const toast = document.getElementById('toast');
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=>toast.classList.remove('show'), 2200);
+    }
+
+    // ========== Availability (TI MIJENJAŠ) ==========
     const availability = {
       K1S1: "available",
       K1S2: "available",
@@ -1420,7 +1279,7 @@
       K2S3: "available",
     };
 
-    /* 2) PODACI O STANOVIMA – opisi: “Stan se sastoji od:” + natuknice */
+    // ========== Units ==========
     const units = {
       K1S1: {
         title: "K1S1 – Stan prizemlje",
@@ -1429,7 +1288,7 @@
         floorplan: "k1s1.png",
         descriptionHTML: `
           <p><b>Stan se sastoji od:</b></p>
-          <ul class="featureList">
+          <ul class="list">
             <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
             <li>dvije spavaće sobe</li>
             <li>dvije kupaonice s WC-om</li>
@@ -1449,7 +1308,7 @@
         floorplan: "k1s2.png",
         descriptionHTML: `
           <p><b>Stan se sastoji od:</b></p>
-          <ul class="featureList">
+          <ul class="list">
             <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
             <li>tri spavaće sobe</li>
             <li>dvije kupaonice s WC-om</li>
@@ -1469,7 +1328,7 @@
         floorplan: "k1s3.png",
         descriptionHTML: `
           <p><b>Stan se sastoji od:</b></p>
-          <ul class="featureList">
+          <ul class="list">
             <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
             <li>dvije spavaće sobe</li>
             <li>dvije kupaonice s WC-om</li>
@@ -1488,7 +1347,7 @@
         floorplan: "k2s2.png",
         descriptionHTML: `
           <p><b>Stan se sastoji od:</b></p>
-          <ul class="featureList">
+          <ul class="list">
             <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
             <li>tri spavaće sobe</li>
             <li>dvije kupaonice s WC-om</li>
@@ -1508,7 +1367,7 @@
         floorplan: "k2s3.png",
         descriptionHTML: `
           <p><b>Stan se sastoji od:</b></p>
-          <ul class="featureList">
+          <ul class="list">
             <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
             <li>dvije spavaće sobe</li>
             <li>dvije kupaonice s WC-om</li>
@@ -1522,51 +1381,7 @@
       }
     };
 
-    /* refs */
-    const toast = document.getElementById('toast');
-    const detailBack = document.getElementById('detailBack');
-    const detailClose = document.getElementById('detailClose');
-    const detailTitle = document.getElementById('detailTitle');
-    const detailMeta = document.getElementById('detailMeta');
-    const detailText = document.getElementById('detailText');
-    const statusBadge = document.getElementById('statusBadge');
-    const areaBadge = document.getElementById('areaBadge');
-    const priceTableWrap = document.getElementById('priceTableWrap');
-    const priceNote = document.getElementById('priceNote');
-    const floorplanWrap = document.getElementById('floorplanWrap');
-    const stanSelect = document.getElementById('stanSelect');
-
-    /* viewer */
-    const viewerBack = document.getElementById('viewerBack');
-    const viewerTitle = document.getElementById('viewerTitle');
-    const stage = document.getElementById('stage');
-    const stageImg = document.getElementById('stageImg');
-    const zoomInBtn = document.getElementById('zoomIn');
-    const zoomOutBtn = document.getElementById('zoomOut');
-    const zoomResetBtn = document.getElementById('zoomReset');
-    const viewerCloseBtn = document.getElementById('viewerClose');
-
-    /* lightbox (gallery) */
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbTitle = document.getElementById('lbTitle');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
-    const lbClose = document.getElementById('lbClose');
-    const lbZoomIn = document.getElementById('lbZoomIn');
-    const lbZoomOut = document.getElementById('lbZoomOut');
-    const lbStage = document.getElementById('lbStage');
-
-    document.getElementById('y').textContent = new Date().getFullYear();
-
     const eur = (n) => new Intl.NumberFormat('hr-HR', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
-
-    function showToast(msg){
-      toast.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(()=>toast.classList.remove('show'), 2200);
-    }
 
     function labelForStatus(st){
       if(st === "sold") return "Prodano";
@@ -1574,8 +1389,9 @@
       return "Dostupno";
     }
 
+    // Apply availability to building + select
+    const stanSelect = document.getElementById('stanSelect');
     function applyAvailability(){
-      // overlays on building
       document.querySelectorAll('.unit').forEach(el=>{
         const id = el.dataset.unit;
         const st = availability[id] || "available";
@@ -1584,6 +1400,7 @@
         if(st === "sold") el.classList.add('sold');
         if(st === "reserved") el.classList.add('reserved');
 
+        // ribbon for sold/reserved
         const rib = el.querySelector('.ribbon');
         if(st === "sold" || st === "reserved"){
           if(!rib){
@@ -1599,7 +1416,6 @@
         }
       });
 
-      // form select disable sold
       Array.from(stanSelect.options).forEach(opt=>{
         const id = opt.value;
         if(!id) return;
@@ -1608,6 +1424,18 @@
         opt.textContent = (st === "sold") ? `${id} – PRODANO` : id;
       });
     }
+
+    // Details modal
+    const detailBack = document.getElementById('detailBack');
+    const detailClose = document.getElementById('detailClose');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailMeta = document.getElementById('detailMeta');
+    const detailText = document.getElementById('detailText');
+    const statusBadge = document.getElementById('statusBadge');
+    const areaBadge = document.getElementById('areaBadge');
+    const priceTableWrap = document.getElementById('priceTableWrap');
+    const priceNote = document.getElementById('priceNote');
+    const floorplanWrap = document.getElementById('floorplanWrap');
 
     function buildPriceTable(prices){
       return `
@@ -1630,20 +1458,16 @@
         showToast(`${unitId} je PRODANO i zaključano.`);
         return;
       }
-
       const data = units[unitId];
-      if(!data){
-        showToast("Nema podataka za ovaj stan.");
-        return;
-      }
+      if(!data){ showToast("Nema podataka za ovaj stan."); return; }
 
       detailTitle.textContent = data.title;
-      detailMeta.textContent = `${data.area || "—"}${data.orientation ? " • Orijentacija: " + data.orientation : ""}`;
+      detailMeta.textContent = `${data.area || "—"} • Orijentacija: ${data.orientation || "—"}`;
 
       statusBadge.textContent = labelForStatus(st);
       statusBadge.classList.toggle('sold', st === 'sold');
-
       areaBadge.textContent = data.area || "—";
+
       detailText.innerHTML = data.descriptionHTML || "";
 
       if(data.prices){
@@ -1651,20 +1475,16 @@
         priceNote.textContent = data.priceNote || "";
         priceNote.style.display = data.priceNote ? "block" : "none";
       } else {
-        priceTableWrap.innerHTML = `<p class="muted">Cijene nisu dostupne.</p>`;
+        priceTableWrap.innerHTML = `<p style="color:var(--muted); margin:0;">Cijene nisu dostupne.</p>`;
         priceNote.style.display = "none";
       }
 
       if(data.floorplan){
-        floorplanWrap.innerHTML = `
-          <img class="thumb" src="${data.floorplan}" alt="Tlocrt ${unitId}" data-floorplan="${data.floorplan}" data-title="Tlocrt – ${unitId}">
-          <div class="noteBox" style="margin-top:10px;">Zoom: + / − ili kotačić. Pomicanje: povuci prstom/mišem.</div>
-        `;
+        floorplanWrap.innerHTML = `<img class="thumb" src="${data.floorplan}" alt="Tlocrt ${unitId}" data-floorplan="${data.floorplan}" data-title="Tlocrt – ${unitId}">`;
         floorplanWrap.querySelector('.thumb').addEventListener('click', (e)=>{
           openViewer(e.currentTarget.dataset.floorplan, e.currentTarget.dataset.title);
         });
       } else {
-        // fallback
         floorplanWrap.innerHTML = `<img class="thumb" src="blank.png" alt="Nije dostupno">`;
       }
 
@@ -1674,7 +1494,19 @@
 
     function closeDetails(){ detailBack.classList.remove('open'); }
 
-    /* Floorplan Viewer (zoom + drag) */
+    detailClose.addEventListener('click', closeDetails);
+    detailBack.addEventListener('click', (e)=>{ if(e.target === detailBack) closeDetails(); });
+
+    // Viewer (floorplan)
+    const viewerBack = document.getElementById('viewerBack');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const stage = document.getElementById('stage');
+    const stageImg = document.getElementById('stageImg');
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const zoomResetBtn = document.getElementById('zoomReset');
+    const viewerCloseBtn = document.getElementById('viewerClose');
+
     let v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
     function applyTransform(){
       stageImg.style.transform = `translate(calc(-50% + ${v.x}px), calc(-50% + ${v.y}px)) scale(${v.scale})`;
@@ -1686,18 +1518,14 @@
       applyTransform();
       viewerBack.classList.add('open');
     }
-    function closeViewer(){
-      viewerBack.classList.remove('open');
-      stageImg.src = "";
-    }
-    function zoom(delta){
-      v.scale = Math.min(6, Math.max(0.6, v.scale + delta));
-      applyTransform();
-    }
+    function closeViewer(){ viewerBack.classList.remove('open'); stageImg.src = ""; }
+    function zoom(delta){ v.scale = Math.min(6, Math.max(0.8, v.scale + delta)); applyTransform(); }
+
     zoomInBtn.addEventListener('click', ()=>zoom(0.2));
     zoomOutBtn.addEventListener('click', ()=>zoom(-0.2));
     zoomResetBtn.addEventListener('click', ()=>{ v.scale=1; v.x=0; v.y=0; applyTransform(); });
     viewerCloseBtn.addEventListener('click', closeViewer);
+    viewerBack.addEventListener('click', (e)=>{ if(e.target === viewerBack) closeViewer(); });
 
     function startDrag(x,y){ v.dragging=true; v.px=x; v.py=y; }
     function moveDrag(x,y){
@@ -1708,6 +1536,7 @@
       applyTransform();
     }
     function endDrag(){ v.dragging=false; }
+
     stage.addEventListener('mousedown', (e)=> startDrag(e.clientX, e.clientY));
     window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
     window.addEventListener('mouseup', endDrag);
@@ -1731,165 +1560,130 @@
       zoom(e.deltaY < 0 ? 0.12 : -0.12);
     }, {passive:false});
 
-    /* Close handlers */
-    detailClose.addEventListener('click', closeDetails);
-    detailBack.addEventListener('click', (e)=>{ if(e.target === detailBack) closeDetails(); });
-    viewerBack.addEventListener('click', (e)=>{ if(e.target === viewerBack) closeViewer(); });
+    // Unit click
+    document.querySelectorAll('.unit').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        openDetails(el.dataset.unit);
+      });
+    });
+
+    // Gallery lightbox + swipe
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbPrev = document.getElementById('lbPrev');
+    const lbNext = document.getElementById('lbNext');
+    const lbClose = document.getElementById('lbClose');
+    const galleryItems = Array.from(document.querySelectorAll('.galleryItem'));
+    const gallery = galleryItems.map(el => ({ src: el.dataset.src, title: el.dataset.title }));
+    let gi = 0;
+
+    function openLB(index){
+      gi = index;
+      lbImg.src = gallery[gi].src;
+      lbTitle.textContent = gallery[gi].title || "Galerija";
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLB(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    }
+    function showIndex(i){
+      gi = (i + gallery.length) % gallery.length;
+      lbImg.src = gallery[gi].src;
+      lbTitle.textContent = gallery[gi].title || "Galerija";
+    }
+
+    galleryItems.forEach((el, idx)=> el.addEventListener('click', ()=> openLB(idx)));
+    lbPrev.addEventListener('click', ()=> showIndex(gi - 1));
+    lbNext.addEventListener('click', ()=> showIndex(gi + 1));
+    lbClose.addEventListener('click', closeLB);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
+
+    // swipe detection
+    let sx=0, sy=0;
+    document.getElementById('lbStage').addEventListener('touchstart', (e)=>{
+      const t=e.touches[0]; sx=t.clientX; sy=t.clientY;
+    }, {passive:true});
+    document.getElementById('lbStage').addEventListener('touchend', (e)=>{
+      const t=e.changedTouches[0];
+      const dx=t.clientX - sx;
+      const dy=t.clientY - sy;
+      if(Math.abs(dx) > 50 && Math.abs(dy) < 60){
+        if(dx < 0) showIndex(gi + 1);
+        else showIndex(gi - 1);
+      }
+    }, {passive:true});
+
+    // ESC close all
     document.addEventListener('keydown', (e)=>{
       if(e.key === "Escape"){
         closeDetails();
         closeViewer();
-        closeLightbox();
+        closeLB();
+        closeDrawer();
+        jelBack.classList.remove('open');
       }
     });
 
-    /* Unit click */
-    document.querySelectorAll('.unit').forEach(el=>{
-      el.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const unitId = el.dataset.unit;
-        openDetails(unitId);
-      });
-    });
-
-    /* Lightbox (gallery only) */
-    let currentGroup = [];
-    let currentIndex = 0;
-    let scale = 1;
-
-    function openLightbox(groupItems, index){
-      currentGroup = groupItems;
-      currentIndex = index;
-      scale = 1;
-      const item = currentGroup[currentIndex];
-      lbImg.src = item.src;
-      lbImg.alt = item.title || 'Slika';
-      lbTitle.textContent = item.title || 'Pregled';
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden','false');
-      updateLbTransform();
-    }
-    function closeLightbox(){
-      lb.classList.remove('open');
-      lb.setAttribute('aria-hidden','true');
-      lbImg.src = '';
-      currentGroup = [];
-      currentIndex = 0;
-      scale = 1;
-    }
-    function showLbIndex(i){
-      if(!currentGroup.length) return;
-      currentIndex = (i + currentGroup.length) % currentGroup.length;
-      const item = currentGroup[currentIndex];
-      lbImg.src = item.src;
-      lbImg.alt = item.title || 'Slika';
-      lbTitle.textContent = item.title || 'Pregled';
-      scale = 1;
-      updateLbTransform();
-    }
-    function updateLbTransform(){ lbImg.style.transform = `scale(${scale})`; }
-    function lbZoom(delta){
-      scale = Math.max(1, Math.min(4, scale + delta));
-      updateLbTransform();
-    }
-
-    const clickables = Array.from(document.querySelectorAll('[data-lb="gallery"][data-src]'));
-    const group = clickables.map(el=>({ el, src: el.getAttribute('data-src'), title: el.getAttribute('data-title') || '' }));
-    group.forEach((item, idx)=> item.el.addEventListener('click', ()=> openLightbox(group, idx)));
-
-    lbPrev.addEventListener('click', ()=> showLbIndex(currentIndex - 1));
-    lbNext.addEventListener('click', ()=> showLbIndex(currentIndex + 1));
-    lbClose.addEventListener('click', closeLightbox);
-    lbZoomIn.addEventListener('click', ()=> lbZoom(0.25));
-    lbZoomOut.addEventListener('click', ()=> lbZoom(-0.25));
-    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
-
-    lbStage.addEventListener('wheel', (e)=>{
-      if(!lb.classList.contains('open')) return;
-      e.preventDefault();
-      lbZoom(e.deltaY > 0 ? -0.12 : 0.12);
-    }, { passive:false });
-
-    document.addEventListener('keydown', (e)=>{
-      if(!lb.classList.contains('open')) return;
-      if(e.key === 'ArrowLeft') showLbIndex(currentIndex - 1);
-      if(e.key === 'ArrowRight') showLbIndex(currentIndex + 1);
-      if(e.key === '+' || e.key === '=') lbZoom(0.25);
-      if(e.key === '-' || e.key === '_') lbZoom(-0.25);
-    });
-
-    /* init */
+    // init
     applyAvailability();
 
-      <div class="cookieBanner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="Kolačići">
-    <div class="cookieInner">
-      <div class="cookieText">
-        <b>Koristimo kolačiće</b>
-        <p>
-          Koristimo nužne kolačiće za rad stranice, a uz vašu privolu i analitičke kolačiće (Google Analytics)
-          kako bismo poboljšali sadržaj i iskustvo. Analitika se aktivira tek nakon prihvaćanja.
-        </p>
-        <div class="cookieLinks">
-          <a href="cookies.html">Cookies</a> • <a href="privacy.html">Privatnost</a>
-        </div>
-      </div>
-
-      <div class="cookieActions">
-        <button class="cookieBtn" id="cookieReject">Odbij</button>
-        <button class="cookieBtn primary" id="cookieAccept">Prihvati</button>
-      </div>
-    </div>
-  </div>
-
- 
-    // =========================
-    // GDPR COOKIE CONSENT + GA4 loader
-    // =========================
-    const GA_MEASUREMENT_ID = "G-0PYTBSP8WY"; // <-- ovdje upiši svoj GA4 ID
-
-    const CONSENT_KEY = "fp_cookie_consent_v1"; // "accepted" | "rejected"
-
-    const cookieBanner = document.getElementById("cookieBanner");
-    const cookieAccept = document.getElementById("cookieAccept");
-    const cookieReject = document.getElementById("cookieReject");
+    // ======== GDPR COOKIE CONSENT + GA4 loader (GitHub Pages ok) ========
+    const GA_MEASUREMENT_ID = "G-XXXXXXXXXX"; // <-- upiši svoj GA ID
+    const CONSENT_KEY = "fp_cookie_consent_v1";
     const openCookieSettings = document.getElementById("openCookieSettings");
 
-    function getConsent(){
-      return localStorage.getItem(CONSENT_KEY);
-    }
-    function setConsent(val){
-      localStorage.setItem(CONSENT_KEY, val);
-    }
+    // Build banner inline (simple, mobile-friendly)
+    const cookieBanner = document.getElementById("cookieBanner");
+    cookieBanner.innerHTML = `
+      <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;display:none;background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.12);border-radius:16px;box-shadow:0 18px 50px rgba(16,24,40,.18);backdrop-filter:blur(10px);overflow:hidden;" id="cbBox">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:12px;">
+          <div>
+            <b style="display:block;font-size:14px;">Koristimo kolačiće</b>
+            <div style="color:rgba(18,24,38,.78);font-size:13px;line-height:1.55;">
+              Nužni kolačići su potrebni za rad stranice. Analitički (Google Analytics) se aktiviraju tek nakon prihvaćanja.
+              <div style="margin-top:6px;font-size:12px;">
+                <a href="cookies.html" style="color:#8b6b4c;font-weight:900;text-decoration:none;">Cookies</a> •
+                <a href="privacy.html" style="color:#8b6b4c;font-weight:900;text-decoration:none;">Privatnost</a>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button id="cookieReject" style="flex:1;min-width:120px;border-radius:12px;padding:12px;font-weight:900;font-size:13px;cursor:pointer;border:1px solid rgba(0,0,0,.12);background:#fff;">Odbij</button>
+            <button id="cookieAccept" style="flex:1;min-width:120px;border-radius:12px;padding:12px;font-weight:900;font-size:13px;cursor:pointer;border:1px solid rgba(0,0,0,.08);background:#8b6b4c;color:#fff;">Prihvati</button>
+          </div>
+        </div>
+      </div>
+    `;
 
-    function showBanner(){
-      if(cookieBanner) cookieBanner.classList.add("open");
-    }
-    function hideBanner(){
-      if(cookieBanner) cookieBanner.classList.remove("open");
-    }
+    const cbBox = document.getElementById('cbBox');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieReject = document.getElementById('cookieReject');
 
-    // učitaj GA samo ako imamo privolu
+    function getConsent(){ return localStorage.getItem(CONSENT_KEY); }
+    function setConsent(v){ localStorage.setItem(CONSENT_KEY, v); }
+    function showBanner(){ cbBox.style.display = 'block'; }
+    function hideBanner(){ cbBox.style.display = 'none'; }
+
     function loadGA(){
-      if(!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-0PYTBSP8WY") return;
-
-      // spriječi dvostruko učitavanje
+      if(!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") return;
       if(window.__gaLoaded) return;
       window.__gaLoaded = true;
 
-      // inject gtag script
       const s = document.createElement("script");
       s.async = true;
       s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(GA_MEASUREMENT_ID);
       document.head.appendChild(s);
 
-      // init gtag
       window.dataLayer = window.dataLayer || [];
       function gtag(){ window.dataLayer.push(arguments); }
       window.gtag = gtag;
 
       gtag("js", new Date());
-
-      // GDPR-friendly config: IP anonymization + no ad personalization by default
       gtag("config", GA_MEASUREMENT_ID, {
         anonymize_ip: true,
         allow_google_signals: false,
@@ -1898,40 +1692,17 @@
     }
 
     function initConsent(){
-      const consent = getConsent();
-      if(consent === "accepted"){
-        hideBanner();
-        loadGA();
-        return;
-      }
-      if(consent === "rejected"){
-        hideBanner();
-        return;
-      }
-      // nema odluke -> pokaži banner
+      const c = getConsent();
+      if(c === "accepted"){ hideBanner(); loadGA(); return; }
+      if(c === "rejected"){ hideBanner(); return; }
       showBanner();
     }
 
-    cookieAccept?.addEventListener("click", ()=>{
-      setConsent("accepted");
-      hideBanner();
-      loadGA();
-    });
+    cookieAccept.addEventListener('click', ()=>{ setConsent("accepted"); hideBanner(); loadGA(); });
+    cookieReject.addEventListener('click', ()=>{ setConsent("rejected"); hideBanner(); });
+    openCookieSettings?.addEventListener('click', (e)=>{ e.preventDefault(); showBanner(); });
 
-    cookieReject?.addEventListener("click", ()=>{
-      setConsent("rejected");
-      hideBanner();
-    });
-
-    // Otvori banner opet (postavke)
-    openCookieSettings?.addEventListener("click", (e)=>{
-      e.preventDefault();
-      showBanner();
-    });
-
-    // init on load
     initConsent();
-
-    </script>
+  </script>
 </body>
 </html>
