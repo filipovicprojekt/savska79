@@ -58,6 +58,9 @@
       padding: 0 14px;
     }
 
+    /* basic anti-download */
+    img{ -webkit-user-drag:none; user-select:none; }
+
     /* TOPBAR */
     .topbar{
       position: sticky;
@@ -257,7 +260,8 @@
       display:none;
       margin-top: 10px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: inherit;   /* FIX 1 */
+      line-height: inherit; /* FIX 1 */
     }
     .jelWrap.open .jelMore{ display:block; }
 
@@ -360,7 +364,7 @@
       display:block;
       text-decoration:none;
       outline:none;
-      overflow:hidden; /* VAŽNO: da se "ribbon" reže unutar boxa */
+      overflow:hidden;
     }
     .unit:hover{ background: var(--overlayHover); }
     .unit.sold{ background: var(--soldOverlay); cursor: not-allowed; }
@@ -368,7 +372,6 @@
     .unit.reserved{ background: var(--reserveOverlay); }
     .unit.reserved:hover{ background: var(--reserveOverlayHover); }
 
-    /* Oznake: lijevi stanovi lijevo, desni stanovi desno (da ne smetaju slici) */
     .tag{
       position:absolute;
       top: 8px;
@@ -389,7 +392,6 @@
     .tag.left{ left: 8px; }
     .tag.right{ right: 8px; }
 
-    /* "Ribbon" unutar boxa (ne preko cijele slike) */
     .ribbon{
       position:absolute;
       top: 10px;
@@ -408,7 +410,6 @@
       text-transform: uppercase;
     }
 
-    /* zones */
     .k1s3{ left: 0%;  top: 25.64%; width: 50%; height: 17.75%; }
     .k1s2{ left: 0%;  top: 43.39%; width: 50%; height: 17.75%; }
     .k1s1{ left: 0%;  top: 61.15%; width: 50%; height: 17.75%; }
@@ -416,7 +417,7 @@
     .k2s2{ left: 50%; top: 43.39%; width: 50%; height: 17.75%; }
     .k2s1{ left: 50%; top: 61.15%; width: 50%; height: 17.75%; }
 
-    /* Gallery – na mobitelu cijela slika (contain) */
+    /* Gallery */
     .galleryGrid{
       display:grid;
       grid-template-columns: 1fr;
@@ -436,6 +437,21 @@
       display:block;
       object-fit: contain;
       background:#fff;
+    }
+
+    /* FIX 6: symmetric on desktop */
+    @media (min-width: 960px){
+      .galleryItem{
+        aspect-ratio: 4 / 3;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      .galleryItem img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+      }
     }
 
     /* Lightbox */
@@ -496,7 +512,6 @@
     }
     .backdrop.open{ display:flex; }
 
-    /* Mobile: modal fullscreen */
     .modal{
       width: 100%;
       max-width: 980px;
@@ -678,7 +693,9 @@
     }
     .payOpt input{ width:auto; margin-top: 3px; }
     .payOpt b{ display:block; }
-    .payOpt span{ color: var(--muted); font-size: 12px; display:block; margin-top:2px; }
+    /* FIX 7: nema detalja ispod */
+    .payOpt span{ display:none; }
+
     .formNote{ text-align:center; color: var(--muted); font-size: 12px; margin-top: 10px; }
 
     /* Map */
@@ -829,7 +846,6 @@
       <h1 class="introTitle">SAVSKA 79 RESIDENCE – Filipović Projekt</h1>
       <p class="introSubtitle">Kvalitetna moderna novogradnja u Jelkovcu (Sesvete).</p>
 
-      <!-- naslovna.png odmah nakon naslova -->
       <div class="heroImage">
         <img src="naslovna.png" alt="Savska 79 Residence – vizual" loading="eager">
       </div>
@@ -910,6 +926,8 @@
           <div class="cardBody">
             <div class="noteDanger"><b>Cijena za gotovinu: 2.800 € / m²</b></div>
             <div style="height:10px;"></div>
+            <div class="noteDanger"><b>Cijena za kredit: 3.000 € / m²</b></div>
+            <div style="height:10px;"></div>
             <div class="noteDanger"><b>CIJENA NAKON DOVRŠETKA GRADNJE RASTE!</b></div>
             <div class="btnRow" style="margin-top:12px;">
               <a class="btnPrimary" href="#upit">Pošalji upit</a>
@@ -921,11 +939,11 @@
     </div>
   </section>
 
-  <!-- STANOVI (prije galerije) -->
+  <!-- STANOVI -->
   <section id="stanovi">
     <div class="container">
       <h2 class="sectionTitle">Odabir stana</h2>
-      <p class="sectionSub">Klikni stan za detalje. Prodani stanovi su zaključani.</p>
+      <p class="sectionSub"><b>KLIKNI NA STAN ZA DETALJE I TLOČRTE STANOVA.</b> Prodani stanovi su zaključani.</p>
 
       <div class="legend">
         <span class="chip"><span class="dot"></span> Dostupno</span>
@@ -1014,11 +1032,11 @@
           <div class="payRow">
             <label class="payOpt">
               <input type="radio" name="Način plaćanja" value="Gotovina" required>
-              <div><b>Gotovina</b><span>Preferirani model: 2.800 € / m² (gotovina).</span></div>
+              <div><b>Gotovina</b></div>
             </label>
             <label class="payOpt">
               <input type="radio" name="Način plaćanja" value="Kredit" required>
-              <div><b>Kredit</b><span>Pošaljite upit za izračun i uvjete.</span></div>
+              <div><b>Kredit</b></div>
             </label>
           </div>
         </div>
@@ -1136,7 +1154,6 @@
         <div class="viewerBtns">
           <button class="vbtn" id="zoomIn">+</button>
           <button class="vbtn" id="zoomOut">−</button>
-          <button class="vbtn" id="zoomReset">Reset</button>
           <button class="vbtn" id="viewerClose">Zatvori</button>
         </div>
       </div>
@@ -1218,7 +1235,6 @@
     toggleJ.addEventListener('click', ()=>{
       jelWrap.classList.add('open');
       toggleJ.style.display = 'none';
-      // smooth scroll a tiny bit so expanded text is visible
       setTimeout(()=> toggleJ.scrollIntoView({block:'start', behavior:'smooth'}), 0);
     });
     collapseJ.addEventListener('click', ()=>{
@@ -1265,7 +1281,15 @@
             <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
           </ul>
         `,
-        prices: { cash: 205000, credit: 216000, parking: 8000, totalCash: 213000, totalCredit: 224000 },
+        prices: {
+          cash: 204400,
+          credit: 219000,
+          gardenCash: 10640,
+          gardenCredit: 11400,
+          parking: 8000,
+          totalCash: 223000,
+          totalCredit: 238400
+        },
         priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
       },
       K1S2: {
@@ -1285,7 +1309,7 @@
             <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
           </ul>
         `,
-        prices: { cash: 266000, credit: 280000, parking: 8000, totalCash: 274000, totalCredit: 288000 },
+        prices: { cash: 266000, credit: 285000, parking: 8000, totalCash: 274000, totalCredit: 293000 },
         priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
       },
       K1S3: {
@@ -1304,7 +1328,7 @@
             <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
           </ul>
         `,
-        prices: { cash: 197000, credit: 208000, parking: 8000, totalCash: 205000, totalCredit: 216000 },
+        prices: { cash: 196000, credit: 210000, parking: 8000, totalCash: 204000, totalCredit: 218000 },
         priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
       },
       K2S2: {
@@ -1324,7 +1348,7 @@
             <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
           </ul>
         `,
-        prices: { cash: 266000, credit: 280000, parking: 8000, totalCash: 274000, totalCredit: 288000 },
+        prices: { cash: 266000, credit: 285000, parking: 8000, totalCash: 274000, totalCredit: 293000 },
         priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
       },
       K2S3: {
@@ -1343,7 +1367,7 @@
             <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
           </ul>
         `,
-        prices: { cash: 197000, credit: 208000, parking: 8000, totalCash: 205000, totalCredit: 216000 },
+        prices: { cash: 196000, credit: 210000, parking: 8000, totalCash: 204000, totalCredit: 218000 },
         priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
       }
     };
@@ -1367,7 +1391,6 @@
         if(st === "sold") el.classList.add('sold');
         if(st === "reserved") el.classList.add('reserved');
 
-        // ribbon inside the box
         const rib = el.querySelector('.ribbon');
         if(st === "sold" || st === "reserved"){
           if(!rib){
@@ -1409,13 +1432,19 @@
     let currentPlanTitle = null;
 
     function buildPriceTable(prices){
+      const gardenRows = (prices.gardenCash || prices.gardenCredit) ? `
+        <tr><td>Vrt (gotovina)</td><td>${prices.gardenCash ? eur(prices.gardenCash) : "—"}</td></tr>
+        <tr><td>Vrt (kredit)</td><td>${prices.gardenCredit ? eur(prices.gardenCredit) : "—"}</td></tr>
+      ` : "";
+
       return `
         <table>
           <thead><tr><th>Stavka</th><th>Iznos</th></tr></thead>
           <tbody>
             <tr><td>Cijena stana (gotovina)</td><td><b>${eur(prices.cash)}</b></td></tr>
             <tr><td>Cijena stana (kredit)</td><td><b>${eur(prices.credit)}</b></td></tr>
-            <tr><td>Cijena parkinga</td><td>${eur(prices.parking)}</td></tr>
+            ${gardenRows}
+            <tr><td>Parkirno mjesto</td><td>${eur(prices.parking)}</td></tr>
             <tr><td><b>Ukupno (gotovina)</b></td><td><b>${eur(prices.totalCash)}</b></td></tr>
             <tr><td><b>Ukupno (kredit)</b></td><td><b>${eur(prices.totalCredit)}</b></td></tr>
           </tbody>
@@ -1465,8 +1494,6 @@
 
       stanSelect.value = unitId;
       detailBack.classList.add('open');
-
-
     }
 
     function closeDetails(){ detailBack.classList.remove('open'); }
@@ -1485,7 +1512,6 @@
     const stageImg = document.getElementById('stageImg');
     const zoomInBtn = document.getElementById('zoomIn');
     const zoomOutBtn = document.getElementById('zoomOut');
-    const zoomResetBtn = document.getElementById('zoomReset');
     const viewerCloseBtn = document.getElementById('viewerClose');
 
     let v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
@@ -1495,23 +1521,17 @@
     function openViewer(src, title){
       viewerTitle.textContent = title || "Tlocrt";
 
-      // Reset before load
       v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
       applyTransform();
 
-      // Fit-to-screen when image is ready (important for mobile)
       stageImg.onload = ()=>{
         const sw = stage.clientWidth || 1;
         const sh = stage.clientHeight || 1;
         const iw = stageImg.naturalWidth || 1;
         const ih = stageImg.naturalHeight || 1;
-
-        // scale to fully fit (contain) with a small margin
         const fit = Math.min(sw / iw, sh / ih) * 0.98;
-
         v.scale = Math.min(6, Math.max(0.2, fit));
-        v.x = 0;
-        v.y = 0;
+        v.x = 0; v.y = 0;
         applyTransform();
       };
 
@@ -1523,7 +1543,6 @@
 
     zoomInBtn.addEventListener('click', ()=>zoom(0.2));
     zoomOutBtn.addEventListener('click', ()=>zoom(-0.2));
-    zoomResetBtn.addEventListener('click', ()=>{ v.scale=1; v.x=0; v.y=0; applyTransform(); });
     viewerCloseBtn.addEventListener('click', closeViewer);
     viewerBack.addEventListener('click', (e)=>{ if(e.target === viewerBack) closeViewer(); });
 
@@ -1541,9 +1560,8 @@
     window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
     window.addEventListener('mouseup', endDrag);
 
-    // Touch gestures: 1-finger pan, 2-finger pinch-zoom (mobile friendly)
+    // Touch gestures
     let pinch = { active:false, startDist:0, startScale:1, startMidX:0, startMidY:0, startX:0, startY:0 };
-
     function dist(a,b){
       const dx = a.clientX - b.clientX;
       const dy = a.clientY - b.clientY;
@@ -1559,7 +1577,6 @@
         pinch.active = false;
         startDrag(t.clientX, t.clientY);
       } else if(e.touches.length === 2){
-        // start pinch
         e.preventDefault();
         const a = e.touches[0], b = e.touches[1];
         const m = mid(a,b);
@@ -1588,11 +1605,9 @@
         const m = mid(a,b);
         const d = dist(a,b);
 
-        // scale
         const rawScale = pinch.startScale * (d / Math.max(10, pinch.startDist));
         v.scale = Math.min(6, Math.max(0.2, rawScale));
 
-        // translate: follow midpoint movement while pinching
         v.x = pinch.startX + (m.x - pinch.startMidX);
         v.y = pinch.startY + (m.y - pinch.startMidY);
 
@@ -1606,13 +1621,13 @@
         endDrag();
       }
       if(e.touches.length === 1){
-        // continue as pan with remaining finger
         pinch.active = false;
         const t = e.touches[0];
         startDrag(t.clientX, t.clientY);
       }
     }, {passive:false});
-stage.addEventListener('wheel', (e)=>{
+
+    stage.addEventListener('wheel', (e)=>{
       e.preventDefault();
       zoom(e.deltaY < 0 ? 0.12 : -0.12);
     }, {passive:false});
@@ -1660,7 +1675,6 @@ stage.addEventListener('wheel', (e)=>{
     lbClose.addEventListener('click', closeLB);
     lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
 
-    // swipe detection
     let sx=0, sy=0;
     document.getElementById('lbStage').addEventListener('touchstart', (e)=>{
       const t=e.touches[0]; sx=t.clientX; sy=t.clientY;
@@ -1688,7 +1702,7 @@ stage.addEventListener('wheel', (e)=>{
     // init
     applyAvailability();
 
-    // ========== COOKIE SETTINGS FIX ==========
+    // Cookie consent
     const CONSENT_KEY = "fp_cookie_consent_v1";
     const cookieBanner = document.getElementById("cookieBanner");
     const cookieAccept = document.getElementById("cookieAccept");
@@ -1700,7 +1714,6 @@ stage.addEventListener('wheel', (e)=>{
     function showBanner(){ cookieBanner.classList.add('open'); }
     function hideBanner(){ cookieBanner.classList.remove('open'); }
 
-    // GA loader (upiši svoj ID)
     const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
     function loadGA(){
       if(!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === "G-XXXXXXXXXX") return;
@@ -1740,6 +1753,16 @@ stage.addEventListener('wheel', (e)=>{
     });
 
     initConsent();
+
+    // Extra: prevent basic right-click / drag on images (nije 100% moguće spriječiti)
+    document.addEventListener('contextmenu', (e)=>{
+      if(e.target && (e.target.tagName === 'IMG' || e.target.closest('.galleryItem') || e.target.closest('.lbPanel') || e.target.closest('.viewer'))) {
+        e.preventDefault();
+      }
+    });
+    document.querySelectorAll('img').forEach(img=>{
+      img.setAttribute('draggable', 'false');
+    });
   </script>
 </body>
 </html>
