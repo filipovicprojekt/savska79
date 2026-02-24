@@ -187,13 +187,40 @@
       max-width: 900px;
     }
 
+    /* NEW: uočljiv tekst za odabir stana */
+    .stanNotice{
+      margin: 0 auto 18px;
+      text-align:center;
+      font-weight: 1000;
+      letter-spacing: -.02em;
+      color: var(--text);
+      background: rgba(139,107,76,.10);
+      border: 1px solid rgba(139,107,76,.20);
+      border-radius: 16px;
+      padding: 12px 12px;
+      box-shadow: 0 12px 28px rgba(16,24,40,.08);
+      max-width: 900px;
+      font-size: 15px;
+    }
+    @media (max-width: 720px){
+      .stanNotice{
+        font-size: 16px;
+        padding: 14px 12px;
+      }
+    }
+    @media (min-width: 960px){
+      .stanNotice{
+        font-size: 16px;
+      }
+    }
+
     /* Intro */
     .intro{ padding: 18px 0 6px; }
     .introCard{
       background: rgba(255,255,255,.92);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 40px rgba(16,24,40,.10);
       padding: 14px;
     }
     .introTitle{
@@ -214,7 +241,7 @@
       margin-top: 12px;
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 40px rgba(16,24,40,.10);
       overflow:hidden;
       background:#fff;
     }
@@ -254,14 +281,14 @@
       gap: 12px;
     }
 
-    /* Inline "Pročitaj više" (expand/collapse) */
+    /* Inline "Pročitaj više" */
     .jelPreview p{ margin: 0 0 10px; }
     .jelMore{
       display:none;
       margin-top: 10px;
       color: var(--muted);
-      font-size: inherit;   /* FIX 1 */
-      line-height: inherit; /* FIX 1 */
+      font-size: inherit;
+      line-height: inherit;
     }
     .jelWrap.open .jelMore{ display:block; }
 
@@ -346,7 +373,7 @@
       background: rgba(255,255,255,.95);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 40px rgba(16,24,40,.10);
       overflow:hidden;
     }
     .building{
@@ -427,7 +454,7 @@
       border-radius: var(--radius);
       overflow:hidden;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 40px rgba(16,24,40,.10);
       background:#fff;
       cursor: pointer;
     }
@@ -439,7 +466,7 @@
       background:#fff;
     }
 
-    /* FIX 6: symmetric on desktop */
+    /* symmetric on desktop */
     @media (min-width: 960px){
       .galleryItem{
         aspect-ratio: 4 / 3;
@@ -659,7 +686,7 @@
       background: rgba(255,255,255,.95);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 40px rgba(16,24,40,.10);
       padding: 14px;
     }
     label{
@@ -693,7 +720,6 @@
     }
     .payOpt input{ width:auto; margin-top: 3px; }
     .payOpt b{ display:block; }
-    /* FIX 7: nema detalja ispod */
     .payOpt span{ display:none; }
 
     .formNote{ text-align:center; color: var(--muted); font-size: 12px; margin-top: 10px; }
@@ -703,7 +729,7 @@
       overflow:hidden;
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      box-shadow: 0 14px 40px rgba(16,24,40,.10);
       background: rgba(255,255,255,.95);
     }
     iframe{ width:100%; height: 320px; border:0; display:block; }
@@ -943,7 +969,7 @@
   <section id="stanovi">
     <div class="container">
       <h2 class="sectionTitle">Odabir stana</h2>
-      <p class="sectionSub"><b>KLIKNI NA STAN ZA DETALJE I TLOČRTE STANOVA.</b> Prodani stanovi su zaključani.</p>
+      <div class="stanNotice">KLIKNI NA STAN ZA DETALJE I TLOCT STANA!</div>
 
       <div class="legend">
         <span class="chip"><span class="dot"></span> Dostupno</span>
@@ -1277,7 +1303,7 @@
             <li>dvije kupaonice s WC-om</li>
             <li>izbe</li>
             <li>dva hodnika</li>
-            <li>terase i vrta (pripadajući vrt 29,7 m²)</li>
+            <li>terase i vrta (pripadajući vrt 38 m²)</li>
             <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
           </ul>
         `,
@@ -1754,7 +1780,7 @@
 
     initConsent();
 
-    // Extra: prevent basic right-click / drag on images (nije 100% moguće spriječiti)
+    // Basic: prevent right-click / drag on images (nije 100% moguće spriječiti)
     document.addEventListener('contextmenu', (e)=>{
       if(e.target && (e.target.tagName === 'IMG' || e.target.closest('.galleryItem') || e.target.closest('.lbPanel') || e.target.closest('.viewer'))) {
         e.preventDefault();
