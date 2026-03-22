@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 
-  <title>Filipović Projekt | Novogradnja Sesvete, Jelkovec i stanovi u Starom Jelkovcu – Savska 79 Residence</title>
-  <meta name="description" content="Filipović Projekt predstavlja Savska 79 Residence – novogradnju u Starom Jelkovcu, Sesvete. Stanovi u prodaji, tlocrti, cijene, galerija, kontakt i useljenje planirano u travnju 2027. godine." />
+  <title>Filipović Projekt | Novogradnja Sesvete, Jelkovec i stanovi u istočnom Zagrebu – Savska 79 Residence</title>
+  <meta name="description" content="Filipović Projekt predstavlja Savska 79 Residence – novogradnju u Jelkovcu, Sesvete. Stanovi u prodaji, tlocrti, cijene, galerija, kontakt i planirano useljenje u travnju 2027. godine." />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <meta name="author" content="Filipović Projekt" />
   <meta name="theme-color" content="#8b6b4c" />
@@ -18,13 +18,13 @@
   <meta property="og:locale" content="hr_HR" />
   <meta property="og:url" content="https://www.ivanfilipovic.from.hr/" />
   <meta property="og:title" content="Filipović Projekt | Novogradnja Sesvete i Jelkovec – Savska 79 Residence" />
-  <meta property="og:description" content="Novogradnja u Starom Jelkovcu, Sesvete. Stanovi u prodaji, tlocrti, cijene, galerija i direktan kontakt investitora." />
+  <meta property="og:description" content="Novogradnja u Jelkovcu, Sesvete. Stanovi u prodaji, tlocrti, cijene, galerija i direktan kontakt investitora." />
   <meta property="og:image" content="https://www.ivanfilipovic.from.hr/naslovna.png" />
-  <meta property="og:image:alt" content="Savska 79 Residence – novogradnja u Starom Jelkovcu, Sesvete" />
+  <meta property="og:image:alt" content="Savska 79 Residence – novogradnja u Jelkovcu, Sesvete" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Filipović Projekt | Novogradnja Sesvete i Jelkovec – Savska 79 Residence" />
-  <meta name="twitter:description" content="Stanovi u prodaji u Starom Jelkovcu, Sesvete. Tlocrti, cijene, galerija i kontakt." />
+  <meta name="twitter:description" content="Stanovi u prodaji u Jelkovcu, Sesvete. Tlocrti, cijene, galerija i kontakt." />
   <meta name="twitter:image" content="https://www.ivanfilipovic.from.hr/naslovna.png" />
 
   <link rel="preload" as="image" href="naslovna.png" />
@@ -51,7 +51,6 @@
       --errorBorder:#fecdca;
       --errorText:#b42318;
 
-      --shadow: 0 14px 40px rgba(16,24,40,.10);
       --radius:16px;
 
       --overlay: rgba(0,0,0,.16);
@@ -63,7 +62,6 @@
       --reserveOverlay: rgba(255,215,0,.28);
       --reserveOverlayHover: rgba(255,215,0,.42);
       --reserveText: #5c4500;
-      --reserveBorder: rgba(160,120,0,.22);
       --reserveRibbon1: #facc15;
       --reserveRibbon2: #eab308;
     }
@@ -222,17 +220,6 @@
       box-shadow: 0 12px 28px rgba(16,24,40,.08);
       max-width: 900px;
       font-size: 15px;
-    }
-    @media (max-width: 720px){
-      .stanNotice{
-        font-size: 16px;
-        padding: 14px 12px;
-      }
-    }
-    @media (min-width: 960px){
-      .stanNotice{
-        font-size: 16px;
-      }
     }
 
     .intro{ padding: 18px 0 6px; }
@@ -412,7 +399,7 @@
       overflow:hidden;
     }
     .unit:hover{ background: var(--overlayHover); }
-    .unit.sold{ background: var(--soldOverlay); cursor: not-allowed; }
+    .unit.sold{ background: var(--soldOverlay); }
     .unit.sold:hover{ background: var(--soldOverlayHover); }
     .unit.reserved{ background: var(--reserveOverlay); }
     .unit.reserved:hover{ background: var(--reserveOverlayHover); }
@@ -489,27 +476,10 @@
       background:#fff;
     }
 
-    .seoSection .cardBody p:last-child{ margin-bottom:0; }
-
     .faqGrid{
       display:grid;
       grid-template-columns: 1fr;
       gap:12px;
-    }
-
-    @media (min-width: 960px){
-      .galleryItem{
-        aspect-ratio: 4 / 3;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-      }
-      .galleryItem img{
-        width:100%;
-        height:100%;
-        object-fit: cover;
-      }
-      .faqGrid{ grid-template-columns: 1fr 1fr; }
     }
 
     .lightbox{
@@ -557,156 +527,6 @@
       text-align:center; color: rgba(255,255,255,.72); font-size: 12px; pointer-events:none;
     }
 
-    .backdrop{
-      position:fixed; inset:0;
-      background: rgba(16,24,40,.45);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 12px;
-      z-index: 90;
-    }
-    .backdrop.open{ display:flex; }
-
-    .modal{
-      width: 100%;
-      max-width: 980px;
-      max-height: 90vh;
-      overflow:auto;
-      background:#fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 30px 90px rgba(16,24,40,.25);
-    }
-    @media (max-width: 720px){
-      .modal{
-        height: 94vh;
-        max-height: 94vh;
-        border-radius: 18px;
-      }
-    }
-
-    .modalHeader{
-      position: sticky;
-      top:0;
-      background: rgba(255,255,255,.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .modalHeader h2{ margin:0; font-size: 15px; font-weight: 950; }
-    .modalHeader .meta{ margin-top: 4px; color: var(--muted); font-size: 12px; }
-    .closeBtn{
-      width: 40px; height: 40px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background:#fff;
-      box-shadow: 0 10px 22px rgba(16,24,40,.06);
-      cursor:pointer;
-      font-size: 18px;
-      font-weight: 950;
-    }
-    .modalBody{
-      padding: 12px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .badge{
-      font-size: 12px;
-      font-weight: 950;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(246,247,251,.7);
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .badge.sold{
-      color:#fff;
-      border-color: rgba(255,255,255,.25);
-      background: linear-gradient(135deg, var(--danger2), var(--danger));
-    }
-
-    table{ width:100%; border-collapse:collapse; font-size: 13px; }
-    th,td{ padding: 10px; border-bottom: 1px solid var(--border); text-align:left; vertical-align:top; }
-    th{ color: var(--muted); text-transform:uppercase; letter-spacing:.06em; font-size: 12px; background: rgba(246,247,251,.65); }
-
-    .thumb{
-      width:100%;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 26px rgba(16,24,40,.06);
-      display:block;
-      cursor: zoom-in;
-      background:#fff;
-    }
-
-    .viewerBack{
-      position:fixed;
-      inset:0;
-      background: rgba(16,24,40,.68);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 10px;
-      z-index: 95;
-    }
-    .viewerBack.open{ display:flex; }
-    .viewer{
-      width: 100%;
-      height: min(90vh, 860px);
-      background:#0b1220;
-      border-radius: 16px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 30px 90px rgba(0,0,0,.45);
-      display:flex;
-      flex-direction:column;
-    }
-    .viewerTop{
-      padding: 10px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      color:#fff;
-      background: rgba(255,255,255,.06);
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      font-weight: 950;
-      font-size: 13px;
-    }
-    .viewerBtns{ display:flex; gap:8px; flex-wrap:wrap; }
-    .vbtn{
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.08);
-      color:#fff;
-      padding: 8px 10px;
-      border-radius: 14px;
-      cursor:pointer;
-      font-weight: 950;
-      font-size: 12px;
-    }
-    .stage{
-      position:relative;
-      flex:1;
-      overflow:hidden;
-      touch-action:none;
-    }
-    .stage img{
-      position:absolute;
-      top:50%; left:50%;
-      transform: translate(-50%,-50%);
-      transform-origin:center center;
-      user-select:none;
-      -webkit-user-drag:none;
-      max-width:none;
-    }
-
     form{
       max-width: 900px;
       margin: 0 auto;
@@ -746,8 +566,6 @@
       background: rgba(246,247,251,.7);
     }
     .payOpt input{ width:auto; margin-top: 3px; }
-    .payOpt b{ display:block; }
-    .payOpt span{ display:none; }
 
     .formNote{ text-align:center; color: var(--muted); font-size: 12px; margin-top: 10px; }
 
@@ -830,12 +648,24 @@
       .sectionTitle{ font-size: 28px; }
       .grid{ grid-template-columns: 1fr 1fr; gap: 14px; }
       .galleryGrid{ grid-template-columns: repeat(3, 1fr); }
+      .faqGrid{ grid-template-columns: 1fr 1fr; }
       iframe{ height: 460px; }
       .formGrid{ grid-template-columns: 1fr 1fr; }
       .footerGrid{ grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
       .tag{ font-size: 12px; padding: 6px 9px; top:auto; bottom:10px; }
       .tag.left{ left:10px; }
       .tag.right{ right:10px; }
+      .galleryItem{
+        aspect-ratio: 4 / 3;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      .galleryItem img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+      }
     }
 
     .cookieBanner{
@@ -903,7 +733,7 @@
         "name":"Savska 79 Residence",
         "url":"https://www.ivanfilipovic.from.hr/",
         "image":"https://www.ivanfilipovic.from.hr/naslovna.png",
-        "description":"Savska 79 Residence je moderna novogradnja u Starom Jelkovcu, Sesvete. Projekt obuhvaća stanove u prodaji, tlocrte, galeriju, kontakt investitora i planirano useljenje u travnju 2027. godine.",
+        "description":"Savska 79 Residence je moderna novogradnja u Jelkovcu, Sesvete. Projekt obuhvaća stanove u prodaji, tlocrte, galeriju, kontakt investitora i planirano useljenje u travnju 2027. godine.",
         "address":{
           "@type":"PostalAddress",
           "streetAddress":"Savska 79",
@@ -911,9 +741,7 @@
           "addressRegion":"Grad Zagreb",
           "addressCountry":"HR"
         },
-        "brand":{
-          "@id":"https://www.ivanfilipovic.from.hr/#organization"
-        }
+        "brand":{"@id":"https://www.ivanfilipovic.from.hr/#organization"}
       },
       {
         "@type":"WebSite",
@@ -931,7 +759,7 @@
             "name":"Gdje se nalazi Savska 79 Residence?",
             "acceptedAnswer":{
               "@type":"Answer",
-              "text":"Savska 79 Residence nalazi se u Starom Jelkovcu, Sesvete, u istočnom dijelu Zagreba."
+              "text":"Savska 79 Residence nalazi se u Jelkovcu, Sesvete, u istočnom dijelu Zagreba."
             }
           },
           {
@@ -952,10 +780,10 @@
           },
           {
             "@type":"Question",
-            "name":"Je li dostupno parkirno mjesto?",
+            "name":"Kolika je kapara?",
             "acceptedAnswer":{
               "@type":"Answer",
-              "text":"Da, uz stanove je predviđeno vanjsko parkirno mjesto s pripremom za EV punjač."
+              "text":"Kapara u pravilu iznosi od 15 do 20 posto ukupne kupoprodajne cijene, ovisno o dogovoru i fazi kupnje."
             }
           }
         ]
@@ -972,7 +800,7 @@
         <img class="logo" src="logo.png" alt="Filipović Projekt logo" width="44" height="44">
         <div class="brandText">
           <b>SAVSKA 79 RESIDENCE – Filipović Projekt</b>
-          <span>Novogradnja u Starom Jelkovcu, Sesvete – istočni Zagreb.</span>
+          <span>Novogradnja u Jelkovcu, Sesvete – istočni Zagreb.</span>
         </div>
       </div>
       <button class="menuBtn" id="menuBtn" aria-label="Izbornik">☰</button>
@@ -986,7 +814,7 @@
         <button class="menuBtn" id="menuClose" aria-label="Zatvori">✕</button>
       </div>
       <a href="#o-projektu-seo">Novogradnja Sesvete</a>
-      <a href="#jelkovec">Stari Jelkovec</a>
+      <a href="#jelkovec">Jelkovec</a>
       <a href="#projekt">Projekt</a>
       <a href="#stanovi">Odabir stana</a>
       <a href="#faq">Česta pitanja</a>
@@ -1003,25 +831,25 @@
     <div class="container intro">
       <div class="introCard">
         <h1 class="introTitle">SAVSKA 79 RESIDENCE – Filipović Projekt</h1>
-        <p class="introSubtitle">Novogradnja u Starom Jelkovcu, Sesvete. Stanovi u prodaji u istočnom Zagrebu.</p>
+        <p class="introSubtitle">Novogradnja u Jelkovcu, Sesvete. Stanovi u prodaji u istočnom Zagrebu.</p>
 
         <div class="heroImage">
-          <img src="naslovna.png" alt="Savska 79 Residence – novogradnja u Starom Jelkovcu, Sesvete" loading="eager" fetchpriority="high">
+          <img src="naslovna.png" alt="Savska 79 Residence – novogradnja u Jelkovcu, Sesvete" loading="eager" fetchpriority="high">
         </div>
       </div>
     </div>
 
-    <section id="o-projektu-seo" class="seoSection">
+    <section id="o-projektu-seo">
       <div class="container">
         <h2 class="sectionTitle">Novogradnja Sesvete, Jelkovec i stanovi u istočnom Zagrebu</h2>
-        <p class="sectionSub">Savska 79 Residence je projekt za kupce koji traže kvalitetnu novogradnju u mirnom dijelu grada, uz dobru povezanost s ostatkom Zagreba.</p>
+        <p class="sectionSub">Savska 79 Residence namijenjena je kupcima koji traže mirniju lokaciju, kvalitetnu gradnju i dobru povezanost s ostatkom Zagreba.</p>
 
         <div class="card">
-          <div class="cardHead"><h3>Za kupce koji traže: novogradnja Sesvete, novogradnja Jelkovec, stanovi Jelkovec, stan istok Zagreb</h3></div>
+          <div class="cardHead"><h3>Stanovi za obiteljski život i dugoročnu vrijednost</h3></div>
           <div class="cardBody">
-            <p><b>Filipović Projekt</b> predstavlja <b>Savska 79 Residence</b>, modernu novogradnju smještenu u <b>Starom Jelkovcu, Sesvete</b>, u istočnom dijelu Zagreba.</p>
-            <p>Projekt je namijenjen kupcima koji traže <b>stan u Sesvetama</b>, <b>stan u Jelkovcu</b>, <b>novogradnju u Starom Jelkovcu</b>, <b>stan istok Zagreb</b> ili kvalitetan obiteljski stan s dobrim rasporedom, parkirnim mjestom i suvremenom opremom.</p>
-            <p>Na ovoj stranici možete pregledati <b>dostupne stanove</b>, površine, tlocrte, cijene za gotovinu i kredit, galeriju projekta, lokaciju i poslati direktan upit investitoru. Planirano useljenje je <b>u travnju 2027. godine</b>.</p>
+            <p><b>Filipović Projekt</b> predstavlja <b>Savska 79 Residence</b>, modernu novogradnju u <b>Jelkovcu, Sesvete</b>, na istoku Zagreba.</p>
+            <p>Projekt je zamišljen za kupce koji žele kvalitetan stan u mirnijem dijelu grada, uz dobar raspored prostorija, vanjsko parkirno mjesto, suvremenu opremu i praktičnu povezanost prema ostatku Zagreba.</p>
+            <p>Na jednom mjestu možete pregledati dostupne stanove, površine, tlocrte, cijene za gotovinu i kredit, galeriju projekta te poslati upit direktno investitoru. Planirano useljenje je <b>u travnju 2027. godine</b>.</p>
           </div>
         </div>
       </div>
@@ -1029,37 +857,37 @@
 
     <section id="jelkovec">
       <div class="container">
-        <h2 class="sectionTitle">Stari Jelkovec</h2>
+        <h2 class="sectionTitle">Jelkovec</h2>
 
         <div class="card jelWrap" id="jelWrap">
-          <div class="cardHead"><h3>Život u Starom Jelkovcu</h3></div>
+          <div class="cardHead"><h3>Život u Jelkovcu</h3></div>
           <div class="cardBody jelPreview">
-            <p><b>Život u Starom Jelkovcu nudi ono što je u urbanim sredinama postalo luksuz – prostor, privatnost i mir, a da pritom niste odsječeni od grada.</b></p>
-            <p>To je kvart koji je desetljećima rastao organski, što mu daje poseban šarm malog mjesta unutar Zagreba.</p>
-            <p>Glavna karakteristika Starog Jelkovca je osjećaj zajednice. Ovdje susjedi još uvijek znaju jedni druge, a ulice su mirne i sigurne za svakodnevni obiteljski život. Dominiraju obiteljske kuće i manji stambeni objekti, što znači da nema betonskog pritiska i gužve kakva je česta u središnjim dijelovima grada.</p>
+            <p><b>Jelkovec nudi ono što je danas mnogima najvažnije – više mira, više prostora i ugodnije svakodnevno okruženje, uz blizinu svega potrebnog za život.</b></p>
+            <p>To je lokacija pogodna za obiteljski život, ali i za kupce koji traže dugoročno kvalitetnu nekretninu u istočnom dijelu Zagreba.</p>
+            <p>Posebna vrijednost ove lokacije je kombinacija mirnijeg okruženja i praktične svakodnevice. U blizini se nalaze sadržaji važni za obitelj, a prometna povezanost omogućuje jednostavan odlazak prema ostatku grada.</p>
 
             <div class="btnRow">
               <button class="btnPrimary" id="toggleJelkovec" type="button">Pročitaj više</button>
             </div>
 
             <div class="jelMore" id="jelMore">
-              <p><b>Zelena oaza s modernim pogodnostima</b></p>
-              <p>Iako odiše mirom, Stari Jelkovec profitira od neposredne blizine Novog Jelkovca. Stanovnici tako imaju najbolje od oba svijeta:</p>
+              <p><b>Lokacija prilagođena svakodnevnom životu</b></p>
+              <p>Jelkovec je zanimljiv kupcima jer spaja nekoliko važnih prednosti:</p>
               <ul class="list">
-                <li>mirno stanovanje u tišim ulicama s puno zelenila</li>
-                <li>vrhunsku infrastrukturu na svega par minuta hoda</li>
-                <li>blizinu škole, vrtića, ljekarne, pošte i sportskih sadržaja</li>
-                <li>dobru prometnu povezanost prema Sesvetama, Slavonskoj aveniji i ostatku Zagreba</li>
+                <li>mirnije stambeno okruženje</li>
+                <li>blizinu škole, vrtića, trgovina i drugih sadržaja</li>
+                <li>dobru povezanost prema Sesvetama i Zagrebu</li>
+                <li>prostor koji je ugodniji za obiteljski život</li>
               </ul>
               <p style="margin-top:10px;">
-                Pozicija Starog Jelkovca je strateški vrlo dobra. Nalazi se u istočnom dijelu Zagreba, s brzim izlazom prema važnim prometnicama. Za one koji ne žele ovisiti isključivo o automobilu, važna je blizina Sesveta, vlaka i ZET autobusnih linija.
+                Za mnoge kupce upravo je ovakav omjer privatnosti, funkcionalnosti i dostupnosti sadržaja razlog zašto traže stan upravo u ovom dijelu grada.
               </p>
-              <p><b>Stari Jelkovec je mjesto za one koji žele:</b></p>
+              <p><b>Jelkovec je dobar izbor za one koji žele:</b></p>
               <ul class="list">
-                <li>Privatnost bez izolacije</li>
-                <li>Sigurnost i mirniji kvart</li>
-                <li>Dugoročnu vrijednost nekretnine</li>
-                <li>Stan u novogradnji na istoku Zagreba</li>
+                <li>mirniju lokaciju</li>
+                <li>dobar raspored stana i kvalitetnu novogradnju</li>
+                <li>sigurniju dugoročnu kupnju</li>
+                <li>stan na istoku Zagreba</li>
               </ul>
 
               <div class="btnRow" style="margin-top:12px;">
@@ -1116,7 +944,7 @@
     <section id="stanovi">
       <div class="container">
         <h2 class="sectionTitle">Odabir stana</h2>
-        <div class="stanNotice">KLIKNI NA STAN ZA DETALJE I TLOCRT STANA!</div>
+        <div class="stanNotice">KLIKNI NA STAN ZA DETALJE!</div>
 
         <div class="legend">
           <span class="chip"><span class="dot"></span> Dostupno</span>
@@ -1126,12 +954,12 @@
 
         <div class="heroCard">
           <div class="building" aria-label="Interaktivna slika zgrade s 6 stanova u projektu Savska 79 Residence">
-            <a class="unit k1s3" href="#" data-unit="K1S3" aria-label="K1S3"><span class="tag left">K1S3</span></a>
-            <a class="unit k1s2" href="#" data-unit="K1S2" aria-label="K1S2"><span class="tag left">K1S2</span></a>
+            <a class="unit k1s3" href="k1s3.html" data-unit="K1S3" aria-label="K1S3"><span class="tag left">K1S3</span></a>
+            <a class="unit k1s2" href="k1s2.html" data-unit="K1S2" aria-label="K1S2"><span class="tag left">K1S2</span></a>
             <a class="unit k1s1" href="#" data-unit="K1S1" aria-label="K1S1"><span class="tag left">K1S1</span></a>
 
-            <a class="unit k2s3" href="#" data-unit="K2S3" aria-label="K2S3"><span class="tag right">K2S3</span></a>
-            <a class="unit k2s2" href="#" data-unit="K2S2" aria-label="K2S2"><span class="tag right">K2S2</span></a>
+            <a class="unit k2s3" href="k2s3.html" data-unit="K2S3" aria-label="K2S3"><span class="tag right">K2S3</span></a>
+            <a class="unit k2s2" href="k2s2.html" data-unit="K2S2" aria-label="K2S2"><span class="tag right">K2S2</span></a>
             <a class="unit k2s1" href="#" data-unit="K2S1" aria-label="K2S1"><span class="tag right">K2S1</span></a>
           </div>
         </div>
@@ -1140,12 +968,12 @@
           <div class="cardHead"><h3>Pregled stanova u novogradnji Savska 79 Residence</h3></div>
           <div class="cardBody">
             <ul class="list">
-              <li><a href="k1s1.html"><b>K1S1</b></a> – stan prizemlje, 73 m², vrt 38 m², parkirno mjesto</li>
-              <li><a href="k1s2.html"><b>K1S2</b></a> – stan 1. kat, 95 m², tri spavaće sobe, parkirno mjesto</li>
-              <li><a href="k1s3.html"><b>K1S3</b></a> – penthouse, 73 m², krovna terasa, parkirno mjesto</li>
-              <li><b>K2S1</b> – stan prizemlje, prodano</li>
-              <li><a href="k2s2.html"><b>K2S2</b></a> – stan 1. kat, 95 m², tri spavaće sobe, parkirno mjesto</li>
-              <li><a href="k2s3.html"><b>K2S3</b></a> – penthouse, 73 m², krovna terasa, parkirno mjesto</li>
+              <li><b>K1S1 – PRODANO</b> • stan prizemlje, 73 m², vrt 38 m², parkirno mjesto</li>
+              <li><a href="k1s2.html"><b>K1S2</b></a> • stan 1. kat, 95 m², tri spavaće sobe, parkirno mjesto</li>
+              <li><a href="k1s3.html"><b>K1S3</b></a> • penthouse, 73 m², krovna terasa, parkirno mjesto</li>
+              <li><b>K2S1 – PRODANO</b> • stan prizemlje</li>
+              <li><a href="k2s2.html"><b>K2S2</b></a> • stan 1. kat, 95 m², tri spavaće sobe, parkirno mjesto</li>
+              <li><a href="k2s3.html"><b>K2S3</b></a> • penthouse, 73 m², krovna terasa, parkirno mjesto</li>
             </ul>
           </div>
         </div>
@@ -1155,7 +983,7 @@
     <section id="faq">
       <div class="container">
         <h2 class="sectionTitle">Česta pitanja</h2>
-        <p class="sectionSub">Kratke informacije koje kupci najčešće traže kod pretraga za novogradnju u Sesvetama i Jelkovcu.</p>
+        <p class="sectionSub">Kratke informacije koje kupci najčešće traže prije donošenja odluke o kupnji.</p>
 
         <div class="faqGrid">
           <div class="card">
@@ -1175,14 +1003,14 @@
           <div class="card">
             <div class="cardHead"><h3>Gdje se nalazi projekt?</h3></div>
             <div class="cardBody">
-              <p>Projekt se nalazi na lokaciji <b>Savska 79</b>, u <b>Starom Jelkovcu, Sesvete</b>, na istoku Zagreba.</p>
+              <p>Projekt se nalazi na lokaciji <b>Savska 79</b>, <b>Jelkovec, Sesvete</b>, na istoku Zagreba.</p>
             </div>
           </div>
 
           <div class="card">
-            <div class="cardHead"><h3>Imaju li stanovi parkirno mjesto?</h3></div>
+            <div class="cardHead"><h3>Kolika je kapara?</h3></div>
             <div class="cardBody">
-              <p>Da, uz stanove je predviđeno <b>vanjsko parkirno mjesto</b> s pripremom za <b>EV punjač</b>.</p>
+              <p>Kapara u pravilu iznosi <b>15–20%</b> ukupne kupoprodajne cijene, ovisno o dogovoru i fazi kupnje.</p>
             </div>
           </div>
         </div>
@@ -1192,7 +1020,7 @@
     <section id="galerija">
       <div class="container">
         <h2 class="sectionTitle">Galerija</h2>
-        <p class="sectionSub">Pogledajte vizualizacije pročelja projekta Savska 79 Residence u Starom Jelkovcu.</p>
+        <p class="sectionSub">Pogledajte vizualizacije pročelja projekta Savska 79 Residence.</p>
 
         <div class="galleryGrid" role="list">
           <div class="galleryItem" role="listitem" data-src="jug.jpg" data-title="Južno pročelje">
@@ -1202,7 +1030,7 @@
             <img src="sjever.jpg" alt="Savska 79 Residence – sjeverno pročelje novogradnje u Jelkovcu" loading="lazy">
           </div>
           <div class="galleryItem" role="listitem" data-src="bocno.jpg" data-title="Bočno pročelje">
-            <img src="bocno.jpg" alt="Savska 79 Residence – bočno pročelje stambene zgrade u Starom Jelkovcu" loading="lazy">
+            <img src="bocno.jpg" alt="Savska 79 Residence – bočno pročelje stambene zgrade u Jelkovcu" loading="lazy">
           </div>
         </div>
       </div>
@@ -1240,10 +1068,8 @@
               <label for="stanSelect">Odabir stana</label>
               <select id="stanSelect" name="Stan" required>
                 <option value="" selected disabled>Odaberite stan</option>
-                <option value="K1S1">K1S1</option>
                 <option value="K1S2">K1S2</option>
                 <option value="K1S3">K1S3</option>
-                <option value="K2S1">K2S1</option>
                 <option value="K2S2">K2S2</option>
                 <option value="K2S3">K2S3</option>
               </select>
@@ -1286,7 +1112,7 @@
     <section id="lokacija">
       <div class="container">
         <h2 class="sectionTitle">Lokacija</h2>
-        <p class="sectionSub">Savska 79 Residence – Filipović Projekt, Stari Jelkovec, Sesvete, istočni Zagreb</p>
+        <p class="sectionSub">Savska 79 Residence – Filipović Projekt, Jelkovec, Sesvete, istočni Zagreb</p>
 
         <div class="mapWrap">
           <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokacija projekta Savska 79 Residence u Sesvetama"
@@ -1304,7 +1130,7 @@
           <div class="footerMuted">
             Kontakt: <a href="mailto:filipovic.projekt@outlook.com">filipovic.projekt@outlook.com</a><br/>
             Telefon: <a href="tel:+385953009954">+385 95 300 99 54</a><br/>
-            Lokacija: Savska 79, Stari Jelkovec, Sesvete
+            Lokacija: Savska 79, Jelkovec, Sesvete
           </div>
         </div>
 
@@ -1329,63 +1155,6 @@
       </div>
     </div>
   </footer>
-
-  <div class="backdrop" id="detailBack" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-    <div class="modal">
-      <div class="modalHeader">
-        <div>
-          <h2 id="detailTitle">Stan</h2>
-          <div class="meta" id="detailMeta"></div>
-        </div>
-        <button class="closeBtn" id="detailClose" aria-label="Zatvori">✕</button>
-      </div>
-      <div class="modalBody">
-        <div class="card">
-          <div class="cardHead">
-            <h3>Opis</h3>
-            <span class="badge" id="statusBadge">Dostupno</span>
-          </div>
-          <div class="cardBody" id="detailText"></div>
-        </div>
-
-        <div class="card">
-          <div class="cardHead">
-            <h3>Cijene</h3>
-            <span class="badge" id="areaBadge">—</span>
-          </div>
-          <div class="cardBody">
-            <div id="priceTableWrap"></div>
-            <div class="noteDanger" id="priceNote" style="margin-top:10px; display:none;"></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="cardHead"><h3>Tlocrt</h3></div>
-          <div class="cardBody" id="floorplanWrap"></div>
-          <div class="cardBody" style="padding-top:0;">
-            <button class="btnPrimary" id="openPlanBtn" type="button" style="width:100%;">Otvori tlocrt (uvećaj)</button>
-            <a class="btnGhost" id="unitPageLink" href="#" style="width:100%; margin-top:10px; display:none;">Otvori zasebnu stranicu stana</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="viewerBack" id="viewerBack" role="dialog" aria-modal="true">
-    <div class="viewer">
-      <div class="viewerTop">
-        <div id="viewerTitle">Tlocrt</div>
-        <div class="viewerBtns">
-          <button class="vbtn" id="zoomIn">+</button>
-          <button class="vbtn" id="zoomOut">−</button>
-          <button class="vbtn" id="viewerClose">Zatvori</button>
-        </div>
-      </div>
-      <div class="stage" id="stage">
-        <img id="stageImg" alt="Tlocrt stana" />
-      </div>
-    </div>
-  </div>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lbPanel" role="dialog" aria-modal="true">
@@ -1451,16 +1220,8 @@
     const jelWrap = document.getElementById('jelWrap');
     const toggleJ = document.getElementById('toggleJelkovec');
     const collapseJ = document.getElementById('collapseJelkovec');
-    toggleJ.addEventListener('click', ()=>{
-      jelWrap.classList.add('open');
-      toggleJ.style.display = 'none';
-      setTimeout(()=> toggleJ.scrollIntoView({block:'start', behavior:'smooth'}), 0);
-    });
-    collapseJ.addEventListener('click', ()=>{
-      jelWrap.classList.remove('open');
-      toggleJ.style.display = '';
-      toggleJ.scrollIntoView({block:'center', behavior:'smooth'});
-    });
+    toggleJ.addEventListener('click', ()=>{ jelWrap.classList.add('open'); toggleJ.style.display = 'none'; });
+    collapseJ.addEventListener('click', ()=>{ jelWrap.classList.remove('open'); toggleJ.style.display = ''; });
 
     const toast = document.getElementById('toast');
     function showToast(msg){
@@ -1476,135 +1237,9 @@
       K1S3: "available",
       K2S1: "sold",
       K2S2: "available",
-      K2S3: "reserved",
+      K2S3: "reserved"
     };
 
-    const units = {
-      K1S1: {
-        title: "K1S1 – Stan prizemlje",
-        area: "73 m²",
-        orientation: "Sjever – Jug – Zapad",
-        floorplan: "k1s1.png",
-        descriptionHTML: `
-          <p><b>Stan se sastoji od:</b></p>
-          <ul class="list">
-            <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
-            <li>dvije spavaće sobe</li>
-            <li>dvije kupaonice s WC-om</li>
-            <li>izbe</li>
-            <li>dva hodnika</li>
-            <li>terase i vrta (pripadajući vrt 38 m²)</li>
-            <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
-          </ul>
-        `,
-        prices: {
-          cash: 204400,
-          credit: 219000,
-          gardenCash: 10640,
-          gardenCredit: 11400,
-          parking: 8000,
-          totalCash: 223040,
-          totalCredit: 238400
-        },
-        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
-      },
-      K1S2: {
-        title: "K1S2 – Stan 1. kat",
-        area: "95 m²",
-        orientation: "Sjever – Jug – Zapad",
-        floorplan: "k1s2.png",
-        descriptionHTML: `
-          <p><b>Stan se sastoji od:</b></p>
-          <ul class="list">
-            <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
-            <li>tri spavaće sobe</li>
-            <li>dvije kupaonice s WC-om</li>
-            <li>izbe</li>
-            <li>dva hodnika</li>
-            <li>terase i lođe</li>
-            <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
-          </ul>
-        `,
-        prices: { cash: 266000, credit: 285000, parking: 8000, totalCash: 274000, totalCredit: 293000 },
-        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
-      },
-      K1S3: {
-        title: "K1S3 – Penthouse",
-        area: "73 m²",
-        orientation: "Sjever – Jug – Zapad",
-        floorplan: "k1s3.png",
-        descriptionHTML: `
-          <p><b>Stan se sastoji od:</b></p>
-          <ul class="list">
-            <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
-            <li>dvije spavaće sobe</li>
-            <li>dvije kupaonice s WC-om</li>
-            <li>dva hodnika</li>
-            <li>krovne terase</li>
-            <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
-          </ul>
-        `,
-        prices: { cash: 204400, credit: 219000, parking: 8000, totalCash: 212400, totalCredit: 227000 },
-        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
-      },
-      K2S2: {
-        title: "K2S2 – Stan 1. kat",
-        area: "95 m²",
-        orientation: "Sjever – Jug – Istok",
-        floorplan: "k2s2.png",
-        descriptionHTML: `
-          <p><b>Stan se sastoji od:</b></p>
-          <ul class="list">
-            <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
-            <li>tri spavaće sobe</li>
-            <li>dvije kupaonice s WC-om</li>
-            <li>izbe</li>
-            <li>dva hodnika</li>
-            <li>terase i lođe</li>
-            <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
-          </ul>
-        `,
-        prices: { cash: 266000, credit: 285000, parking: 8000, totalCash: 274000, totalCredit: 293000 },
-        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
-      },
-      K2S3: {
-        title: "K2S3 – Penthouse",
-        area: "73 m²",
-        orientation: "Sjever – Jug – Istok",
-        floorplan: "k2s3.png",
-        descriptionHTML: `
-          <p><b>Stan se sastoji od:</b></p>
-          <ul class="list">
-            <li>dnevnog boravka s kuhinjom i blagovaonicom</li>
-            <li>dvije spavaće sobe</li>
-            <li>dvije kupaonice s WC-om</li>
-            <li>dva hodnika</li>
-            <li>krovne terase</li>
-            <li>vanjskog parkirnog mjesta (priprema za EV punjač)</li>
-          </ul>
-        `,
-        prices: { cash: 204400, credit: 219000, parking: 8000, totalCash: 212400, totalCredit: 227000 },
-        priceNote: "CIJENA NAKON DOVRŠETKA GRADNJE RASTE!"
-      }
-    };
-
-    const unitPages = {
-      K1S1: "k1s1.html",
-      K1S2: "k1s2.html",
-      K1S3: "k1s3.html",
-      K2S2: "k2s2.html",
-      K2S3: "k2s3.html"
-    };
-
-    const eur = (n) => new Intl.NumberFormat('hr-HR', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
-
-    function labelForStatus(st){
-      if(st === "sold") return "Prodano";
-      if(st === "reserved") return "Rezervirano";
-      return "Dostupno";
-    }
-
-    const stanSelect = document.getElementById('stanSelect');
     function applyAvailability(){
       document.querySelectorAll('.unit').forEach(el=>{
         const id = el.dataset.unit;
@@ -1614,260 +1249,65 @@
         if(st === "sold") el.classList.add('sold');
         if(st === "reserved") el.classList.add('reserved');
 
-        const rib = el.querySelector('.ribbon');
+        const oldRibbon = el.querySelector('.ribbon');
+        if(oldRibbon) oldRibbon.remove();
+
         if(st === "sold" || st === "reserved"){
-          if(!rib){
-            const r = document.createElement('span');
-            r.className = 'ribbon';
-            r.textContent = (st === "sold") ? "PRODANO" : "REZERVIRANO";
-            if(st === "reserved") r.classList.add('reserved');
-            el.appendChild(r);
-          } else {
-            rib.textContent = (st === "sold") ? "PRODANO" : "REZERVIRANO";
-            rib.classList.toggle('reserved', st === "reserved");
-          }
-        } else {
-          if(rib) rib.remove();
+          const r = document.createElement('span');
+          r.className = 'ribbon' + (st === "reserved" ? ' reserved' : '');
+          r.textContent = (st === "sold") ? "PRODANO" : "REZERVIRANO";
+          el.appendChild(r);
         }
+
+        el.addEventListener('click', (e)=>{
+          if(st === "sold"){
+            e.preventDefault();
+            showToast(`${id} je PRODANO.`);
+          }
+        });
       });
-
-      Array.from(stanSelect.options).forEach(opt=>{
-        const id = opt.value;
-        if(!id) return;
-        const st = availability[id] || "available";
-        opt.disabled = (st === "sold");
-        opt.textContent = (st === "sold") ? `${id} – PRODANO` : (st === "reserved" ? `${id} – REZERVIRANO` : id);
-      });
     }
 
-    const detailBack = document.getElementById('detailBack');
-    const detailClose = document.getElementById('detailClose');
-    const detailTitle = document.getElementById('detailTitle');
-    const detailMeta = document.getElementById('detailMeta');
-    const detailText = document.getElementById('detailText');
-    const statusBadge = document.getElementById('statusBadge');
-    const areaBadge = document.getElementById('areaBadge');
-    const priceTableWrap = document.getElementById('priceTableWrap');
-    const priceNote = document.getElementById('priceNote');
-    const floorplanWrap = document.getElementById('floorplanWrap');
-    const openPlanBtn = document.getElementById('openPlanBtn');
-    const unitPageLink = document.getElementById('unitPageLink');
+    applyAvailability();
 
-    let currentPlan = null;
-    let currentPlanTitle = null;
+    const kontaktForma = document.getElementById('kontaktForma');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
 
-    function buildPriceTable(prices){
-      const gardenRows = (prices.gardenCash || prices.gardenCredit) ? `
-        <tr><td>Vrt (gotovina)</td><td>${prices.gardenCash ? eur(prices.gardenCash) : "—"}</td></tr>
-        <tr><td>Vrt (kredit)</td><td>${prices.gardenCredit ? eur(prices.gardenCredit) : "—"}</td></tr>
-      ` : "";
-
-      return `
-        <table>
-          <thead><tr><th>Stavka</th><th>Iznos</th></tr></thead>
-          <tbody>
-            <tr><td>Cijena stana (gotovina)</td><td><b>${eur(prices.cash)}</b></td></tr>
-            <tr><td>Cijena stana (kredit)</td><td><b>${eur(prices.credit)}</b></td></tr>
-            ${gardenRows}
-            <tr><td>Parkirno mjesto</td><td>${eur(prices.parking)}</td></tr>
-            <tr><td><b>Ukupno (gotovina)</b></td><td><b>${eur(prices.totalCash)}</b></td></tr>
-            <tr><td><b>Ukupno (kredit)</b></td><td><b>${eur(prices.totalCredit)}</b></td></tr>
-          </tbody>
-        </table>
-      `;
+    function showFormStatus(message, type){
+      formStatus.textContent = message;
+      formStatus.className = `formStatus show ${type}`;
     }
 
-    function openDetails(unitId){
-      const st = availability[unitId] || "available";
-      if(st === "sold"){
-        showToast(`${unitId} je PRODANO i zaključano.`);
-        return;
-      }
-      const data = units[unitId];
-      if(!data){ showToast("Nema podataka za ovaj stan."); return; }
-
-      detailTitle.textContent = data.title;
-      detailMeta.textContent = `${data.area || "—"} • Orijentacija: ${data.orientation || "—"}`;
-
-      statusBadge.textContent = labelForStatus(st);
-      statusBadge.classList.toggle('sold', st === 'sold');
-      areaBadge.textContent = data.area || "—";
-      detailText.innerHTML = data.descriptionHTML || "";
-
-      if(data.prices){
-        priceTableWrap.innerHTML = buildPriceTable(data.prices);
-        priceNote.textContent = data.priceNote || "";
-        priceNote.style.display = data.priceNote ? "block" : "none";
-      } else {
-        priceTableWrap.innerHTML = `<p style="color:var(--muted); margin:0;">Cijene nisu dostupne.</p>`;
-        priceNote.style.display = "none";
-      }
-
-      if(data.floorplan){
-        currentPlan = data.floorplan;
-        currentPlanTitle = `Tlocrt – ${unitId}`;
-        floorplanWrap.innerHTML = `<img class="thumb" src="${data.floorplan}" alt="Tlocrt ${unitId}" loading="lazy">`;
-        openPlanBtn.disabled = false;
-        openPlanBtn.style.opacity = "1";
-      } else {
-        currentPlan = null;
-        currentPlanTitle = null;
-        floorplanWrap.innerHTML = `<div style="color:var(--muted); font-size:14px;">Tlocrt nije dostupan.</div>`;
-        openPlanBtn.disabled = true;
-        openPlanBtn.style.opacity = ".6";
-      }
-
-      if(unitPages[unitId]){
-        unitPageLink.href = unitPages[unitId];
-        unitPageLink.style.display = 'inline-flex';
-      } else {
-        unitPageLink.href = '#';
-        unitPageLink.style.display = 'none';
-      }
-
-      stanSelect.value = unitId;
-      detailBack.classList.add('open');
-    }
-
-    function closeDetails(){ detailBack.classList.remove('open'); }
-
-    detailClose.addEventListener('click', closeDetails);
-    detailBack.addEventListener('click', (e)=>{ if(e.target === detailBack) closeDetails(); });
-
-    openPlanBtn.addEventListener('click', ()=>{
-      if(currentPlan) openViewer(currentPlan, currentPlanTitle);
-    });
-
-    const viewerBack = document.getElementById('viewerBack');
-    const viewerTitle = document.getElementById('viewerTitle');
-    const stage = document.getElementById('stage');
-    const stageImg = document.getElementById('stageImg');
-    const zoomInBtn = document.getElementById('zoomIn');
-    const zoomOutBtn = document.getElementById('zoomOut');
-    const viewerCloseBtn = document.getElementById('viewerClose');
-
-    let v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
-    function applyTransform(){
-      stageImg.style.transform = `translate(calc(-50% + ${v.x}px), calc(-50% + ${v.y}px)) scale(${v.scale})`;
-    }
-    function openViewer(src, title){
-      viewerTitle.textContent = title || "Tlocrt";
-
-      v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
-      applyTransform();
-
-      stageImg.onload = ()=>{
-        const sw = stage.clientWidth || 1;
-        const sh = stage.clientHeight || 1;
-        const iw = stageImg.naturalWidth || 1;
-        const ih = stageImg.naturalHeight || 1;
-        const fit = Math.min(sw / iw, sh / ih) * 0.98;
-        v.scale = Math.min(6, Math.max(0.2, fit));
-        v.x = 0; v.y = 0;
-        applyTransform();
-      };
-
-      stageImg.src = src;
-      viewerBack.classList.add('open');
-    }
-    function closeViewer(){ viewerBack.classList.remove('open'); stageImg.src = ""; }
-    function zoom(delta){ v.scale = Math.min(6, Math.max(0.2, v.scale + delta)); applyTransform(); }
-
-    zoomInBtn.addEventListener('click', ()=>zoom(0.2));
-    zoomOutBtn.addEventListener('click', ()=>zoom(-0.2));
-    viewerCloseBtn.addEventListener('click', closeViewer);
-    viewerBack.addEventListener('click', (e)=>{ if(e.target === viewerBack) closeViewer(); });
-
-    function startDrag(x,y){ v.dragging=true; v.px=x; v.py=y; }
-    function moveDrag(x,y){
-      if(!v.dragging) return;
-      const dx=x - v.px, dy=y - v.py;
-      v.px=x; v.py=y;
-      v.x += dx; v.y += dy;
-      applyTransform();
-    }
-    function endDrag(){ v.dragging=false; }
-
-    stage.addEventListener('mousedown', (e)=> startDrag(e.clientX, e.clientY));
-    window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
-    window.addEventListener('mouseup', endDrag);
-
-    let pinch = { active:false, startDist:0, startScale:1, startMidX:0, startMidY:0, startX:0, startY:0 };
-    function dist(a,b){
-      const dx = a.clientX - b.clientX;
-      const dy = a.clientY - b.clientY;
-      return Math.hypot(dx, dy);
-    }
-    function mid(a,b){
-      return { x: (a.clientX + b.clientX)/2, y: (a.clientY + b.clientY)/2 };
-    }
-
-    stage.addEventListener('touchstart', (e)=>{
-      if(e.touches.length === 1){
-        const t = e.touches[0];
-        pinch.active = false;
-        startDrag(t.clientX, t.clientY);
-      } else if(e.touches.length === 2){
-        e.preventDefault();
-        const a = e.touches[0], b = e.touches[1];
-        const m = mid(a,b);
-        pinch = {
-          active:true,
-          startDist: dist(a,b),
-          startScale: v.scale,
-          startMidX: m.x,
-          startMidY: m.y,
-          startX: v.x,
-          startY: v.y
-        };
-        v.dragging = false;
-      }
-    }, {passive:false});
-
-    stage.addEventListener('touchmove', (e)=>{
-      if(e.touches.length === 1 && !pinch.active){
-        const t = e.touches[0];
-        moveDrag(t.clientX, t.clientY);
-        return;
-      }
-      if(e.touches.length === 2){
-        e.preventDefault();
-        const a = e.touches[0], b = e.touches[1];
-        const m = mid(a,b);
-        const d = dist(a,b);
-
-        const rawScale = pinch.startScale * (d / Math.max(10, pinch.startDist));
-        v.scale = Math.min(6, Math.max(0.2, rawScale));
-
-        v.x = pinch.startX + (m.x - pinch.startMidX);
-        v.y = pinch.startY + (m.y - pinch.startMidY);
-
-        applyTransform();
-      }
-    }, {passive:false});
-
-    stage.addEventListener('touchend', (e)=>{
-      if(e.touches.length === 0){
-        pinch.active = false;
-        endDrag();
-      }
-      if(e.touches.length === 1){
-        pinch.active = false;
-        const t = e.touches[0];
-        startDrag(t.clientX, t.clientY);
-      }
-    }, {passive:false});
-
-    stage.addEventListener('wheel', (e)=>{
+    kontaktForma.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      zoom(e.deltaY < 0 ? 0.12 : -0.12);
-    }, {passive:false});
 
-    document.querySelectorAll('.unit').forEach(el=>{
-      el.addEventListener('click', (e)=>{
-        e.preventDefault();
-        openDetails(el.dataset.unit);
-      });
+      formStatus.className = 'formStatus';
+      formStatus.textContent = '';
+
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Slanje...';
+
+      try{
+        const response = await fetch(kontaktForma.action, {
+          method: 'POST',
+          body: new FormData(kontaktForma),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if(response.ok){
+          kontaktForma.reset();
+          showFormStatus('Upit je uspješno poslan. Javit ćemo vam se uskoro.', 'success');
+        } else {
+          showFormStatus('Došlo je do greške pri slanju. Pokušajte ponovno.', 'error');
+        }
+      } catch (error){
+        showFormStatus('Došlo je do greške pri slanju. Pokušajte ponovno.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     });
 
     const lb = document.getElementById('lightbox');
@@ -1920,54 +1360,8 @@
 
     document.addEventListener('keydown', (e)=>{
       if(e.key === "Escape"){
-        closeDetails();
-        closeViewer();
         closeLB();
         closeDrawer();
-      }
-    });
-
-    applyAvailability();
-
-    const kontaktForma = document.getElementById('kontaktForma');
-    const formStatus = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-
-    function showFormStatus(message, type){
-      formStatus.textContent = message;
-      formStatus.className = `formStatus show ${type}`;
-    }
-
-    kontaktForma.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-
-      formStatus.className = 'formStatus';
-      formStatus.textContent = '';
-
-      const originalBtnText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Slanje...';
-
-      try{
-        const response = await fetch(kontaktForma.action, {
-          method: 'POST',
-          body: new FormData(kontaktForma),
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if(response.ok){
-          kontaktForma.reset();
-          showFormStatus('Upit je uspješno poslan. Javit ćemo vam se uskoro.', 'success');
-        } else {
-          showFormStatus('Došlo je do greške pri slanju. Pokušajte ponovno.', 'error');
-        }
-      } catch (error){
-        showFormStatus('Došlo je do greške pri slanju. Pokušajte ponovno.', 'error');
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
       }
     });
 
@@ -2014,22 +1408,15 @@
 
     cookieAccept.addEventListener('click', ()=>{ setConsent("accepted"); hideBanner(); loadGA(); });
     cookieReject.addEventListener('click', ()=>{ setConsent("rejected"); hideBanner(); });
-
-    openCookieSettings.addEventListener('click', (e)=>{
-      e.preventDefault();
-      showBanner();
-    });
-
+    openCookieSettings.addEventListener('click', (e)=>{ e.preventDefault(); showBanner(); });
     initConsent();
 
     document.addEventListener('contextmenu', (e)=>{
-      if(e.target && (e.target.tagName === 'IMG' || e.target.closest('.galleryItem') || e.target.closest('.lbPanel') || e.target.closest('.viewer'))) {
+      if(e.target && (e.target.tagName === 'IMG' || e.target.closest('.galleryItem') || e.target.closest('.lbPanel'))) {
         e.preventDefault();
       }
     });
-    document.querySelectorAll('img').forEach(img=>{
-      img.setAttribute('draggable', 'false');
-    });
+    document.querySelectorAll('img').forEach(img=> img.setAttribute('draggable', 'false'));
   </script>
 </body>
 </html>
