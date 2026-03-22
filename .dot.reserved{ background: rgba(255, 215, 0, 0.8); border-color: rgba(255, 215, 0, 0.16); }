@@ -368,7 +368,6 @@
     .dot{ width:10px;height:10px;border-radius:50%; display:inline-block; background: rgba(0,0,0,.22); border:1px solid rgba(0,0,0,.08); }
     .dot.sold{ background: rgba(140,0,0,.38); border-color: rgba(140,0,0,.20); }
     .dot.reserved{ background: rgba(140,0,0,.22); border-color: rgba(140,0,0,.16); }
-}
 
     .heroCard{
       background: rgba(255,255,255,.95);
