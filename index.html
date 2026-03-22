@@ -238,10 +238,11 @@
       text-align:left;
     }
     .introSubtitle{
-      margin: 8px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 900;
+      line-height: 1.5;
     }
 
     .heroImage{
@@ -643,8 +644,14 @@
     }
     .toast.show{ display:block; }
 
+    @media (max-width: 720px){
+      .stanNotice{ font-size: 16px; padding: 14px 12px; }
+      .introSubtitle{ font-size: 17px; }
+    }
+
     @media (min-width: 960px){
       .introTitle{ font-size: 34px; }
+      .introSubtitle{ font-size: 20px; }
       .sectionTitle{ font-size: 28px; }
       .grid{ grid-template-columns: 1fr 1fr; gap: 14px; }
       .galleryGrid{ grid-template-columns: repeat(3, 1fr); }
@@ -780,10 +787,10 @@
           },
           {
             "@type":"Question",
-            "name":"Kolika je kapara?",
+            "name":"Koliko iznosi učešće?",
             "acceptedAnswer":{
               "@type":"Answer",
-              "text":"Kapara u pravilu iznosi od 15 do 20 posto ukupne kupoprodajne cijene, ovisno o dogovoru i fazi kupnje."
+              "text":"Učešće u pravilu iznosi od 15 do 20 posto ukupne kupoprodajne cijene, ovisno o dogovoru i fazi kupnje."
             }
           }
         ]
@@ -800,7 +807,7 @@
         <img class="logo" src="logo.png" alt="Filipović Projekt logo" width="44" height="44">
         <div class="brandText">
           <b>SAVSKA 79 RESIDENCE – Filipović Projekt</b>
-          <span>Novogradnja u Jelkovcu, Sesvete – istočni Zagreb.</span>
+          <span>Moderna novogradnja u Jelkovcu, Sesvete, za ugodan život i sigurnu kupnju.</span>
         </div>
       </div>
       <button class="menuBtn" id="menuBtn" aria-label="Izbornik">☰</button>
@@ -813,7 +820,7 @@
         <b>Izbornik</b>
         <button class="menuBtn" id="menuClose" aria-label="Zatvori">✕</button>
       </div>
-      <a href="#o-projektu-seo">Novogradnja Sesvete</a>
+      <a href="#o-projektu-seo">O projektu i lokaciji</a>
       <a href="#jelkovec">Jelkovec</a>
       <a href="#projekt">Projekt</a>
       <a href="#stanovi">Odabir stana</a>
@@ -831,7 +838,7 @@
     <div class="container intro">
       <div class="introCard">
         <h1 class="introTitle">SAVSKA 79 RESIDENCE – Filipović Projekt</h1>
-        <p class="introSubtitle">Novogradnja u Jelkovcu, Sesvete. Stanovi u prodaji u istočnom Zagrebu.</p>
+        <p class="introSubtitle">Kvalitetna novogradnja u Jelkovcu, Sesvete, s pažljivo osmišljenim stanovima za ugodan svakodnevni život.</p>
 
         <div class="heroImage">
           <img src="naslovna.png" alt="Savska 79 Residence – novogradnja u Jelkovcu, Sesvete" loading="eager" fetchpriority="high">
@@ -841,15 +848,15 @@
 
     <section id="o-projektu-seo">
       <div class="container">
-        <h2 class="sectionTitle">Novogradnja Sesvete, Jelkovec i stanovi u istočnom Zagrebu</h2>
-        <p class="sectionSub">Savska 79 Residence namijenjena je kupcima koji traže mirniju lokaciju, kvalitetnu gradnju i dobru povezanost s ostatkom Zagreba.</p>
+        <h2 class="sectionTitle">Stanovi u novogradnji na dobroj lokaciji u Sesvetama</h2>
+        <p class="sectionSub">Savska 79 Residence namijenjena je kupcima koji traže kvalitetnu gradnju, funkcionalne stanove i lokaciju pogodnu za mirniji obiteljski život.</p>
 
         <div class="card">
-          <div class="cardHead"><h3>Stanovi za obiteljski život i dugoročnu vrijednost</h3></div>
+          <div class="cardHead"><h3>Projekt za ugodan život i sigurnu kupnju</h3></div>
           <div class="cardBody">
-            <p><b>Filipović Projekt</b> predstavlja <b>Savska 79 Residence</b>, modernu novogradnju u <b>Jelkovcu, Sesvete</b>, na istoku Zagreba.</p>
+            <p><b>Filipović Projekt</b> predstavlja <b>Savska 79 Residence</b>, modernu novogradnju u <b>Jelkovcu, Sesvete</b>, u istočnom dijelu Zagreba.</p>
             <p>Projekt je zamišljen za kupce koji žele kvalitetan stan u mirnijem dijelu grada, uz dobar raspored prostorija, vanjsko parkirno mjesto, suvremenu opremu i praktičnu povezanost prema ostatku Zagreba.</p>
-            <p>Na jednom mjestu možete pregledati dostupne stanove, površine, tlocrte, cijene za gotovinu i kredit, galeriju projekta te poslati upit direktno investitoru. Planirano useljenje je <b>u travnju 2027. godine</b>.</p>
+            <p>Na ovoj stranici možete pregledati dostupne stanove, površine, tlocrte, cijene za gotovinu i kredit, galeriju projekta te poslati upit direktno investitoru. Planirano useljenje je <b>u travnju 2027. godine</b>.</p>
           </div>
         </div>
       </div>
@@ -872,16 +879,8 @@
 
             <div class="jelMore" id="jelMore">
               <p><b>Lokacija prilagođena svakodnevnom životu</b></p>
-              <p>Jelkovec je zanimljiv kupcima jer spaja nekoliko važnih prednosti:</p>
-              <ul class="list">
-                <li>mirnije stambeno okruženje</li>
-                <li>blizinu škole, vrtića, trgovina i drugih sadržaja</li>
-                <li>dobru povezanost prema Sesvetama i Zagrebu</li>
-                <li>prostor koji je ugodniji za obiteljski život</li>
-              </ul>
-              <p style="margin-top:10px;">
-                Za mnoge kupce upravo je ovakav omjer privatnosti, funkcionalnosti i dostupnosti sadržaja razlog zašto traže stan upravo u ovom dijelu grada.
-              </p>
+              <p>Jelkovec je zanimljiv kupcima jer spaja nekoliko važnih prednosti. Ovdje se posebno ističu mirnije stambeno okruženje, blizina škole, vrtića, trgovina i drugih sadržaja, dobra povezanost prema Sesvetama i Zagrebu te prostor koji je ugodniji za obiteljski život.</p>
+              <p>Za mnoge kupce upravo je ovakav omjer privatnosti, funkcionalnosti i dostupnosti sadržaja razlog zašto traže stan upravo u ovom dijelu grada.</p>
               <p><b>Jelkovec je dobar izbor za one koji žele:</b></p>
               <ul class="list">
                 <li>mirniju lokaciju</li>
@@ -968,7 +967,7 @@
           <div class="cardHead"><h3>Pregled stanova u novogradnji Savska 79 Residence</h3></div>
           <div class="cardBody">
             <ul class="list">
-              <li><b>K1S1 – PRODANO</b> • stan prizemlje, 73 m², vrt 38 m², parkirno mjesto</li>
+              <li><b>K1S1 – PRODANO</b></li>
               <li><a href="k1s2.html"><b>K1S2</b></a> • stan 1. kat, 95 m², tri spavaće sobe, parkirno mjesto</li>
               <li><a href="k1s3.html"><b>K1S3</b></a> • penthouse, 73 m², krovna terasa, parkirno mjesto</li>
               <li><b>K2S1 – PRODANO</b> • stan prizemlje</li>
@@ -1008,9 +1007,9 @@
           </div>
 
           <div class="card">
-            <div class="cardHead"><h3>Kolika je kapara?</h3></div>
+            <div class="cardHead"><h3>Koliko iznosi učešće?</h3></div>
             <div class="cardBody">
-              <p>Kapara u pravilu iznosi <b>15–20%</b> ukupne kupoprodajne cijene, ovisno o dogovoru i fazi kupnje.</p>
+              <p>Učešće u pravilu iznosi <b>15–20%</b> ukupne kupoprodajne cijene, ovisno o dogovoru i fazi kupnje.</p>
             </div>
           </div>
         </div>
