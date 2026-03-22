@@ -29,6 +29,14 @@
       --danger:#b42318;
       --danger2:#d92d20;
 
+      --successBg:#ecfdf3;
+      --successBorder:#abefc6;
+      --successText:#067647;
+
+      --errorBg:#fef3f2;
+      --errorBorder:#fecdca;
+      --errorText:#b42318;
+
       --shadow: 0 14px 40px rgba(16,24,40,.10);
       --radius:16px;
 
@@ -720,6 +728,28 @@
 
     .formNote{ text-align:center; color: var(--muted); font-size: 12px; margin-top: 10px; }
 
+    .formStatus{
+      display:none;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .formStatus.show{ display:block; }
+    .formStatus.success{
+      background: var(--successBg);
+      border-color: var(--successBorder);
+      color: var(--successText);
+    }
+    .formStatus.error{
+      background: var(--errorBg);
+      border-color: var(--errorBorder);
+      color: var(--errorText);
+    }
+
     .mapWrap{
       overflow:hidden;
       border-radius: var(--radius);
@@ -1005,11 +1035,10 @@
         Telefon: <b><a href="tel:+385953009954">+385 95 300 99 54</a></b>
       </p>
 
-      <form action="https://formsubmit.co/filipovic.projekt@outlook.com" method="POST">
+      <form id="kontaktForma" action="https://formsubmit.co/filipovic.projekt@outlook.com" method="POST">
         <input type="hidden" name="_subject" value="Savska 79 Residence – novi upit" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="hvala.html" />
 
         <div class="formGrid">
           <div>
@@ -1058,7 +1087,10 @@
         </div>
 
         <div style="margin-top:12px;">
-          <button class="btnPrimary" type="submit" style="width:100%;">Pošalji upit</button>
+          <button class="btnPrimary" id="submitBtn" type="submit" style="width:100%;">Pošalji upit</button>
+
+          <div id="formStatus" class="formStatus" aria-live="polite"></div>
+
           <div class="formNote">
             Slanjem upita prihvaćate obradu podataka isključivo u svrhu odgovora na upit.
             Pročitajte: <a href="privacy.html">Privatnost</a> • <a href="cookies.html">Cookies</a>
@@ -1253,7 +1285,6 @@
       showToast._t = setTimeout(()=>toast.classList.remove('show'), 2200);
     }
 
-    // available | reserved | sold
     const availability = {
       K1S1: "sold",
       K1S2: "available",
@@ -1695,6 +1726,48 @@
     });
 
     applyAvailability();
+
+    const kontaktForma = document.getElementById('kontaktForma');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function showFormStatus(message, type){
+      formStatus.textContent = message;
+      formStatus.className = `formStatus show ${type}`;
+    }
+
+    kontaktForma.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+
+      formStatus.className = 'formStatus';
+      formStatus.textContent = '';
+
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Slanje...';
+
+      try{
+        const response = await fetch(kontaktForma.action, {
+          method: 'POST',
+          body: new FormData(kontaktForma),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if(response.ok){
+          kontaktForma.reset();
+          showFormStatus('Upit je uspješno poslan. Javit ćemo vam se uskoro.', 'success');
+        } else {
+          showFormStatus('Došlo je do greške pri slanju. Pokušajte ponovno.', 'error');
+        }
+      } catch (error){
+        showFormStatus('Došlo je do greške pri slanju. Pokušajte ponovno.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
+    });
 
     const CONSENT_KEY = "fp_cookie_consent_v1";
     const cookieBanner = document.getElementById("cookieBanner");
