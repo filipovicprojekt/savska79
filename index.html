@@ -38,8 +38,12 @@
       --soldOverlay: rgba(140,0,0,.22);
       --soldOverlayHover: rgba(140,0,0,.34);
 
-      --reserveOverlay: rgba(140,0,0,.16);
-      --reserveOverlayHover: rgba(140,0,0,.24);
+      --reserveOverlay: rgba(255,215,0,.28);
+      --reserveOverlayHover: rgba(255,215,0,.42);
+      --reserveText: #5c4500;
+      --reserveBorder: rgba(160,120,0,.22);
+      --reserveRibbon1: #facc15;
+      --reserveRibbon2: #eab308;
     }
 
     *{ box-sizing:border-box; }
@@ -58,10 +62,8 @@
       padding: 0 14px;
     }
 
-    /* basic anti-download */
     img{ -webkit-user-drag:none; user-select:none; }
 
-    /* TOPBAR */
     .topbar{
       position: sticky;
       top:0;
@@ -129,7 +131,6 @@
       font-weight: 900;
     }
 
-    /* Drawer */
     .drawerBack{
       position: fixed;
       inset:0;
@@ -171,7 +172,6 @@
       margin: 8px 0;
     }
 
-    /* Sections */
     section{ padding: 38px 0; }
     .sectionTitle{
       margin:0 0 10px;
@@ -187,7 +187,6 @@
       max-width: 900px;
     }
 
-    /* NEW: uočljiv tekst za odabir stana */
     .stanNotice{
       margin: 0 auto 18px;
       text-align:center;
@@ -214,7 +213,6 @@
       }
     }
 
-    /* Intro */
     .intro{ padding: 18px 0 6px; }
     .introCard{
       background: rgba(255,255,255,.92);
@@ -281,7 +279,6 @@
       gap: 12px;
     }
 
-    /* Inline "Pročitaj više" */
     .jelPreview p{ margin: 0 0 10px; }
     .jelMore{
       display:none;
@@ -345,7 +342,6 @@
       font-weight: 950;
     }
 
-    /* Apartments selection */
     .legend{
       display:flex;
       gap:8px;
@@ -367,7 +363,7 @@
     }
     .dot{ width:10px;height:10px;border-radius:50%; display:inline-block; background: rgba(0,0,0,.22); border:1px solid rgba(0,0,0,.08); }
     .dot.sold{ background: rgba(140,0,0,.38); border-color: rgba(140,0,0,.20); }
-    .dot.reserved{ background: rgba(140,0,0,.22); border-color: rgba(140,0,0,.16); }
+    .dot.reserved{ background: rgba(255,215,0,.72); border-color: rgba(160,120,0,.24); }
 
     .heroCard{
       background: rgba(255,255,255,.95);
@@ -436,6 +432,12 @@
       pointer-events:none;
       text-transform: uppercase;
     }
+    .ribbon.reserved{
+      background: linear-gradient(135deg, var(--reserveRibbon1), var(--reserveRibbon2));
+      color: var(--reserveText);
+      border-color: rgba(255,255,255,.35);
+      box-shadow: 0 10px 24px rgba(234,179,8,.22);
+    }
 
     .k1s3{ left: 0%;  top: 25.64%; width: 50%; height: 17.75%; }
     .k1s2{ left: 0%;  top: 43.39%; width: 50%; height: 17.75%; }
@@ -444,7 +446,6 @@
     .k2s2{ left: 50%; top: 43.39%; width: 50%; height: 17.75%; }
     .k2s1{ left: 50%; top: 61.15%; width: 50%; height: 17.75%; }
 
-    /* Gallery */
     .galleryGrid{
       display:grid;
       grid-template-columns: 1fr;
@@ -466,7 +467,6 @@
       background:#fff;
     }
 
-    /* symmetric on desktop */
     @media (min-width: 960px){
       .galleryItem{
         aspect-ratio: 4 / 3;
@@ -481,7 +481,6 @@
       }
     }
 
-    /* Lightbox */
     .lightbox{
       position:fixed; inset:0;
       background: rgba(0,0,0,.84);
@@ -527,7 +526,6 @@
       text-align:center; color: rgba(255,255,255,.72); font-size: 12px; pointer-events:none;
     }
 
-    /* Modal details (stan) */
     .backdrop{
       position:fixed; inset:0;
       background: rgba(16,24,40,.45);
@@ -617,7 +615,6 @@
       background:#fff;
     }
 
-    /* Floorplan viewer */
     .viewerBack{
       position:fixed;
       inset:0;
@@ -679,7 +676,6 @@
       max-width:none;
     }
 
-    /* Form */
     form{
       max-width: 900px;
       margin: 0 auto;
@@ -724,7 +720,6 @@
 
     .formNote{ text-align:center; color: var(--muted); font-size: 12px; margin-top: 10px; }
 
-    /* Map */
     .mapWrap{
       overflow:hidden;
       border-radius: var(--radius);
@@ -734,7 +729,6 @@
     }
     iframe{ width:100%; height: 320px; border:0; display:block; }
 
-    /* Footer */
     footer{
       padding: 34px 0;
       border-top: 1px solid var(--border);
@@ -791,7 +785,6 @@
       .tag.right{ right:10px; }
     }
 
-    /* Cookie banner */
     .cookieBanner{
       position: fixed;
       left: 12px;
@@ -833,7 +826,6 @@
 </head>
 
 <body>
-  <!-- TOPBAR -->
   <header class="topbar">
     <div class="container topbarInner">
       <div class="brand">
@@ -847,7 +839,6 @@
     </div>
   </header>
 
-  <!-- Drawer menu -->
   <div class="drawerBack" id="drawerBack" aria-hidden="true">
     <nav class="drawer" aria-label="Izbornik">
       <div class="drawerTop">
@@ -866,7 +857,6 @@
     </nav>
   </div>
 
-  <!-- INTRO -->
   <div class="container intro">
     <div class="introCard">
       <h1 class="introTitle">SAVSKA 79 RESIDENCE – Filipović Projekt</h1>
@@ -878,7 +868,6 @@
     </div>
   </div>
 
-  <!-- JELKOVEC -->
   <section id="jelkovec">
     <div class="container">
       <h2 class="sectionTitle">Stari Jelkovec</h2>
@@ -922,7 +911,6 @@
     </div>
   </section>
 
-  <!-- PROJEKT -->
   <section id="projekt">
     <div class="container">
       <h2 class="sectionTitle">O projektu</h2>
@@ -965,7 +953,6 @@
     </div>
   </section>
 
-  <!-- STANOVI -->
   <section id="stanovi">
     <div class="container">
       <h2 class="sectionTitle">Odabir stana</h2>
@@ -991,7 +978,6 @@
     </div>
   </section>
 
-  <!-- GALERIJA -->
   <section id="galerija">
     <div class="container">
       <h2 class="sectionTitle">Galerija</h2>
@@ -1011,7 +997,6 @@
     </div>
   </section>
 
-  <!-- UPIT -->
   <section id="upit">
     <div class="container">
       <h2 class="sectionTitle">Upit</h2>
@@ -1083,7 +1068,6 @@
     </div>
   </section>
 
-  <!-- LOKACIJA -->
   <section id="lokacija">
     <div class="container">
       <h2 class="sectionTitle">Lokacija</h2>
@@ -1096,7 +1080,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footerGrid">
@@ -1131,7 +1114,6 @@
     </div>
   </footer>
 
-  <!-- DETAILS MODAL (stan) -->
   <div class="backdrop" id="detailBack" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
     <div class="modal">
       <div class="modalHeader">
@@ -1172,7 +1154,6 @@
     </div>
   </div>
 
-  <!-- FLOORPLAN VIEWER -->
   <div class="viewerBack" id="viewerBack" role="dialog" aria-modal="true">
     <div class="viewer">
       <div class="viewerTop">
@@ -1189,7 +1170,6 @@
     </div>
   </div>
 
-  <!-- Gallery lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lbPanel" role="dialog" aria-modal="true">
       <div class="lbTop">
@@ -1207,7 +1187,6 @@
     </div>
   </div>
 
-  <!-- COOKIE BANNER -->
   <div class="cookieBanner" id="cookieBanner" role="dialog" aria-modal="true" aria-label="Kolačići">
     <div class="cookieInner">
       <div>
@@ -1229,10 +1208,8 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // YEAR
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // MOBILE MENU
     const drawerBack = document.getElementById('drawerBack');
     const menuBtn = document.getElementById('menuBtn');
     const menuClose = document.getElementById('menuClose');
@@ -1254,7 +1231,6 @@
       a.addEventListener('click', ()=>{ closeDrawer(); });
     });
 
-    // Inline Jelkovec expand/collapse
     const jelWrap = document.getElementById('jelWrap');
     const toggleJ = document.getElementById('toggleJelkovec');
     const collapseJ = document.getElementById('collapseJelkovec');
@@ -1269,7 +1245,6 @@
       toggleJ.scrollIntoView({block:'center', behavior:'smooth'});
     });
 
-    // Toast
     const toast = document.getElementById('toast');
     function showToast(msg){
       toast.textContent = msg;
@@ -1278,7 +1253,6 @@
       showToast._t = setTimeout(()=>toast.classList.remove('show'), 2200);
     }
 
-    // ========== OVDJE MIJENJAŠ STATUS (TI) ==========
     // available | reserved | sold
     const availability = {
       K1S1: "sold",
@@ -1406,7 +1380,6 @@
       return "Dostupno";
     }
 
-    // Apply availability to overlays + select
     const stanSelect = document.getElementById('stanSelect');
     function applyAvailability(){
       document.querySelectorAll('.unit').forEach(el=>{
@@ -1423,9 +1396,11 @@
             const r = document.createElement('span');
             r.className = 'ribbon';
             r.textContent = (st === "sold") ? "PRODANO" : "REZERVIRANO";
+            if(st === "reserved") r.classList.add('reserved');
             el.appendChild(r);
           } else {
             rib.textContent = (st === "sold") ? "PRODANO" : "REZERVIRANO";
+            rib.classList.toggle('reserved', st === "reserved");
           }
         } else {
           if(rib) rib.remove();
@@ -1441,7 +1416,6 @@
       });
     }
 
-    // Details modal
     const detailBack = document.getElementById('detailBack');
     const detailClose = document.getElementById('detailClose');
     const detailTitle = document.getElementById('detailTitle');
@@ -1531,7 +1505,6 @@
       if(currentPlan) openViewer(currentPlan, currentPlanTitle);
     });
 
-    // Viewer
     const viewerBack = document.getElementById('viewerBack');
     const viewerTitle = document.getElementById('viewerTitle');
     const stage = document.getElementById('stage');
@@ -1586,7 +1559,6 @@
     window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
     window.addEventListener('mouseup', endDrag);
 
-    // Touch gestures
     let pinch = { active:false, startDist:0, startScale:1, startMidX:0, startMidY:0, startX:0, startY:0 };
     function dist(a,b){
       const dx = a.clientX - b.clientX;
@@ -1658,7 +1630,6 @@
       zoom(e.deltaY < 0 ? 0.12 : -0.12);
     }, {passive:false});
 
-    // Unit click
     document.querySelectorAll('.unit').forEach(el=>{
       el.addEventListener('click', (e)=>{
         e.preventDefault();
@@ -1666,7 +1637,6 @@
       });
     });
 
-    // Gallery lightbox + swipe
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbTitle = document.getElementById('lbTitle');
@@ -1715,7 +1685,6 @@
       }
     }, {passive:true});
 
-    // ESC close all
     document.addEventListener('keydown', (e)=>{
       if(e.key === "Escape"){
         closeDetails();
@@ -1725,10 +1694,8 @@
       }
     });
 
-    // init
     applyAvailability();
 
-    // Cookie consent
     const CONSENT_KEY = "fp_cookie_consent_v1";
     const cookieBanner = document.getElementById("cookieBanner");
     const cookieAccept = document.getElementById("cookieAccept");
@@ -1780,7 +1747,6 @@
 
     initConsent();
 
-    // Basic: prevent right-click / drag on images (nije 100% moguće spriječiti)
     document.addEventListener('contextmenu', (e)=>{
       if(e.target && (e.target.tagName === 'IMG' || e.target.closest('.galleryItem') || e.target.closest('.lbPanel') || e.target.closest('.viewer'))) {
         e.preventDefault();
