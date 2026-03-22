@@ -38,8 +38,8 @@
       --soldOverlay: rgba(140,0,0,.22);
       --soldOverlayHover: rgba(140,0,0,.34);
 
-      --reserveOverlay: rgba(255,215,0,.28);
-      --reserveOverlayHover: rgba(255,215,0,.42);
+      --reserveOverlay: rgba(140,0,0,.16);
+      --reserveOverlayHover: rgba(140,0,0,.24);
     }
 
     *{ box-sizing:border-box; }
