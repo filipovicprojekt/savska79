@@ -3,60 +3,355 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
   <title>K1S2 – Stan 1. kat 95 m² | Novogradnja Sesvete – Savska 79 Residence</title>
-  <meta name="description" content="K1S2 – stan na 1. katu u novogradnji Savska 79 Residence, Stari Jelkovec, Sesvete. 95 m², tri spavaće sobe, tlocrt i cijene." />
+  <meta name="description" content="K1S2 – stan na 1. katu u novogradnji Savska 79 Residence, Jelkovec, Sesvete. 95 m², tri spavaće sobe, tlocrt i cijene." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://www.ivanfilipovic.from.hr/k1s2.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="hr_HR" />
+  <meta property="og:site_name" content="Filipović Projekt" />
+  <meta property="og:title" content="K1S2 – Stan 1. kat 95 m² | Savska 79 Residence" />
+  <meta property="og:description" content="Stan u novogradnji u Jelkovcu, Sesvete. 95 m², tri spavaće sobe, tlocrt i cijene." />
+  <meta property="og:url" content="https://www.ivanfilipovic.from.hr/k1s2.html" />
+  <meta property="og:image" content="https://www.ivanfilipovic.from.hr/k1s2.png" />
+
   <style>
-    :root{--bg:#f6f7fb;--card:#fff;--text:#121826;--muted:#5b6476;--border:#e6e8ef;--accent:#8b6b4c;--accent2:#6f533a;--radius:16px}
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    .container{width:min(1000px,100%);margin:0 auto;padding:0 14px}.topbar{position:sticky;top:0;background:rgba(246,247,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-    .topbarInner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}.logo{width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--border);padding:6px}
-    .logoWrap{display:flex;align-items:center;gap:10px}.hero{padding:20px 0 12px}.heroCard,.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 14px 40px rgba(16,24,40,.08)}
-    .heroCard{padding:16px} h1{margin:0 0 8px;font-size:30px;letter-spacing:-.03em}.sub{color:var(--muted);font-weight:700}
-    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}.cardHead{padding:12px 14px;border-bottom:1px solid var(--border);font-weight:900}.cardBody{padding:14px}
-    .list{margin:0;padding-left:18px;color:var(--muted)} .list li{margin:7px 0}.plan{width:100%;display:block;border-radius:14px;border:1px solid var(--border)}
-    .btnRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.btnPrimary,.btnGhost{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:14px;font-weight:900;text-decoration:none}
-    .btnPrimary{background:var(--accent);color:#fff}.btnPrimary:hover{background:var(--accent2)} .btnGhost{background:#fff;color:var(--text);border:1px solid var(--border)}
-    table{width:100%;border-collapse:collapse} th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left} th{font-size:12px;text-transform:uppercase;color:var(--muted);background:rgba(246,247,251,.7)}
-    .noteDanger{padding:10px 12px;border-radius:14px;border:1px solid rgba(217,45,32,.22);background:rgba(217,45,32,.06);color:#7a1b14;font-weight:950;margin-top:10px}
-    .footer{padding:28px 0;color:var(--muted);font-size:13px} @media (min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    :root{
+      --bg:#f6f7fb; --card:#fff; --text:#121826; --muted:#5b6476; --border:#e6e8ef;
+      --accent:#8b6b4c; --accent2:#6f533a; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .container{width:min(1000px,100%);margin:0 auto;padding:0 14px}
+    .topbar{
+      position:sticky;top:0;z-index:20;background:rgba(246,247,251,.92);
+      backdrop-filter:blur(10px);border-bottom:1px solid var(--border)
+    }
+    .topbarInner{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0
+    }
+    .logoWrap{display:flex;align-items:center;gap:10px;min-width:0}
+    .logo{
+      width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--border);
+      padding:6px;flex:0 0 auto
+    }
+    .topText{min-width:0}
+    .topText b{
+      display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+    }
+    .topText span{
+      display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+    }
+    .hero{padding:20px 0 12px}
+    .heroCard,.card{
+      background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+      box-shadow:0 14px 40px rgba(16,24,40,.08)
+    }
+    .heroCard{padding:16px}
+    h1{margin:0 0 8px;font-size:30px;letter-spacing:-.03em}
+    .sub{color:var(--muted);font-weight:700}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+    .cardHead{padding:12px 14px;border-bottom:1px solid var(--border);font-weight:900}
+    .cardBody{padding:14px}
+    .list{margin:0;padding-left:18px;color:var(--muted)}
+    .list li{margin:7px 0}
+    .plan{
+      width:100%;display:block;border-radius:14px;border:1px solid var(--border);
+      background:#fff;cursor:zoom-in;box-shadow:0 10px 26px rgba(16,24,40,.06)
+    }
+    .btnRow{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;justify-content:center
+    }
+    .btnPrimary,.btnGhost,.vbtn{
+      display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;
+      border-radius:14px;font-weight:900;text-decoration:none;cursor:pointer;font-size:14px
+    }
+    .btnPrimary{background:var(--accent);color:#fff;border:1px solid rgba(0,0,0,.08)}
+    .btnPrimary:hover{background:var(--accent2)}
+    .btnGhost{background:#fff;color:var(--text);border:1px solid var(--border)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+    th{font-size:12px;text-transform:uppercase;color:var(--muted);background:rgba(246,247,251,.7)}
+    .noteDanger{
+      padding:10px 12px;border-radius:14px;border:1px solid rgba(217,45,32,.22);
+      background:rgba(217,45,32,.06);color:#7a1b14;font-weight:950;margin-top:10px
+    }
+    .contactCard{text-align:center}
+    .footer{padding:28px 0;color:var(--muted);font-size:13px;text-align:center}
+    .viewerBack{
+      position:fixed;inset:0;background:rgba(16,24,40,.72);display:none;align-items:center;
+      justify-content:center;padding:10px;z-index:100
+    }
+    .viewerBack.open{display:flex}
+    .viewer{
+      width:100%;max-width:1100px;height:min(90vh,900px);background:#0b1220;border-radius:16px;
+      overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 90px rgba(0,0,0,.45);
+      display:flex;flex-direction:column
+    }
+    .viewerTop{
+      padding:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;color:#fff;
+      background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.10);
+      font-weight:950;font-size:13px
+    }
+    .viewerBtns{display:flex;gap:8px;flex-wrap:wrap}
+    .vbtn{
+      border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;
+      padding:8px 10px;font-size:12px
+    }
+    .stage{position:relative;flex:1;overflow:hidden;touch-action:none;cursor:grab}
+    .stage:active{cursor:grabbing}
+    .stage img{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      transform-origin:center center;user-select:none;-webkit-user-drag:none;max-width:none
+    }
+    @media (min-width:900px){.grid{grid-template-columns:1fr 1fr}}
   </style>
 </head>
 <body>
-<header class="topbar"><div class="container topbarInner"><div class="logoWrap"><img class="logo" src="logo.png" alt="Filipović Projekt logo"><div><b>K1S2 – Savska 79 Residence</b><div class="sub">Novogradnja u Starom Jelkovcu, Sesvete</div></div></div><a class="btnGhost" href="index.html">Natrag</a></div></header>
-<main class="container hero">
-  <div class="heroCard">
-    <h1>K1S2 – Stan 1. kat</h1>
-    <div class="sub">95 m² • Sjever – Jug – Zapad • tri spavaće sobe • parkirno mjesto</div>
+  <header class="topbar">
+    <div class="container topbarInner">
+      <div class="logoWrap">
+        <img class="logo" src="logo.png" alt="Filipović Projekt logo">
+        <div class="topText">
+          <b>K1S2 – Savska 79 Residence</b>
+          <span>Novogradnja u Jelkovcu, Sesvete</span>
+        </div>
+      </div>
+      <a class="btnGhost" href="index.html">Natrag</a>
+    </div>
+  </header>
+
+  <main class="container hero">
+    <div class="heroCard">
+      <h1>K1S2 – Stan 1. kat</h1>
+      <div class="sub">95 m² • Sjever – Jug – Zapad • tri spavaće sobe • parkirno mjesto</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="cardHead">Opis stana</div>
+        <div class="cardBody">
+          <ul class="list">
+            <li>dnevni boravak s kuhinjom i blagovaonicom</li>
+            <li>tri spavaće sobe</li>
+            <li>dvije kupaonice s WC-om</li>
+            <li>izba</li>
+            <li>dva hodnika</li>
+            <li>terase i lođe</li>
+            <li>vanjsko parkirno mjesto s pripremom za EV punjač</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHead">Tlocrt</div>
+        <div class="cardBody">
+          <img class="plan" id="openPlan" src="k1s2.png" alt="Tlocrt stana K1S2">
+          <div class="btnRow">
+            <button class="btnPrimary" id="openPlanBtn" type="button">Otvori tlocrt (uvećaj)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHead">O projektu</div>
+        <div class="cardBody">
+          <ul class="list">
+            <li>podno grijanje na dizalicu topline</li>
+            <li>visina stropa 2.60 m</li>
+            <li>Bosch klima uređaji u svakoj sobi</li>
+            <li>električne rolete</li>
+            <li>PVC troslojna stolarija</li>
+            <li>mogućnost odabira keramike</li>
+            <li>planirano useljenje: travanj 2027.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardHead">Cijene</div>
+        <div class="cardBody">
+          <table>
+            <thead><tr><th>Stavka</th><th>Iznos</th></tr></thead>
+            <tbody>
+              <tr><td>Cijena stana (gotovina)</td><td><b>266.000 €</b></td></tr>
+              <tr><td>Cijena stana (kredit)</td><td><b>285.000 €</b></td></tr>
+              <tr><td>Parkirno mjesto</td><td>8.000 €</td></tr>
+              <tr><td><b>Ukupno (gotovina)</b></td><td><b>274.000 €</b></td></tr>
+              <tr><td><b>Ukupno (kredit)</b></td><td><b>293.000 €</b></td></tr>
+            </tbody>
+          </table>
+          <div class="noteDanger"><b>CIJENA NAKON DOVRŠETKA GRADNJE RASTE!</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card contactCard" style="margin-top:14px;">
+      <div class="cardHead" style="justify-content:center;">Kontakt</div>
+      <div class="cardBody">
+        <p><b>Filipović Projekt</b><br>Email: <a href="mailto:filipovic.projekt@outlook.com">filipovic.projekt@outlook.com</a><br>Telefon: <a href="tel:+385953009954">+385 95 300 99 54</a></p>
+        <div class="btnRow">
+          <a class="btnPrimary" href="index.html#upit">Pošalji upit</a>
+          <a class="btnGhost" href="tel:+385953009954">Nazovi</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">© <span id="y"></span> Filipović Projekt</div>
+  </main>
+
+  <div class="viewerBack" id="viewerBack" role="dialog" aria-modal="true">
+    <div class="viewer">
+      <div class="viewerTop">
+        <div id="viewerTitle">Tlocrt – K1S2</div>
+        <div class="viewerBtns">
+          <button class="vbtn" id="zoomIn" type="button">+</button>
+          <button class="vbtn" id="zoomOut" type="button">−</button>
+          <button class="vbtn" id="resetView" type="button">Reset</button>
+          <button class="vbtn" id="viewerClose" type="button">Zatvori</button>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <img id="stageImg" src="k1s2.png" alt="Tlocrt K1S2">
+      </div>
+    </div>
   </div>
 
-  <div class="grid">
-    <div class="card"><div class="cardHead">Opis stana</div><div class="cardBody"><ul class="list"><li>dnevni boravak s kuhinjom i blagovaonicom</li><li>tri spavaće sobe</li><li>dvije kupaonice s WC-om</li><li>izba</li><li>dva hodnika</li><li>terase i lođe</li><li>vanjsko parkirno mjesto s pripremom za EV punjač</li></ul></div></div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    <div class="card"><div class="cardHead">Cijene</div><div class="cardBody">
-      <table><thead><tr><th>Stavka</th><th>Iznos</th></tr></thead><tbody>
-        <tr><td>Cijena stana (gotovina)</td><td><b>266.000 €</b></td></tr>
-        <tr><td>Cijena stana (kredit)</td><td><b>285.000 €</b></td></tr>
-        <tr><td>Parkirno mjesto</td><td>8.000 €</td></tr>
-        <tr><td><b>Ukupno (gotovina)</b></td><td><b>274.000 €</b></td></tr>
-        <tr><td><b>Ukupno (kredit)</b></td><td><b>293.000 €</b></td></tr>
-      </tbody></table>
-      <div class="noteDanger"><b>CIJENA NAKON DOVRŠETKA GRADNJE RASTE!</b></div>
-    </div></div>
+    const viewerBack = document.getElementById('viewerBack');
+    const openPlan = document.getElementById('openPlan');
+    const openPlanBtn = document.getElementById('openPlanBtn');
+    const viewerCloseBtn = document.getElementById('viewerClose');
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const resetViewBtn = document.getElementById('resetView');
+    const stage = document.getElementById('stage');
+    const stageImg = document.getElementById('stageImg');
 
-    <div class="card"><div class="cardHead">Tlocrt</div><div class="cardBody"><img class="plan" src="k1s2.png" alt="Tlocrt stana K1S2"></div></div>
+    let v = { scale: 1, x: 0, y: 0, dragging:false, px:0, py:0 };
 
-    <div class="card"><div class="cardHead">O projektu</div><div class="cardBody"><ul class="list"><li>podno grijanje na dizalicu topline</li><li>visina stropa 2.60 m</li><li>Bosch klima uređaji u svakoj sobi</li><li>električne rolete</li><li>PVC troslojna stolarija</li><li>mogućnost odabira keramike</li><li>planirano useljenje: travanj 2027.</li></ul></div></div>
-  </div>
+    function applyTransform(){
+      stageImg.style.transform = `translate(calc(-50% + ${v.x}px), calc(-50% + ${v.y}px)) scale(${v.scale})`;
+    }
 
-  <div class="btnRow">
-    <a class="btnPrimary" href="index.html#upit">Pošalji upit</a>
-    <a class="btnGhost" href="tel:+385953009954">Nazovi</a>
-  </div>
+    function fitImage(){
+      const sw = stage.clientWidth || 1;
+      const sh = stage.clientHeight || 1;
+      const iw = stageImg.naturalWidth || 1;
+      const ih = stageImg.naturalHeight || 1;
+      const fit = Math.min(sw / iw, sh / ih) * 0.98;
+      v.scale = Math.min(6, Math.max(0.2, fit));
+      v.x = 0;
+      v.y = 0;
+      applyTransform();
+    }
 
-  <div class="footer">© <span id="y"></span> Filipović Projekt</div>
-</main>
-<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+    function openViewer(){
+      viewerBack.classList.add('open');
+      setTimeout(fitImage, 30);
+    }
+
+    function closeViewer(){ viewerBack.classList.remove('open'); }
+    function zoom(delta){ v.scale = Math.min(6, Math.max(0.2, v.scale + delta)); applyTransform(); }
+
+    openPlan.addEventListener('click', openViewer);
+    openPlanBtn.addEventListener('click', openViewer);
+    viewerCloseBtn.addEventListener('click', closeViewer);
+    viewerBack.addEventListener('click', (e)=>{ if(e.target === viewerBack) closeViewer(); });
+    zoomInBtn.addEventListener('click', ()=> zoom(0.2));
+    zoomOutBtn.addEventListener('click', ()=> zoom(-0.2));
+    resetViewBtn.addEventListener('click', fitImage);
+
+    function startDrag(x,y){ v.dragging = true; v.px = x; v.py = y; }
+    function moveDrag(x,y){
+      if(!v.dragging) return;
+      const dx = x - v.px, dy = y - v.py;
+      v.px = x; v.py = y;
+      v.x += dx; v.y += dy;
+      applyTransform();
+    }
+    function endDrag(){ v.dragging = false; }
+
+    stage.addEventListener('mousedown', (e)=> startDrag(e.clientX, e.clientY));
+    window.addEventListener('mousemove', (e)=> moveDrag(e.clientX, e.clientY));
+    window.addEventListener('mouseup', endDrag);
+
+    stage.addEventListener('wheel', (e)=>{
+      e.preventDefault();
+      zoom(e.deltaY < 0 ? 0.12 : -0.12);
+    }, {passive:false});
+
+    function dist(a,b){
+      const dx = a.clientX - b.clientX;
+      const dy = a.clientY - b.clientY;
+      return Math.hypot(dx, dy);
+    }
+    function mid(a,b){ return { x:(a.clientX+b.clientX)/2, y:(a.clientY+b.clientY)/2 }; }
+
+    let pinch = { active:false, startDist:0, startScale:1, startMidX:0, startMidY:0, startX:0, startY:0 };
+
+    stage.addEventListener('touchstart', (e)=>{
+      if(e.touches.length === 1){
+        const t = e.touches[0];
+        pinch.active = false;
+        startDrag(t.clientX, t.clientY);
+      } else if(e.touches.length === 2){
+        e.preventDefault();
+        const a = e.touches[0], b = e.touches[1];
+        const m = mid(a,b);
+        pinch = {
+          active:true,
+          startDist: dist(a,b),
+          startScale: v.scale,
+          startMidX: m.x,
+          startMidY: m.y,
+          startX: v.x,
+          startY: v.y
+        };
+        v.dragging = false;
+      }
+    }, {passive:false});
+
+    stage.addEventListener('touchmove', (e)=>{
+      if(e.touches.length === 1 && !pinch.active){
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+        return;
+      }
+      if(e.touches.length === 2){
+        e.preventDefault();
+        const a = e.touches[0], b = e.touches[1];
+        const m = mid(a,b), d = dist(a,b);
+        const rawScale = pinch.startScale * (d / Math.max(10, pinch.startDist));
+        v.scale = Math.min(6, Math.max(0.2, rawScale));
+        v.x = pinch.startX + (m.x - pinch.startMidX);
+        v.y = pinch.startY + (m.y - pinch.startMidY);
+        applyTransform();
+      }
+    }, {passive:false});
+
+    stage.addEventListener('touchend', (e)=>{
+      if(e.touches.length === 0){ pinch.active = false; endDrag(); }
+      if(e.touches.length === 1){
+        pinch.active = false;
+        const t = e.touches[0];
+        startDrag(t.clientX, t.clientY);
+      }
+    }, {passive:false});
+
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeViewer(); });
+    stageImg.addEventListener('load', ()=>{ if(viewerBack.classList.contains('open')) fitImage(); });
+  </script>
 </body>
 </html>
