@@ -1120,6 +1120,510 @@
     </section>
   </main>
 
+    <!-- =====================================================
+SAVSKA 79 / IVAN FILIPOVIC - PREMIUM WAITLIST SECTION
+PRILAGOĐENO ZA: ivanfilipovic.from.hr
+UBACI PRIJE </body>
+===================================================== -->
+
+<style>
+  .if-waitlist {
+    padding: 90px 20px;
+    background:
+      linear-gradient(rgba(10,10,10,0.82),
+      rgba(10,10,10,0.88)),
+      url('https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=1600&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  .if-container {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .if-left {
+    padding-top: 20px;
+  }
+
+  .if-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
+  }
+
+  .if-left h2 {
+    font-size: 56px;
+    line-height: 1.05;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+
+  .if-left p {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 25px;
+    max-width: 600px;
+  }
+
+  .if-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 35px;
+  }
+
+  .if-feature {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 18px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+  }
+
+  .if-feature strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  .if-feature span {
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .if-form-card {
+    background: rgba(255,255,255,0.98);
+    padding: 35px;
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  .if-form-card h3 {
+    color: #111;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .if-form-card p {
+    color: #666;
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .if-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .if-form-card input,
+  .if-form-card select,
+  .if-form-card textarea {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    transition: 0.2s;
+    background: white;
+  }
+
+  .if-form-card input:focus,
+  .if-form-card select:focus,
+  .if-form-card textarea:focus {
+    border-color: #111;
+    outline: none;
+  }
+
+  .if-form-card textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .if-section-title {
+    color: #111;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 12px;
+    margin-bottom: 14px;
+  }
+
+  .if-checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .if-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #444;
+    font-size: 14px;
+  }
+
+  .if-check input {
+    width: auto;
+    margin: 0;
+  }
+
+  .if-submit {
+    width: 100%;
+    border: none;
+    background: #111;
+    color: white;
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: 600;
+  }
+
+  .if-submit:hover {
+    background: #2b2b2b;
+    transform: translateY(-1px);
+  }
+
+  .if-success {
+    display: none;
+    margin-top: 18px;
+    background: #e8f7ed;
+    color: #155724;
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+  .if-gdpr {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .if-gdpr input {
+    width: auto;
+    margin-top: 3px;
+  }
+
+  @media(max-width: 1050px) {
+    .if-container {
+      grid-template-columns: 1fr;
+    }
+
+    .if-left h2 {
+      font-size: 42px;
+    }
+  }
+
+  @media(max-width: 700px) {
+    .if-grid,
+    .if-checkbox-grid,
+    .if-features {
+      grid-template-columns: 1fr;
+    }
+
+    .if-form-card {
+      padding: 25px;
+    }
+
+    .if-left h2 {
+      font-size: 34px;
+    }
+  }
+</style>
+
+<section class="if-waitlist" id="waitlist">
+
+  <div class="if-container">
+
+    <!-- LEFT -->
+    <div class="if-left">
+
+      <div class="if-badge">
+        PRIORITETNA LISTA ZAINTERESIRANIH KUPACA
+      </div>
+
+      <h2>
+        Prvi saznajte za buduće projekte i nove stanove
+      </h2>
+
+      <p>
+        Projekt Savska 79 je gotovo rasprodan.
+        Prijavite interes i ostvarite prioritetni pristup
+        budućim projektima, tlocrtima i informacijama
+        prije javne objave.
+      </p>
+
+      <div class="if-features">
+
+        <div class="if-feature">
+          <strong>Prioritetna obavijest</strong>
+          <span>
+            Informacije prije javne prodaje i oglašavanja.
+          </span>
+        </div>
+
+        <div class="if-feature">
+          <strong>Rani odabir stanova</strong>
+          <span>
+            Veća mogućnost odabira najboljih pozicija.
+          </span>
+        </div>
+
+        <div class="if-feature">
+          <strong>Tlocrti i cijene</strong>
+          <span>
+            Pregled dostupnih stanova prije objave.
+          </span>
+        </div>
+
+        <div class="if-feature">
+          <strong>Personalizirana ponuda</strong>
+          <span>
+            Stanovi prema vašem budžetu i željama.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="if-form-card">
+
+      <h3>Prijava interesa</h3>
+
+      <p>
+        Ispunite kratku prijavu i kontaktirat ćemo vas
+        za buduće projekte i dostupne stanove.
+      </p>
+
+      <!-- ==========================
+      WEB3FORMS SETUP
+      ========================== -->
+
+      <form id="ifForm"
+        action="https://api.web3forms.com/submit"
+        method="POST">
+
+        <input type="hidden"
+          name="access_key"
+          value="c94126c1-7b5d-4865-a3ac-19e322686aec">
+
+        <input type="hidden"
+          name="subject"
+          value="Nova prijava interesa - Ivan Filipovic">
+
+        <div class="if-grid">
+
+          <input type="text"
+            name="ime_prezime"
+            placeholder="Ime i prezime"
+            required>
+
+          <input type="tel"
+            name="telefon"
+            placeholder="Telefon"
+            required>
+
+        </div>
+
+        <input type="email"
+          name="email"
+          placeholder="Email adresa"
+          required>
+
+        <div class="if-grid">
+
+          <select name="tip_stana">
+            <option value="">
+              Tip stana
+            </option>
+            <option>Garsonijera</option>
+            <option>Jednosobni</option>
+            <option>2-sobni</option>
+            <option>3-sobni</option>
+            <option>4-sobni</option>
+            <option>5+ soba</option>
+          </select>
+
+          <select name="kvadratura">
+            <option value="">
+              Željena kvadratura
+            </option>
+            <option>30-40 m²</option>
+            <option>40-55 m²</option>
+            <option>55-75 m²</option>
+            <option>75-100 m²</option>
+            <option>100-130 m²</option>
+            <option>130+ m²</option>
+          </select>
+
+        </div>
+
+        <div class="if-grid">
+
+          <select name="budget">
+            <option value="">
+              Budget
+            </option>
+            <option>do 100.000 €</option>
+            <option>100.000 - 150.000 €</option>
+            <option>150.000 - 220.000 €</option>
+            <option>220.000 - 300.000 €</option>
+            <option>300.000 - 450.000 €</option>
+            <option>450.000 €+</option>
+          </select>
+
+          <select name="nacin_kupnje">
+            <option value="">
+              Način kupnje
+            </option>
+            <option>Stambeni kredit</option>
+            <option>Gotovina</option>
+            <option>Kombinirano</option>
+            <option>Još nisam odlučio</option>
+          </select>
+
+        </div>
+
+        <div class="if-section-title">
+          Što vam je najvažnije?
+        </div>
+
+        <div class="if-checkbox-grid">
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Javni prijevoz">
+            Javni prijevoz
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Škole i vrtići">
+            Škole i vrtići
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Parking">
+            Parking / garaža
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Lift">
+            Lift
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Blizina centra">
+            Blizina centra
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Trgovine">
+            Trgovine i sadržaji
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Mirna lokacija">
+            Mirna lokacija
+          </label>
+
+          <label class="if-check">
+            <input type="checkbox" name="prioriteti[]" value="Balkon terasa">
+            Balkon / terasa
+          </label>
+
+        </div>
+
+        <textarea
+          name="napomena"
+          placeholder="Dodatne želje, pitanja ili preferencije"></textarea>
+
+        <label class="if-gdpr">
+          <input type="checkbox" required>
+
+          <span>
+            Slažem se s obradom osobnih podataka u svrhu
+            kontakta vezano uz buduće projekte, ponude i
+            informacije o stanovima.
+          </span>
+        </label>
+
+        <button type="submit" class="if-submit">
+          Prijavi interes
+        </button>
+
+        <div class="if-success" id="ifSuccess">
+          Hvala na prijavi. Kontaktirat ćemo vas za buduće projekte i dostupne stanove.
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+  const ifForm = document.getElementById("ifForm");
+  const ifSuccess = document.getElementById("ifSuccess");
+
+  ifForm.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const formData = new FormData(ifForm);
+
+    try {
+
+      const response = await fetch(ifForm.action, {
+        method: "POST",
+        body: formData
+      });
+
+      if(response.ok) {
+        ifForm.reset();
+        ifSuccess.style.display = "block";
+
+        setTimeout(() => {
+          ifSuccess.style.display = "none";
+        }, 7000);
+
+      } else {
+        alert("Došlo je do greške. Pokušajte ponovno.");
+      }
+
+    } catch(error) {
+      alert("Došlo je do greške. Pokušajte ponovno.");
+    }
+
+  });
+</script>
+
   <footer>
     <div class="container">
       <div class="footerGrid">
